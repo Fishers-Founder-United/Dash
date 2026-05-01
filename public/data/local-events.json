@@ -1,25 +1,25 @@
 [
   {
+    "id": "demo-trail",
+    "title": "Off the Grid — Nickel Plate Trail Walk",
+    "date": "2026-05-04",
+    "recurrence": "Mon – Thu · Departs 12:15 PM sharp",
+    "location": "Indiana IoT Lab, 9059 Technology Lane, Fishers IN",
+    "description": "The trail is right outside the door. We leave at 12:15, not 12:16. 45-minute loop on the Nickel Plate Trail and back. Disconnect your devices, connect with humans.",
+    "url": "https://indianaiot.com",
+    "source": "demo",
+    "tags": ["wellness", "outdoor", "networking", "daily"]
+  },
+  {
     "id": "demo-001",
     "title": "Bytes & Brews — Founders Lunch",
     "date": "2026-05-06",
     "time": "12:00",
     "location": "Four Day Ray Brewing, 11671 Lantern Rd, Fishers IN",
-    "description": "Weekly midweek lunch for lab members and guests. Talk shop, meet a founder, swap war stories. No agenda — just great people and cold craft beer.",
+    "description": "Weekly Wednesday lunch for lab members and guests. Talk shop, meet a founder, swap war stories. No agenda — just great people and cold craft beer.",
     "url": "https://indianaiot.com",
     "source": "demo",
     "tags": ["networking", "casual", "Wednesday", "lunch"]
-  },
-  {
-    "id": "demo-002",
-    "title": "Off the Grid — Nickel Plate Trail Walk",
-    "date": "2026-05-07",
-    "time": "12:15",
-    "location": "Indiana IoT Lab, 9059 Technology Lane, Fishers IN",
-    "description": "Disconnect your devices, connect with humans. Meet at the lab — we step out the door at 12:15 sharp. 45-minute loop along the Nickel Plate Trail and back. No waiting, no stragglers.",
-    "url": "https://indianaiot.com",
-    "source": "demo",
-    "tags": ["wellness", "outdoor", "networking", "casual"]
   },
   {
     "id": "demo-003",
@@ -35,7 +35,7 @@
   {
     "id": "demo-004",
     "title": "Signal & Noise — Startup Pitch Night",
-    "date": "2026-05-15",
+    "date": "2026-05-20",
     "time": "18:30",
     "location": "Indiana IoT Lab, 9059 Technology Lane, Fishers IN",
     "description": "Cut through the noise. Early-stage founders pitch their IoT ideas to the community. 5 minutes, honest feedback, no investors required.",
@@ -46,7 +46,7 @@
   {
     "id": "demo-005",
     "title": "Low Power Mode — Wednesday Happy Hour",
-    "date": "2026-05-20",
+    "date": "2026-05-27",
     "time": "17:00",
     "location": "HopCat, 9880 E 116th St, Fishers IN",
     "description": "Powering down for the week? Come recharge with fellow makers and founders. Informal, badge-free zone. Just show up.",
@@ -57,7 +57,7 @@
   {
     "id": "demo-006",
     "title": "Firmware Friday — IoT Hardware Workshop",
-    "date": "2026-05-22",
+    "date": "2026-06-05",
     "time": "14:00",
     "location": "Indiana IoT Lab, 9059 Technology Lane, Fishers IN",
     "description": "Hands-on workshop: sensors, microcontrollers, and connected devices. Bring your laptop. Components provided. Leave with something that actually blinks.",
@@ -66,20 +66,9 @@
     "tags": ["maker", "hardware", "IoT", "workshop"]
   },
   {
-    "id": "demo-007",
-    "title": "Packet Walk — Trail Stroll & Talk",
-    "date": "2026-05-28",
-    "time": "12:15",
-    "location": "Indiana IoT Lab, 9059 Technology Lane, Fishers IN",
-    "description": "Routing your thoughts in real life. The Nickel Plate Trail is right outside the door — we leave at 12:15, not 12:16. 45-minute moving standup for founders who think better on their feet.",
-    "url": "https://indianaiot.com",
-    "source": "demo",
-    "tags": ["wellness", "outdoor", "networking", "casual"]
-  },
-  {
     "id": "demo-008",
     "title": "Cold Boot Coffee — Morning Networking",
-    "date": "2026-06-03",
+    "date": "2026-06-12",
     "time": "08:30",
     "location": "Indiana IoT Lab, 9059 Technology Lane, Fishers IN",
     "description": "Start your process fresh. Casual morning networking for members, partners, and newcomers. Coffee's on. Stories are free.",
@@ -88,20 +77,9 @@
     "tags": ["networking", "casual", "morning"]
   },
   {
-    "id": "demo-009",
-    "title": "Bytes & Brews — Founders Lunch",
-    "date": "2026-06-03",
-    "time": "12:00",
-    "location": "Four Day Ray Brewing, 11671 Lantern Rd, Fishers IN",
-    "description": "Wednesday lunch, weekly ritual. Bring a friend, a problem, or just yourself. Good food and good company at Four Day Ray.",
-    "url": "https://indianaiot.com",
-    "source": "demo",
-    "tags": ["networking", "casual", "Wednesday", "lunch"]
-  },
-  {
     "id": "demo-010",
     "title": "Open Source Night — Member Showcase",
-    "date": "2026-06-10",
+    "date": "2026-06-19",
     "time": "18:00",
     "location": "Indiana IoT Lab, 9059 Technology Lane, Fishers IN",
     "description": "Lab members open-source their ideas. Show what you're building, find a collaborator, ask for help. The best synergies happen here.",
@@ -112,7 +90,7 @@
   {
     "id": "demo-011",
     "title": "Random.pitch() — Startup Improv Night",
-    "date": "2026-06-17",
+    "date": "2026-06-26",
     "time": "18:30",
     "location": "Indiana IoT Lab, 9059 Technology Lane, Fishers IN",
     "description": "Draw a business idea from the hat. You have 5 minutes to pitch it — cold, unrehearsed, and on the spot. No slides. No safety net. Pure startup improv. Audience scores, everyone laughs, someone might actually build it.",

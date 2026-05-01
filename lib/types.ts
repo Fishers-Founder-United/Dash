@@ -1,8 +1,9 @@
 export interface Event {
   id: string;
   title: string;
-  date: string; // YYYY-MM-DD
+  date: string; // YYYY-MM-DD — used for sorting; if recurrence is set, date is not displayed
   time?: string; // HH:MM 24h
+  recurrence?: string; // human-readable recurrence label, e.g. "Mon–Thu · 12:15 PM"
   location?: string;
   description?: string;
   url?: string;

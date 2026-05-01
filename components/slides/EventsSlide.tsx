@@ -79,7 +79,7 @@ function EventRow({ event, index }: EventRowProps) {
           className="text-cyan-300/80 font-medium mt-1"
           style={{ fontSize: "clamp(1.1rem, 1.8vw, 1.8rem)" }}
         >
-          {formatDate(event.date, event.time)}
+          {event.recurrence ?? formatDate(event.date, event.time)}
         </p>
         {event.location && (
           <p
