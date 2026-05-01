@@ -6,7 +6,7 @@ import { fetchWeather, wmoDescription } from "@/lib/weather";
 
 const LAT = 39.9556;
 const LON = -86.0131;
-const ZOOM = 9; // ~40 mile radius view
+const ZOOM = 8; // ~40 mile radius view
 
 interface RainViewerFrame {
   time: number;
@@ -189,7 +189,7 @@ export default function WeatherRadarMap() {
     return () => clearInterval(timer);
   }, [radar]);
 
-  // Update radar tile layer when frame changes
+  // Update radar tile layer when frame changes — smooth fade (no flash)
   useEffect(() => {
     if (!radar || !mapRef.current) return;
     const frame = radar.frames[frameIdx];
@@ -198,14 +198,28 @@ export default function WeatherRadarMap() {
 
     import("leaflet").then((L) => {
       if (!mapRef.current) return;
-      if (radarLayerRef.current) {
-        mapRef.current.removeLayer(radarLayerRef.current);
-      }
-      radarLayerRef.current = L.tileLayer(
-        `${radar.host}${frame.path}/512/{z}/{x}/{y}/8/1_1.png`,
-        { opacity: 0.75, maxZoom: 19, zIndex: 10 }
+      const map = mapRef.current;
+      const oldLayer = radarLayerRef.current;
+
+      // Add new layer at opacity 0 first, then fade it in once tiles load
+      const newLayer = L.tileLayer(
+        `${radar.host}${frame.path}/256/{z}/{x}/{y}/4/1_1.png`,
+        { opacity: 0, maxNativeZoom: 8, maxZoom: 19, zIndex: 10 }
       );
-      radarLayerRef.current.addTo(mapRef.current);
+      newLayer.addTo(map);
+      radarLayerRef.current = newLayer;
+
+      const onLoad = () => {
+        newLayer.setOpacity(0.75);
+        if (oldLayer && map.hasLayer(oldLayer)) {
+          map.removeLayer(oldLayer);
+        }
+      };
+
+      newLayer.once("load", onLoad);
+      // Fallback: if tiles never fire "load" (e.g. all cached), show after 800ms
+      const fallback = setTimeout(onLoad, 800);
+      newLayer.once("load", () => clearTimeout(fallback));
     });
   }, [frameIdx, radar]);
 

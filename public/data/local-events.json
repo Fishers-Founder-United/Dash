@@ -1,46 +1,112 @@
 [
   {
     "id": "demo-001",
-    "title": "Indiana IoT Lab Monthly Meetup",
-    "date": "2026-05-08",
-    "time": "18:00",
-    "location": "Indiana IoT Lab, 9059 Technology Lane, Fishers IN",
-    "description": "Monthly gathering for IoT innovators, entrepreneurs, and curious minds.",
+    "title": "Wednesday Founders Lunch @ Four Day Ray",
+    "date": "2026-05-06",
+    "time": "12:00",
+    "location": "Four Day Ray Brewing, 11671 Lantern Rd, Fishers IN",
+    "description": "Weekly midweek meetup for lab members and guests. Grab a craft beer, talk shop, meet a founder. No agenda, just good people.",
     "url": "https://indianaiot.com",
     "source": "demo",
-    "tags": ["meetup", "networking", "IoT"]
+    "tags": ["networking", "casual", "Wednesday", "lunch"]
   },
   {
     "id": "demo-002",
+    "title": "Nickel Plate Trail Walk — Midday Reset",
+    "date": "2026-05-07",
+    "time": "12:15",
+    "location": "Nickel Plate Trail, Roy G. Holland Park Trailhead, Fishers IN",
+    "description": "Leave your desk for 45 minutes. Walk the trail, clear your head, and catch up with fellow founders. Meet at the lab — we walk together.",
+    "url": "https://indianaiot.com",
+    "source": "demo",
+    "tags": ["wellness", "outdoor", "networking", "casual"]
+  },
+  {
+    "id": "demo-003",
+    "title": "Indiana IoT Lab Monthly Meetup",
+    "date": "2026-05-13",
+    "time": "18:00",
+    "location": "Indiana IoT Lab, 9059 Technology Lane, Fishers IN",
+    "description": "Monthly gathering for IoT innovators, entrepreneurs, and curious minds. Demo night format — bring something to show.",
+    "url": "https://indianaiot.com",
+    "source": "demo",
+    "tags": ["meetup", "networking", "IoT", "demo"]
+  },
+  {
+    "id": "demo-004",
     "title": "Startup Pitch Night",
     "date": "2026-05-15",
-    "time": "19:00",
+    "time": "18:30",
     "location": "Indiana IoT Lab, 9059 Technology Lane, Fishers IN",
-    "description": "Early-stage founders pitch their IoT ideas to the community.",
+    "description": "Early-stage founders pitch their IoT ideas to the community. 5-minute pitches, honest feedback, no investors required.",
     "url": "https://indianaiot.com",
     "source": "demo",
     "tags": ["startup", "pitch", "IoT"]
   },
   {
-    "id": "demo-003",
+    "id": "demo-005",
+    "title": "Wednesday Happy Hour @ HopCat Fishers",
+    "date": "2026-05-20",
+    "time": "17:00",
+    "location": "HopCat, 9880 E 116th St, Fishers IN",
+    "description": "End the workday with fellow makers and founders. Informal, no badge required. Just show up and connect.",
+    "url": "https://indianaiot.com",
+    "source": "demo",
+    "tags": ["networking", "casual", "Wednesday", "happy hour"]
+  },
+  {
+    "id": "demo-006",
     "title": "IoT Hardware Workshop",
     "date": "2026-05-22",
     "time": "14:00",
     "location": "Indiana IoT Lab, 9059 Technology Lane, Fishers IN",
-    "description": "Hands-on workshop: sensors, microcontrollers, and connected devices.",
+    "description": "Hands-on workshop: sensors, microcontrollers, and connected devices. Bring your laptop. Components provided.",
     "url": "https://indianaiot.com",
     "source": "demo",
     "tags": ["maker", "hardware", "IoT", "workshop"]
   },
   {
-    "id": "demo-004",
-    "title": "Coffee & Connect",
-    "date": "2026-05-29",
-    "time": "08:30",
-    "location": "Indiana IoT Lab, 9059 Technology Lane, Fishers IN",
-    "description": "Casual morning networking for members, partners, and newcomers.",
+    "id": "demo-007",
+    "title": "Trail & Talk — Nickel Plate Walk",
+    "date": "2026-05-28",
+    "time": "12:15",
+    "location": "Nickel Plate Trail, Roy G. Holland Park Trailhead, Fishers IN",
+    "description": "Another midday walk along Nickel Plate Trail. Great for clearing your head and connecting with other lab members. Meet at the IoT Lab.",
     "url": "https://indianaiot.com",
     "source": "demo",
-    "tags": ["networking", "casual"]
+    "tags": ["wellness", "outdoor", "networking", "casual"]
+  },
+  {
+    "id": "demo-008",
+    "title": "Coffee & Connect",
+    "date": "2026-06-03",
+    "time": "08:30",
+    "location": "Indiana IoT Lab, 9059 Technology Lane, Fishers IN",
+    "description": "Casual morning networking for members, partners, and newcomers. Coffee's on. Stories are free.",
+    "url": "https://indianaiot.com",
+    "source": "demo",
+    "tags": ["networking", "casual", "morning"]
+  },
+  {
+    "id": "demo-009",
+    "title": "Wednesday Founders Lunch @ Four Day Ray",
+    "date": "2026-06-03",
+    "time": "12:00",
+    "location": "Four Day Ray Brewing, 11671 Lantern Rd, Fishers IN",
+    "description": "Weekly midweek founders lunch. Bring a friend, a problem, or just yourself. Good food and good company guaranteed.",
+    "url": "https://indianaiot.com",
+    "source": "demo",
+    "tags": ["networking", "casual", "Wednesday", "lunch"]
+  },
+  {
+    "id": "demo-010",
+    "title": "Member Showcase & Collaboration Night",
+    "date": "2026-06-10",
+    "time": "18:00",
+    "location": "Indiana IoT Lab, 9059 Technology Lane, Fishers IN",
+    "description": "Lab members show what they're building. Looking for a co-founder, collaborator, or just feedback? This is the night.",
+    "url": "https://indianaiot.com",
+    "source": "demo",
+    "tags": ["showcase", "collaboration", "networking", "IoT"]
   }
 ]
