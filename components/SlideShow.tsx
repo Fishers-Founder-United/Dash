@@ -8,13 +8,15 @@ import ClockWeatherPanel from "./ClockWeatherPanel";
 import EventsSlide from "./slides/EventsSlide";
 import SpotlightSlide from "./slides/SpotlightSlide";
 import AnnouncementsSlide from "./slides/AnnouncementsSlide";
+import WeatherRadarSlide from "./slides/WeatherRadarSlide";
 import type { DashboardData } from "@/lib/types";
 
 // Right panel slides only (clock/weather lives permanently on the left)
-const SLIDES = ["events", "spotlight", "announcements"] as const;
+const SLIDES = ["events", "radar", "spotlight", "announcements"] as const;
 type SlideId = (typeof SLIDES)[number];
 const DURATIONS: Record<SlideId, number> = {
   events: 20,
+  radar: 25,
   spotlight: 15,
   announcements: 15,
 };
@@ -43,6 +45,8 @@ function RightPanel({
   switch (slide) {
     case "events":
       return <EventsSlide events={data.events} />;
+    case "radar":
+      return <WeatherRadarSlide />;
     case "spotlight":
       return (
         <SpotlightSlide spotlights={data.spotlights} index={spotlightIndex} />

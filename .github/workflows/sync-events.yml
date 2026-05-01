@@ -39,5 +39,5 @@ jobs:
           git config --local user.email "github-actions@github.com"
           git config --local user.name "GitHub Actions [sync-events]"
           git add public/data/events.json
-          git diff --staged --quiet || git commit -m "chore: sync external events data [skip ci]"
+          git diff --staged --quiet || git commit -m "chore: sync external events data"
           git push
