@@ -6,7 +6,7 @@ export interface Event {
   location?: string;
   description?: string;
   url?: string;
-  source: "local" | "google" | "eventbrite" | "meetup";
+  source: "local" | "google" | "eventbrite" | "meetup" | "demo";
   tags?: string[];
 }
 

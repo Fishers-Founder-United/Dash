@@ -7,12 +7,14 @@ const SOURCE_LABEL: Record<string, string> = {
   google: "GCAL",
   eventbrite: "EVENTBRITE",
   meetup: "MEETUP",
+  demo: "Not Real...Yet",
 };
 
 const SOURCE_COLOR: Record<string, string> = {
-  local: "bg-amber-500/20 text-cyan-300 border-amber-500/30",
+  local: "bg-cyan-500/20 text-cyan-300 border-cyan-500/30",
   google: "bg-blue-500/20 text-blue-300 border-blue-500/30",
   eventbrite: "bg-orange-500/20 text-orange-300 border-orange-500/30",
+  demo: "bg-white/5 text-white/35 border-white/10 italic",
   meetup: "bg-red-500/20 text-red-300 border-red-500/30",
 };
 
