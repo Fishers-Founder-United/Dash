@@ -25,11 +25,11 @@ export default function WeatherRadarSlide() {
           </h2>
           <div className="flex items-center gap-2 bg-cyan-500/10 border border-cyan-500/20 rounded-full px-3 py-1">
             <div className="w-2 h-2 rounded-full bg-cyan-400 animate-pulse" />
-            <span className="text-cyan-300 text-lg font-medium">LIVE</span>
+            <span className="text-cyan-300 text-lg font-medium">NEXRAD</span>
           </div>
         </div>
         <span className="text-white/25 text-xl tracking-wide">
-          Fishers, IN &nbsp;·&nbsp; 20 mi radius
+          Fishers, IN &nbsp;·&nbsp; ~50 mi view
         </span>
       </div>
 

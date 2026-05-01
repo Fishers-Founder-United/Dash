@@ -52,29 +52,29 @@ function EventRow({ event, index }: EventRowProps) {
 
   return (
     <div
-      className={`flex items-start gap-6 p-6 rounded-2xl border border-white/5 shrink-0 ${
+      className={`flex items-start gap-4 px-5 py-4 rounded-2xl border border-white/5 shrink-0 ${
         index % 2 === 0 ? "bg-white/5" : "bg-transparent"
       }`}
     >
       {/* Index number */}
       <span
-        className="text-cyan-400/60 font-bold shrink-0 mt-1"
-        style={{ fontSize: "clamp(1.5rem, 2.5vw, 2.5rem)" }}
+        className="text-cyan-400/60 font-bold shrink-0 mt-1 tabular-nums"
+        style={{ fontSize: "clamp(1.2rem, 2vw, 2rem)" }}
       >
         {String(index + 1).padStart(2, "0")}
       </span>
 
       {/* Content */}
       <div className="flex-1 min-w-0">
-        <div className="flex items-start justify-between gap-4">
+        <div className="flex items-start justify-between gap-3">
           <h3
             className="text-white font-semibold leading-tight"
-            style={{ fontSize: "clamp(1.5rem, 2.5vw, 2.5rem)" }}
+            style={{ fontSize: "clamp(1.3rem, 2.2vw, 2.2rem)" }}
           >
             {event.title}
           </h3>
           <span
-            className={`shrink-0 border rounded-full px-3 py-1 text-sm font-bold tracking-wider ${sourceColor}`}
+            className={`shrink-0 border rounded-full px-2.5 py-0.5 text-xs font-bold tracking-wide whitespace-nowrap ${sourceColor}`}
           >
             {sourceLabel}
           </span>
@@ -150,7 +150,7 @@ export default function EventsSlide({ events }: EventsSlideProps) {
   }, [upcoming.length]);
 
   return (
-    <div className="flex flex-col h-full px-12 py-10 gap-6">
+    <div className="flex flex-col h-full px-8 py-8 gap-5">
       {/* Header */}
       <div className="flex items-center justify-between shrink-0">
         <div>

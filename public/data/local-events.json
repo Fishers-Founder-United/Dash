@@ -56,36 +56,47 @@
   },
   {
     "id": "demo-006",
-    "title": "Firmware Friday — IoT Hardware Workshop",
-    "date": "2026-06-05",
+    "title": "Bare Metal Thursday — IoT Hardware Workshop",
+    "date": "2026-06-04",
     "time": "14:00",
     "location": "Indiana IoT Lab, 9059 Technology Lane, Fishers IN",
     "description": "Hands-on workshop: sensors, microcontrollers, and connected devices. Bring your laptop. Components provided. Leave with something that actually blinks.",
     "url": "https://indianaiot.com",
     "source": "demo",
-    "tags": ["maker", "hardware", "IoT", "workshop"]
+    "tags": ["maker", "hardware", "IoT", "workshop", "Thursday"]
   },
   {
     "id": "demo-008",
     "title": "Cold Boot Coffee — Morning Networking",
-    "date": "2026-06-12",
+    "date": "2026-06-10",
     "time": "08:30",
     "location": "Indiana IoT Lab, 9059 Technology Lane, Fishers IN",
     "description": "Start your process fresh. Casual morning networking for members, partners, and newcomers. Coffee's on. Stories are free.",
     "url": "https://indianaiot.com",
     "source": "demo",
-    "tags": ["networking", "casual", "morning"]
+    "tags": ["networking", "casual", "morning", "Wednesday"]
   },
   {
     "id": "demo-010",
     "title": "Open Source Night — Member Showcase",
-    "date": "2026-06-19",
+    "date": "2026-06-17",
     "time": "18:00",
     "location": "Indiana IoT Lab, 9059 Technology Lane, Fishers IN",
     "description": "Lab members open-source their ideas. Show what you're building, find a collaborator, ask for help. The best synergies happen here.",
     "url": "https://indianaiot.com",
     "source": "demo",
-    "tags": ["showcase", "collaboration", "networking", "IoT"]
+    "tags": ["showcase", "collaboration", "networking", "IoT", "Wednesday"]
+  },
+  {
+    "id": "demo-011",
+    "title": "Random.pitch() — Startup Improv Night",
+    "date": "2026-06-24",
+    "time": "18:30",
+    "location": "Indiana IoT Lab, 9059 Technology Lane, Fishers IN",
+    "description": "Draw a business idea from the hat. You have 5 minutes to pitch it — cold, unrehearsed, and on the spot. No slides. No safety net. Pure startup improv. Audience scores, everyone laughs, someone might actually build it.",
+    "url": "https://indianaiot.com",
+    "source": "demo",
+    "tags": ["improv", "pitch", "startup", "fun", "IoT", "Wednesday"]
   },
   {
     "id": "mutiny19-001",
@@ -96,16 +107,5 @@
     "url": "https://mutiny19.github.io/mutiny19/",
     "source": "mutiny19",
     "tags": ["mutiny19", "mystery", "Fishers"]
-  },
-  {
-    "id": "demo-011",
-    "title": "Random.pitch() — Startup Improv Night",
-    "date": "2026-06-26",
-    "time": "18:30",
-    "location": "Indiana IoT Lab, 9059 Technology Lane, Fishers IN",
-    "description": "Draw a business idea from the hat. You have 5 minutes to pitch it — cold, unrehearsed, and on the spot. No slides. No safety net. Pure startup improv. Audience scores, everyone laughs, someone might actually build it.",
-    "url": "https://indianaiot.com",
-    "source": "demo",
-    "tags": ["improv", "pitch", "startup", "fun", "IoT"]
   }
 ]

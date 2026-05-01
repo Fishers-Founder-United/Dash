@@ -28,18 +28,18 @@ function ForecastDay({
   label: string; high: number; low: number; weatherCode: number; active?: boolean;
 }) {
   return (
-    <div className={`flex flex-col items-center gap-1 py-3 px-4 rounded-xl transition-all ${active ? "bg-white/10 ring-1 ring-white/20" : ""}`}>
-      <span className="text-white/50 text-2xl font-medium">{label}</span>
-      <span style={{ fontSize: "clamp(1.6rem, 2.8vw, 3rem)" }} role="img">
+    <div className={`flex flex-col items-center gap-0.5 py-2 px-3 rounded-xl transition-all ${active ? "bg-white/10 ring-1 ring-white/20" : ""}`}>
+      <span className="text-white/50 text-xl font-medium">{label}</span>
+      <span style={{ fontSize: "clamp(1.4rem, 2.2vw, 2.4rem)" }} role="img">
         {wmoIcon(weatherCode)}
       </span>
-      <div className="flex items-baseline gap-1">
-        <span className="text-white/40 text-xl font-medium">H</span>
-        <span className="text-white text-4xl font-bold">{high}&deg;</span>
+      <div className="flex items-baseline gap-0.5">
+        <span className="text-white/35 text-base font-medium">H</span>
+        <span className="text-white font-bold" style={{ fontSize: "clamp(1.2rem, 2vw, 2.2rem)" }}>{high}&deg;</span>
       </div>
-      <div className="flex items-baseline gap-1">
-        <span className="text-white/30 text-xl font-medium">L</span>
-        <span className="text-white/40 text-2xl">{low}&deg;</span>
+      <div className="flex items-baseline gap-0.5">
+        <span className="text-white/25 text-base font-medium">L</span>
+        <span className="text-white/40" style={{ fontSize: "clamp(1rem, 1.6vw, 1.8rem)" }}>{low}&deg;</span>
       </div>
     </div>
   );

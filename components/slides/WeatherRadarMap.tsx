@@ -6,7 +6,7 @@ import { fetchWeather, wmoDescription, wmoIcon } from "@/lib/weather";
 
 const LAT = 39.9556;
 const LON = -86.0131;
-const ZOOM = 6;
+const ZOOM = 8; // ~50 mile view — IEM NEXRAD supports zoom 8 reliably
 
 // Iowa Environmental Mesonet NEXRAD composite — free, no API key, reliable
 // Tiles update automatically every ~5 min on IEM's servers
@@ -153,7 +153,7 @@ export default function WeatherRadarMap() {
         )}
 
         <div className="absolute bottom-4 left-4 z-[1000] text-white/30 text-xl bg-black/50 rounded-lg px-3 py-1">
-          ~400 mi view · NEXRAD
+          ~50 mi view · NEXRAD
         </div>
       </div>
 
