@@ -1,5 +1,6 @@
 "use client";
 
+import { QRCodeSVG } from "qrcode.react";
 import type { Announcement } from "@/lib/types";
 
 const REPO_URL = "indianaiot.com";
@@ -65,16 +66,15 @@ export default function AnnouncementsSlide({
 
         {/* Contribute panel */}
         <div className="shrink-0 w-80 flex flex-col gap-6 items-center bg-cyan-500/8 border border-cyan-500/20 rounded-2xl p-8">
-          {/* Simple QR placeholder — styled URL block */}
-          <div className="w-52 h-52 bg-white rounded-2xl flex items-center justify-center">
-            <div className="text-center">
-              <p className="text-black text-xs font-bold leading-tight">
-                QR CODE
-              </p>
-              <p className="text-black/50 text-xs mt-1">
-                Scan to contribute
-              </p>
-            </div>
+          {/* QR code linking to indianaiot.com */}
+          <div className="p-3 bg-white rounded-2xl">
+            <QRCodeSVG
+              value={CONTRIBUTE_URL}
+              size={196}
+              bgColor="#ffffff"
+              fgColor="#000000"
+              level="M"
+            />
           </div>
           <div className="text-center">
             <p className="text-cyan-400 font-bold text-xl">

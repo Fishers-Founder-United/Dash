@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { fetchWeather, wmoCategory } from "@/lib/weather";
+import { fetchWeather, wmoCategory, wmoIcon } from "@/lib/weather";
 import type { WeatherData } from "@/lib/types";
 
 const WEATHER_BG: Record<string, string> = {
@@ -23,13 +23,16 @@ const WEATHER_COLOR: Record<string, string> = {
 };
 
 function ForecastDay({
-  label, high, low, active,
+  label, high, low, weatherCode, active,
 }: {
-  label: string; high: number; low: number; active?: boolean;
+  label: string; high: number; low: number; weatherCode: number; active?: boolean;
 }) {
   return (
     <div className={`flex flex-col items-center gap-1 py-3 px-4 rounded-xl transition-all ${active ? "bg-white/10 ring-1 ring-white/20" : ""}`}>
       <span className="text-white/50 text-2xl font-medium">{label}</span>
+      <span style={{ fontSize: "clamp(1.6rem, 2.8vw, 3rem)" }} role="img">
+        {wmoIcon(weatherCode)}
+      </span>
       <span className="text-white text-4xl font-bold">{high}&deg;</span>
       <span className="text-white/40 text-2xl">{low}&deg;</span>
     </div>
@@ -114,6 +117,12 @@ export default function ClockWeatherPanel() {
           <div className="flex flex-col items-center gap-4 w-full">
             <div className="flex flex-col items-center">
               <span
+                style={{ fontSize: "clamp(3rem, 5vw, 6rem)" }}
+                role="img"
+              >
+                {wmoIcon(weather.weatherCode)}
+              </span>
+              <span
                 className="text-white font-black leading-none"
                 style={{ fontSize: "clamp(4rem, 7vw, 9rem)" }}
               >
@@ -147,6 +156,7 @@ export default function ClockWeatherPanel() {
                   label={day.label}
                   high={day.high}
                   low={day.low}
+                  weatherCode={day.weatherCode}
                   active={i === 0}
                 />
               ))}
