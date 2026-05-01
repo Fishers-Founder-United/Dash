@@ -19,6 +19,25 @@ import ical from "node-ical";
 import type { Event } from "../lib/types";
 
 const OUTPUT_PATH = resolve(process.cwd(), "public/data/events.json");
+/**
+ * Some iCal feeds (e.g. WordPress/The Events Calendar) store local times as
+ * UTC with no TZID — i.e. "8:30 AM local" is encoded as "08:30Z". Reading
+ * getUTCHours/getUTCMinutes recovers the intended local time correctly.
+ */
+function localTime(date: Date, datetype?: string): string | undefined {
+  if (datetype === "date") return undefined;
+  const h = String(date.getUTCHours()).padStart(2, "0");
+  const m = String(date.getUTCMinutes()).padStart(2, "0");
+  return `${h}:${m}`;
+}
+
+function localDate(date: Date): string {
+  // Use UTC date parts — consistent with how local-naive iCal feeds encode dates
+  const y = date.getUTCFullYear();
+  const mo = String(date.getUTCMonth() + 1).padStart(2, "0");
+  const d = String(date.getUTCDate()).padStart(2, "0");
+  return `${y}-${mo}-${d}`;
+}
 
 // ─── Google Calendar (iCal) ──────────────────────────────────────────────────
 
@@ -40,13 +59,10 @@ async function fetchGoogleCalendarEvents(): Promise<Event[]> {
       const start = item.start as Date;
       if (!start) continue;
 
-      const dateStr = start.toISOString().split("T")[0];
+      const dateStr = localDate(start);
       if (dateStr < today) continue;
 
-      const timeStr =
-        item.datetype === "date"
-          ? undefined
-          : `${String(start.getHours()).padStart(2, "0")}:${String(start.getMinutes()).padStart(2, "0")}`;
+      const timeStr = localTime(start, item.datetype as string | undefined);
 
       events.push({
         id: `google-${item.uid ?? dateStr + item.summary}`,
@@ -67,6 +83,51 @@ async function fetchGoogleCalendarEvents(): Promise<Event[]> {
     return events;
   } catch (err) {
     console.error("Google Calendar fetch failed:", err);
+    return [];
+  }
+}
+
+// ─── Launch Fishers (public iCal) ────────────────────────────────────────────
+
+const LAUNCH_FISHERS_ICAL_URL =
+  "https://launchfishers.com/?post_type=tribe_events&ical=1&eventDisplay=list";
+
+async function fetchLaunchFishersEvents(): Promise<Event[]> {
+  try {
+    const data = await ical.async.fromURL(LAUNCH_FISHERS_ICAL_URL);
+    const today = new Date().toISOString().split("T")[0];
+    const events: Event[] = [];
+
+    for (const item of Object.values(data)) {
+      if (!item || item.type !== "VEVENT") continue;
+
+      const start = item.start as Date;
+      if (!start) continue;
+
+      const dateStr = localDate(start);
+      if (dateStr < today) continue;
+
+      const timeStr = localTime(start, item.datetype as string | undefined);
+
+      events.push({
+        id: `launchfishers-${item.uid ?? dateStr + item.summary}`,
+        title: String(item.summary ?? "Untitled Event"),
+        date: dateStr,
+        time: timeStr,
+        location: item.location ? String(item.location) : "Launch Fishers, 12175 Visionary Way, Fishers IN",
+        description: item.description
+          ? String(item.description).replace(/\\n/g, " ").slice(0, 200)
+          : undefined,
+        url: item.url ? String(item.url) : "https://launchfishers.com/event-calendar/",
+        source: "launchfishers",
+        tags: [],
+      });
+    }
+
+    console.log(`Fetched ${events.length} events from Launch Fishers.`);
+    return events;
+  } catch (err) {
+    console.error("Launch Fishers iCal fetch failed:", err);
     return [];
   }
 }
@@ -194,15 +255,16 @@ async function fetchMeetupEvents(): Promise<Event[]> {
 async function main() {
   console.log("Syncing external events...");
 
-  const [gcal, eventbrite, meetup] = await Promise.all([
+  const [gcal, launchFishers, eventbrite, meetup] = await Promise.all([
     fetchGoogleCalendarEvents(),
+    fetchLaunchFishersEvents(),
     fetchEventbriteEvents(),
     fetchMeetupEvents(),
   ]);
 
   const today = new Date().toISOString().split("T")[0];
 
-  const all = [...gcal, ...eventbrite, ...meetup]
+  const all = [...gcal, ...launchFishers, ...eventbrite, ...meetup]
     .filter((e) => e.date >= today)
     .sort(
       (a, b) =>
