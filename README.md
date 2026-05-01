@@ -1,36 +1,114 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Fishers Founders United — Community Dashboard
 
-## Getting Started
+A public, community-owned dashboard for the Fishers, Indiana startup, maker, and small business community. Designed to run on TV screens and be web-accessible.
 
-First, run the development server:
+**Live:** https://fishers-founder-united.github.io/Dash/
+**Kiosk mode (no nav dots):** `https://fishers-founder-united.github.io/Dash/?kiosk=true`
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+---
+
+## What It Shows
+
+| Slide | Duration | Content |
+|-------|----------|---------|
+| Clock + Weather | 15s | Live time, date, current conditions, 5-day forecast for Fishers, IN |
+| Upcoming Events | 20s | Next 5 events from all sources |
+| Community Spotlight | 15s | Featured startup, maker, or small business |
+| Announcements | 15s | Community board + contribute QR code |
+
+A scrolling ticker runs at the bottom of every slide with upcoming events and announcements.
+
+---
+
+## How to Contribute
+
+All community content is managed via pull requests. No API keys or logins required.
+
+### Add an Event
+Edit [`public/data/local-events.json`](public/data/local-events.json) and add an entry:
+
+```json
+{
+  "id": "local-XXX",
+  "title": "Your Event Name",
+  "date": "2026-06-01",
+  "time": "18:00",
+  "location": "Venue Name, Fishers IN",
+  "description": "What is this event about?",
+  "url": "https://your-event-link.com",
+  "source": "local",
+  "tags": ["startup", "maker", "networking"]
+}
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Add a Community Spotlight
+Edit [`public/data/spotlights.json`](public/data/spotlights.json):
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```json
+{
+  "id": "spotlight-XXX",
+  "name": "Your Business or Project",
+  "tagline": "One-line description",
+  "description": "2-3 sentences about what you do.",
+  "website": "https://yourwebsite.com",
+  "tags": ["startup", "maker"]
+}
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### Add an Announcement
+Edit [`public/data/announcements.json`](public/data/announcements.json):
 
-## Learn More
+```json
+{
+  "id": "ann-XXX",
+  "text": "Your announcement text here.",
+  "url": "https://optional-link.com",
+  "expires": "2026-07-01"
+}
+```
 
-To learn more about Next.js, take a look at the following resources:
+Then open a pull request. Changes deploy automatically to GitHub Pages.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+---
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Automatic Event Sync (External Sources)
 
-## Deploy on Vercel
+GitHub Actions syncs events hourly from external sources. To enable, add these as GitHub Actions Secrets (repo Settings > Secrets and variables > Actions):
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+| Secret | Description |
+|--------|-------------|
+| `GOOGLE_CALENDAR_ICAL_URL` | Public iCal URL from Google Calendar (Settings > Integrate calendar) |
+| `EVENTBRITE_API_TOKEN` | Eventbrite private token |
+| `EVENTBRITE_ORG_ID` | Your Eventbrite organization ID |
+| `MEETUP_GROUP_URLNAMES` | Comma-separated Meetup group slugs (e.g. `fishers-founders,indy-makers`) |
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+---
+
+## Local Development
+
+```bash
+npm install
+npm run dev
+# Open http://localhost:3000
+```
+
+## Deploy
+
+Push to `main` — GitHub Actions builds and deploys to GitHub Pages automatically.
+
+---
+
+## Tech Stack
+
+- **Next.js 16** (static export)
+- **React 19** + TypeScript
+- **Tailwind CSS v4**
+- **Framer Motion** (slide transitions)
+- **Open-Meteo** (free weather API, no key needed)
+- **GitHub Pages** + **GitHub Actions**
+
+---
+
+## License
+
+MIT — fork it, customize it, run it for your own community.

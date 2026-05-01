@@ -1,0 +1,46 @@
+[
+  {
+    "id": "local-001",
+    "title": "Fishers Founders Monthly Meetup",
+    "date": "2026-05-08",
+    "time": "18:00",
+    "location": "Fishers District, Fishers IN",
+    "description": "Monthly gathering for founders, makers, and curious minds in Fishers.",
+    "url": "https://github.com/Fishers-Founder-United",
+    "source": "local",
+    "tags": ["meetup", "networking", "founders"]
+  },
+  {
+    "id": "local-002",
+    "title": "Startup Pitch Night",
+    "date": "2026-05-15",
+    "time": "19:00",
+    "location": "Launch Fishers, 11 Municipal Dr",
+    "description": "Early-stage founders pitch their ideas to the community. All welcome.",
+    "url": "https://github.com/Fishers-Founder-United",
+    "source": "local",
+    "tags": ["startup", "pitch", "founders"]
+  },
+  {
+    "id": "local-003",
+    "title": "Maker Workshop: Electronics 101",
+    "date": "2026-05-22",
+    "time": "14:00",
+    "location": "Fishers Public Library, 5 Municipal Dr",
+    "description": "Hands-on intro to circuits, microcontrollers, and making things blink.",
+    "url": "https://github.com/Fishers-Founder-United",
+    "source": "local",
+    "tags": ["maker", "electronics", "workshop"]
+  },
+  {
+    "id": "local-004",
+    "title": "Coffee & Code",
+    "date": "2026-05-29",
+    "time": "08:30",
+    "location": "Ash & Elm Cider Co, Fishers",
+    "description": "Casual morning co-working session. Bring your laptop and ideas.",
+    "url": "https://github.com/Fishers-Founder-United",
+    "source": "local",
+    "tags": ["coworking", "casual"]
+  }
+]

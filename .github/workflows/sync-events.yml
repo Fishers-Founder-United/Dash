@@ -1,0 +1,43 @@
+name: Sync Events Data
+
+on:
+  schedule:
+    # Run every hour at :05 past the hour
+    - cron: "5 * * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: "npm"
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run event sync
+        run: npx tsx scripts/sync-events.ts
+        env:
+          # Add these as GitHub Actions Secrets in repo Settings > Secrets
+          GOOGLE_CALENDAR_ICAL_URL: ${{ secrets.GOOGLE_CALENDAR_ICAL_URL }}
+          EVENTBRITE_API_TOKEN: ${{ secrets.EVENTBRITE_API_TOKEN }}
+          EVENTBRITE_ORG_ID: ${{ secrets.EVENTBRITE_ORG_ID }}
+          MEETUP_GROUP_URLNAMES: ${{ secrets.MEETUP_GROUP_URLNAMES }}
+
+      - name: Commit updated events
+        run: |
+          git config --local user.email "github-actions@github.com"
+          git config --local user.name "GitHub Actions [sync-events]"
+          git add public/data/events.json
+          git diff --staged --quiet || git commit -m "chore: sync external events data [skip ci]"
+          git push
