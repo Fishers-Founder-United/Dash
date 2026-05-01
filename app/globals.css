@@ -6,18 +6,6 @@
   --color-foreground: #f0f0f0;
 }
 
-/*
- * Viewport-responsive root font size.
- * At 200% OS scaling on 4096x2160, the CSS viewport is 2048px → 1rem ≈ 22px.
- * At 100% scaling (4096px viewport) → 1rem �� 28px (clamped).
- * At 1080p laptop (1920px viewport) → 1rem ≈ 21px.
- * All rem-based clamp() bounds throughout the app scale with this,
- * so the dashboard adapts to any resolution/scaling combo automatically.
- */
-html {
-  font-size: clamp(16px, 1.1vw, 28px);
-}
-
 html,
 body {
   height: 100%;
