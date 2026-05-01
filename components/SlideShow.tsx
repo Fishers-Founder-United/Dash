@@ -15,7 +15,7 @@ import type { DashboardData } from "@/lib/types";
 const SLIDES = ["events", "radar", "spotlight", "announcements"] as const;
 type SlideId = (typeof SLIDES)[number];
 const DURATIONS: Record<SlideId, number> = {
-  events: 20,
+  events: 40,
   radar: 25,
   spotlight: 15,
   announcements: 15,
