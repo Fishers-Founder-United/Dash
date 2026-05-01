@@ -9,10 +9,10 @@
   },
   {
     "id": "spotlight-002",
-    "name": "Your Project Here",
-    "tagline": "Members building the future of IoT",
-    "description": "Indiana IoT Lab members are building the next wave of connected solutions. Want your startup or project featured on this display? Reach out to the lab team at indianaiot.com.",
-    "website": "https://indianaiot.com",
-    "tags": ["member", "IoT", "startup"]
+    "name": "ArcticRx",
+    "tagline": "Cool Things. Cool Journey. Cool Planet.",
+    "description": "ArcticRx is reimagining cold chain logistics with aerospace-engineered reusable thermal pods that keep vaccines, medications, and biologics at precise temperatures — from 2-8°C to -80°C — for 22+ days without batteries or electricity. Built-in NFC tracking. Styrofoam-free. For every pod leased, one is donated to support life-saving medication distribution globally.",
+    "website": "https://arcticrx.com",
+    "tags": ["cold chain", "IoT", "healthcare", "startup", "sustainability"]
   }
 ]
