@@ -108,5 +108,16 @@
     "url": "https://indianaiot.com",
     "source": "demo",
     "tags": ["showcase", "collaboration", "networking", "IoT"]
+  },
+  {
+    "id": "demo-011",
+    "title": "Random.pitch() — Startup Improv Night",
+    "date": "2026-06-17",
+    "time": "18:30",
+    "location": "Indiana IoT Lab, 9059 Technology Lane, Fishers IN",
+    "description": "Draw a business idea from the hat. You have 5 minutes to pitch it — cold, unrehearsed, and on the spot. No slides. No safety net. Pure startup improv. Audience scores, everyone laughs, someone might actually build it.",
+    "url": "https://indianaiot.com",
+    "source": "demo",
+    "tags": ["improv", "pitch", "startup", "fun", "IoT"]
   }
 ]
