@@ -5,8 +5,8 @@ import { fetchDashboardData } from "@/lib/events";
 import SlideShow from "./SlideShow";
 import type { DashboardData } from "@/lib/types";
 
-const DATA_REFRESH_INTERVAL = 10 * 60 * 1000;  // refetch JSON every 10 min
-const PAGE_RELOAD_INTERVAL  = 60 * 60 * 1000;  // hard reload every hour (picks up new deploys)
+const DATA_REFRESH_INTERVAL = 30 * 60 * 1000;  // refetch JSON every 30 min (static files on GitHub Pages)
+const PAGE_RELOAD_INTERVAL  = 2 * 60 * 60 * 1000;  // hard reload every 2 hours (picks up new deploys)
 
 export default function Dashboard() {
   const [data, setData] = useState<DashboardData>({

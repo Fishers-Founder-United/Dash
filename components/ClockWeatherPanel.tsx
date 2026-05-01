@@ -58,7 +58,7 @@ export default function ClockWeatherPanel() {
     fetchWeather().then(setWeather);
     const refresh = setInterval(
       () => fetchWeather().then(setWeather),
-      30 * 60 * 1000
+      60 * 60 * 1000 // weather changes slowly — once per hour is plenty
     );
     return () => clearInterval(refresh);
   }, []);

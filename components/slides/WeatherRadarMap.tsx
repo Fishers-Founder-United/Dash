@@ -127,7 +127,7 @@ export default function WeatherRadarMap() {
     const interval = setInterval(() => {
       radarLayerRef.current?.redraw();
       setLastUpdate(new Date().toLocaleTimeString("en-US", { hour: "numeric", minute: "2-digit" }));
-    }, 5 * 60 * 1000);
+    }, 10 * 60 * 1000); // IEM updates every ~5 min; we poll every 10 — still fresh, half the requests
     return () => clearInterval(interval);
   }, []);
 
