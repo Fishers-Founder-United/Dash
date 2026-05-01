@@ -2,11 +2,11 @@
 
 import { useEffect, useRef, useState } from "react";
 import type { WeatherData, ForecastDay } from "@/lib/types";
-import { fetchWeather, wmoDescription } from "@/lib/weather";
+import { fetchWeather, wmoDescription, wmoIcon } from "@/lib/weather";
 
 const LAT = 39.9556;
 const LON = -86.0131;
-const ZOOM = 8; // ~40 mile radius view
+const ZOOM = 6; // broader view — comfortably within RainViewer's supported range
 
 interface RainViewerFrame {
   time: number;
@@ -42,6 +42,12 @@ async function fetchRainViewer(): Promise<RadarState | null> {
   }
 }
 
+function radarTileUrl(host: string, path: string): string {
+  // color 6 = Rainbow — well-supported across all RainViewer versions
+  // 256px tiles, smooth=1, snow=1
+  return `${host}${path}/256/{z}/{x}/{y}/6/1_1.png`;
+}
+
 function ForecastStrip({ forecast }: { forecast: ForecastDay[] }) {
   return (
     <div className="flex justify-around items-center px-6 py-4 bg-black/40 border-t border-white/5">
@@ -52,6 +58,9 @@ function ForecastStrip({ forecast }: { forecast: ForecastDay[] }) {
             style={{ fontSize: "clamp(0.9rem, 1.5vw, 1.5rem)" }}
           >
             {day.label}
+          </span>
+          <span style={{ fontSize: "clamp(1.2rem, 2vw, 2rem)" }} role="img">
+            {wmoIcon(day.weatherCode)}
           </span>
           <div className="flex gap-2 items-baseline">
             <span
@@ -86,11 +95,9 @@ export default function WeatherRadarMap() {
   const [radar, setRadar] = useState<RadarState | null>(null);
   const [frameIdx, setFrameIdx] = useState(0);
   const [weather, setWeather] = useState<WeatherData | null>(null);
-  const [currentFrame, setCurrentFrame] = useState<RainViewerFrame | null>(
-    null
-  );
+  const [currentFrame, setCurrentFrame] = useState<RainViewerFrame | null>(null);
 
-  // Init Leaflet map on mount
+  // Init Leaflet map once on mount
   useEffect(() => {
     let mounted = true;
     import("leaflet").then((L) => {
@@ -99,15 +106,13 @@ export default function WeatherRadarMap() {
       // Fix default icon paths broken by webpack
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       delete (L.Icon.Default.prototype as any)._getIconUrl;
-      L.Icon.Default.mergeOptions({
-        iconRetinaUrl: "",
-        iconUrl: "",
-        shadowUrl: "",
-      });
+      L.Icon.Default.mergeOptions({ iconRetinaUrl: "", iconUrl: "", shadowUrl: "" });
 
       const map = L.map(mapDivRef.current, {
         center: [LAT, LON],
         zoom: ZOOM,
+        minZoom: ZOOM,
+        maxZoom: ZOOM, // lock zoom so the map never requests out-of-range tiles
         zoomControl: false,
         attributionControl: false,
         dragging: false,
@@ -120,10 +125,10 @@ export default function WeatherRadarMap() {
       // Dark base tiles
       L.tileLayer(
         "https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png",
-        { opacity: 0.9, maxZoom: 19 }
+        { maxZoom: 19 }
       ).addTo(map);
 
-      // IoT Lab location marker
+      // IoT Lab marker
       L.circleMarker([LAT, LON], {
         radius: 10,
         fillColor: "#06b6d4",
@@ -139,13 +144,13 @@ export default function WeatherRadarMap() {
         })
         .addTo(map);
 
-      // 20-mile radius circle
+      // 20-mile radius ring
       L.circle([LAT, LON], {
-        radius: 32186, // 20 miles in meters
+        radius: 32186,
         color: "#06b6d4",
         fillColor: "transparent",
         weight: 1,
-        opacity: 0.25,
+        opacity: 0.3,
         dashArray: "6 4",
       }).addTo(map);
     });
@@ -155,16 +160,14 @@ export default function WeatherRadarMap() {
       if (mapRef.current) {
         mapRef.current.remove();
         mapRef.current = null;
+        radarLayerRef.current = null;
       }
     };
   }, []);
 
-  // Fetch radar data
+  // Fetch radar frames, refresh every 5 minutes
   useEffect(() => {
-    const load = () =>
-      fetchRainViewer().then((r) => {
-        if (r) setRadar(r);
-      });
+    const load = () => fetchRainViewer().then((r) => { if (r) setRadar(r); });
     load();
     const interval = setInterval(load, 5 * 60 * 1000);
     return () => clearInterval(interval);
@@ -173,53 +176,43 @@ export default function WeatherRadarMap() {
   // Fetch weather for forecast strip
   useEffect(() => {
     fetchWeather().then(setWeather);
-    const interval = setInterval(
-      () => fetchWeather().then(setWeather),
-      30 * 60 * 1000
-    );
+    const interval = setInterval(() => fetchWeather().then(setWeather), 30 * 60 * 1000);
     return () => clearInterval(interval);
   }, []);
 
-  // Animate radar frames
+  // Advance frame index every 700ms
   useEffect(() => {
     if (!radar || radar.frames.length === 0) return;
     const timer = setInterval(() => {
       setFrameIdx((i) => (i + 1) % radar.frames.length);
-    }, 600);
+    }, 700);
     return () => clearInterval(timer);
   }, [radar]);
 
-  // Update radar tile layer when frame changes — smooth fade (no flash)
+  // Update radar layer URL in-place via setUrl() — no add/remove, no flash
   useEffect(() => {
     if (!radar || !mapRef.current) return;
     const frame = radar.frames[frameIdx];
     if (!frame) return;
     setCurrentFrame(frame);
 
+    const url = radarTileUrl(radar.host, frame.path);
+
     import("leaflet").then((L) => {
       if (!mapRef.current) return;
-      const map = mapRef.current;
-      const oldLayer = radarLayerRef.current;
 
-      // Add new layer at opacity 0 first, then fade it in once tiles load
-      const newLayer = L.tileLayer(
-        `${radar.host}${frame.path}/256/{z}/{x}/{y}/4/1_1.png`,
-        { opacity: 0, maxNativeZoom: 8, maxZoom: 19, zIndex: 10 }
-      );
-      newLayer.addTo(map);
-      radarLayerRef.current = newLayer;
-
-      const onLoad = () => {
-        newLayer.setOpacity(0.75);
-        if (oldLayer && map.hasLayer(oldLayer)) {
-          map.removeLayer(oldLayer);
-        }
-      };
-
-      newLayer.once("load", onLoad);
-      // Fallback: if tiles never fire "load" (e.g. all cached), show after 800ms
-      const fallback = setTimeout(onLoad, 800);
-      newLayer.once("load", () => clearTimeout(fallback));
+      if (radarLayerRef.current) {
+        // Update URL in-place — tiles swap as they load, no layer removal
+        radarLayerRef.current.setUrl(url);
+      } else {
+        // First frame: create the layer
+        radarLayerRef.current = L.tileLayer(url, {
+          opacity: 0.75,
+          maxZoom: 19,
+          zIndex: 10,
+        });
+        radarLayerRef.current.addTo(mapRef.current);
+      }
     });
   }, [frameIdx, radar]);
 
@@ -232,11 +225,11 @@ export default function WeatherRadarMap() {
 
   return (
     <div className="flex flex-col h-full">
-      {/* Map area */}
+      {/* Map */}
       <div className="relative flex-1 overflow-hidden">
         <div ref={mapDivRef} className="h-full w-full" />
 
-        {/* Frame timestamp overlay */}
+        {/* Frame timestamp */}
         {frameTime && (
           <div className="absolute top-4 right-4 z-[1000] flex items-center gap-2 bg-black/70 backdrop-blur-sm rounded-xl px-4 py-2 border border-white/10">
             <div
@@ -251,12 +244,12 @@ export default function WeatherRadarMap() {
           </div>
         )}
 
-        {/* 20-mile label */}
+        {/* Radius label */}
         <div className="absolute bottom-4 left-4 z-[1000] text-white/30 text-xl bg-black/50 rounded-lg px-3 py-1">
-          20 mi radius
+          ~200 mi view
         </div>
 
-        {/* No radar fallback */}
+        {/* Loading state */}
         {!radar && (
           <div className="absolute inset-0 flex items-center justify-center bg-black/60 z-[500]">
             <p className="text-white/40 text-3xl">Loading radar...</p>

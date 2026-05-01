@@ -33,8 +33,14 @@ function ForecastDay({
       <span style={{ fontSize: "clamp(1.6rem, 2.8vw, 3rem)" }} role="img">
         {wmoIcon(weatherCode)}
       </span>
-      <span className="text-white text-4xl font-bold">{high}&deg;</span>
-      <span className="text-white/40 text-2xl">{low}&deg;</span>
+      <div className="flex items-baseline gap-1">
+        <span className="text-white/40 text-xl font-medium">H</span>
+        <span className="text-white text-4xl font-bold">{high}&deg;</span>
+      </div>
+      <div className="flex items-baseline gap-1">
+        <span className="text-white/30 text-xl font-medium">L</span>
+        <span className="text-white/40 text-2xl">{low}&deg;</span>
+      </div>
     </div>
   );
 }
