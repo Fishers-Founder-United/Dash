@@ -52,7 +52,7 @@ body {
   will-change: transform;
 }
 
-/* Ticker scroll animation — 50s balances speed with readability at larger font */
+/* Ticker scroll animation — 90s for smooth, readable scroll on large TVs without motion blur */
 @keyframes ticker-scroll {
   0% {
     transform: translateX(0);
@@ -64,7 +64,7 @@ body {
 
 .ticker-track {
   display: inline-block;
-  animation: ticker-scroll 55s linear infinite;
+  animation: ticker-scroll 90s linear infinite;
   will-change: transform;
 }
 
