@@ -34,7 +34,7 @@ export default function AnnouncementsSlide({
             announcements.map((a) => (
               <div
                 key={a.id}
-                className="bg-white/5 border border-white/8 rounded-2xl p-6"
+                className="bg-white/[0.04] border border-white/8 rounded-2xl p-8"
               >
                 <p
                   className="text-white leading-relaxed"
@@ -44,7 +44,7 @@ export default function AnnouncementsSlide({
                 </p>
                 {a.url && (
                   <p
-                    className="text-cyan-400/60 font-mono mt-3"
+                    className="text-cyan-400/50 font-mono mt-3"
                     style={{ fontSize: "clamp(0.9rem, 1.4vw, 1.4rem)" }}
                   >
                     {a.url.replace(/^https?:\/\//, "")}
@@ -55,7 +55,7 @@ export default function AnnouncementsSlide({
           ) : (
             <div className="flex items-center justify-center flex-1">
               <p
-                className="text-white/30"
+                className="text-white/40"
                 style={{ fontSize: "clamp(1.5rem, 2.5vw, 2.5rem)" }}
               >
                 No announcements
@@ -64,26 +64,26 @@ export default function AnnouncementsSlide({
           )}
         </div>
 
-        {/* Contribute panel */}
-        <div className="shrink-0 w-80 flex flex-col gap-6 items-center bg-cyan-500/8 border border-cyan-500/20 rounded-2xl p-8">
+        {/* Contribute panel — enlarged for TV readability */}
+        <div className="shrink-0 w-96 flex flex-col gap-6 items-center bg-cyan-500/8 border border-cyan-500/20 rounded-2xl p-10">
           {/* QR code linking to indianaiot.com */}
-          <div className="p-3 bg-white rounded-2xl">
+          <div className="p-4 bg-white rounded-2xl">
             <QRCodeSVG
               value={CONTRIBUTE_URL}
-              size={196}
+              size={220}
               bgColor="#ffffff"
               fgColor="#000000"
               level="M"
             />
           </div>
           <div className="text-center">
-            <p className="text-cyan-400 font-bold text-xl">
-              Learn More
+            <p className="text-cyan-400 font-bold text-2xl">
+              Scan to Learn More
             </p>
-            <p className="text-white/50 text-lg mt-2 font-mono break-all">
+            <p className="text-white/55 text-xl mt-2 font-mono break-all">
               {REPO_URL}
             </p>
-            <p className="text-white/30 text-base mt-3 leading-snug">
+            <p className="text-white/40 text-xl mt-3 leading-snug">
               9059 Technology Lane<br />Fishers, IN 46038
             </p>
           </div>

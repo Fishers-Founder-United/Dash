@@ -41,7 +41,7 @@ export default function SpotlightSlide({
           Community Spotlight
         </h2>
         {spotlights.length > 1 && (
-          <p className="text-white/30 text-xl mt-1">
+          <p className="text-white/45 text-2xl mt-1">
             {(index % spotlights.length) + 1} of {spotlights.length}
           </p>
         )}

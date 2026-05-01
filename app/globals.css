@@ -16,7 +16,31 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-/* Ticker scroll animation */
+/* Glassmorphism utility */
+.glass {
+  backdrop-filter: blur(12px);
+  background: rgba(255, 255, 255, 0.03);
+}
+
+/*
+ * Anti-burn-in pixel shift — slowly drifts the entire layout by a few pixels
+ * on a 4-minute cycle. Imperceptible to viewers, prevents static element
+ * burn-in on OLED/plasma displays running 24/7 in kiosk mode.
+ */
+@keyframes pixel-shift {
+  0%   { transform: translate(0px, 0px); }
+  25%  { transform: translate(3px, 2px); }
+  50%  { transform: translate(-2px, 3px); }
+  75%  { transform: translate(-3px, -2px); }
+  100% { transform: translate(0px, 0px); }
+}
+
+.burn-in-guard {
+  animation: pixel-shift 240s ease-in-out infinite;
+  will-change: transform;
+}
+
+/* Ticker scroll animation — 50s balances speed with readability at larger font */
 @keyframes ticker-scroll {
   0% {
     transform: translateX(0);
@@ -28,7 +52,7 @@ body {
 
 .ticker-track {
   display: inline-block;
-  animation: ticker-scroll 60s linear infinite;
+  animation: ticker-scroll 55s linear infinite;
   will-change: transform;
 }
 

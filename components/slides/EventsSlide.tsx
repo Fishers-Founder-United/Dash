@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useAutoScroll } from "@/lib/useAutoScroll";
 import type { Event } from "@/lib/types";
 
 const SOURCE_LABEL: Record<string, string> = {
@@ -20,7 +20,7 @@ const SOURCE_COLOR: Record<string, string> = {
   meetup: "bg-red-500/20 text-red-300 border-red-500/30",
   launchfishers: "bg-violet-500/20 text-violet-300 border-violet-500/30",
   mutiny19: "bg-amber-500/20 text-amber-300 border-amber-500/30",
-  demo: "bg-white/5 text-white/35 border-white/10 italic",
+  demo: "bg-white/5 text-white/45 border-white/10 italic",
 };
 
 function formatDate(dateStr: string, timeStr?: string): string {
@@ -52,13 +52,13 @@ function EventRow({ event, index }: EventRowProps) {
 
   return (
     <div
-      className={`flex items-start gap-4 px-5 py-4 rounded-2xl border border-white/5 shrink-0 ${
-        index % 2 === 0 ? "bg-white/5" : "bg-transparent"
+      className={`flex items-start gap-6 px-6 py-5 rounded-2xl border border-white/5 shrink-0 ${
+        index % 2 === 0 ? "bg-white/[0.04]" : "bg-transparent"
       }`}
     >
       {/* Index number */}
       <span
-        className="text-cyan-400/60 font-bold shrink-0 mt-1 tabular-nums"
+        className="text-cyan-400/50 font-bold shrink-0 mt-1 tabular-nums"
         style={{ fontSize: "clamp(1.2rem, 2vw, 2rem)" }}
       >
         {String(index + 1).padStart(2, "0")}
@@ -66,7 +66,7 @@ function EventRow({ event, index }: EventRowProps) {
 
       {/* Content */}
       <div className="flex-1 min-w-0">
-        <div className="flex items-start justify-between gap-3">
+        <div className="flex items-start justify-between gap-4">
           <h3
             className="text-white font-semibold leading-tight"
             style={{ fontSize: "clamp(1.3rem, 2.2vw, 2.2rem)" }}
@@ -74,7 +74,7 @@ function EventRow({ event, index }: EventRowProps) {
             {event.title}
           </h3>
           <span
-            className={`shrink-0 border rounded-full px-2.5 py-0.5 text-xs font-bold tracking-wide whitespace-nowrap ${sourceColor}`}
+            className={`shrink-0 border rounded-full px-3 py-1 text-base font-bold tracking-wide whitespace-nowrap ${sourceColor}`}
           >
             {sourceLabel}
           </span>
@@ -102,55 +102,12 @@ interface EventsSlideProps {
   events: Event[];
 }
 
-// Scroll duration in ms — matches the slide display time so it finishes just before advancing
-const SCROLL_DURATION = 36000;
-
 export default function EventsSlide({ events }: EventsSlideProps) {
   const upcoming = events.slice(0, 12);
-  const listRef = useRef<HTMLDivElement>(null);
-  const animRef = useRef<number | null>(null);
-
-  useEffect(() => {
-    const el = listRef.current;
-    if (!el || upcoming.length <= 4) return;
-
-    // Reset to top each time the slide mounts
-    el.scrollTop = 0;
-
-    const maxScroll = el.scrollHeight - el.clientHeight;
-    if (maxScroll <= 0) return;
-
-    let start: number | null = null;
-
-    function step(ts: number) {
-      if (!el) return;
-      if (start === null) start = ts;
-      const elapsed = ts - start;
-      const progress = Math.min(elapsed / SCROLL_DURATION, 1);
-      // ease-in-out cubic so it starts and ends gently
-      const eased =
-        progress < 0.5
-          ? 4 * progress * progress * progress
-          : 1 - Math.pow(-2 * progress + 2, 3) / 2;
-      el.scrollTop = eased * maxScroll;
-      if (progress < 1) {
-        animRef.current = requestAnimationFrame(step);
-      }
-    }
-
-    // Small delay so the slide-in animation settles first
-    const delay = setTimeout(() => {
-      animRef.current = requestAnimationFrame(step);
-    }, 800);
-
-    return () => {
-      clearTimeout(delay);
-      if (animRef.current !== null) cancelAnimationFrame(animRef.current);
-    };
-  }, [upcoming.length]);
+  const listRef = useAutoScroll(upcoming.length, 36_000);
 
   return (
-    <div className="flex flex-col h-full px-8 py-8 gap-5">
+    <div className="flex flex-col h-full px-12 py-10 gap-6">
       {/* Header */}
       <div className="flex items-center justify-between shrink-0">
         <div>
@@ -160,15 +117,15 @@ export default function EventsSlide({ events }: EventsSlideProps) {
           >
             Upcoming Events
           </h2>
-          <p className="text-white/40 text-xl mt-1">
-            Indiana IoT Lab · Fishers, IN
+          <p className="text-white/50 text-2xl mt-1">
+            Indiana IoT Lab &middot; Fishers, IN
           </p>
         </div>
         <div className="text-right">
-          <p className="text-white/30 text-xl">
+          <p className="text-white/40 text-2xl">
             Next {upcoming.length} events
           </p>
-          <p className="text-white/20 text-lg mt-1">indianaiot.com</p>
+          <p className="text-white/35 text-xl mt-1">indianaiot.com</p>
         </div>
       </div>
 
@@ -189,12 +146,12 @@ export default function EventsSlide({ events }: EventsSlideProps) {
       ) : (
         <div className="flex flex-col items-center justify-center flex-1 gap-4">
           <p
-            className="text-white/40"
+            className="text-white/50"
             style={{ fontSize: "clamp(1.5rem, 2.5vw, 2.5rem)" }}
           >
             No upcoming events
           </p>
-          <p className="text-white/25 text-2xl text-center max-w-xl">
+          <p className="text-white/35 text-2xl text-center max-w-xl">
             Submit an event via GitHub pull request to appear here.
           </p>
         </div>

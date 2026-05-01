@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useAutoScroll } from "@/lib/useAutoScroll";
 import type { NewsItem } from "@/lib/types";
 
 const SOURCE_COLOR: Record<string, string> = {
@@ -29,8 +29,8 @@ function NewsRow({ item, index }: NewsRowProps) {
 
   return (
     <div
-      className={`flex items-start gap-6 p-5 rounded-2xl border border-white/5 shrink-0 ${
-        index % 2 === 0 ? "bg-white/5" : "bg-transparent"
+      className={`flex items-start gap-6 p-6 rounded-2xl border border-white/5 shrink-0 ${
+        index % 2 === 0 ? "bg-white/[0.04]" : "bg-transparent"
       }`}
     >
       {/* Index */}
@@ -51,21 +51,21 @@ function NewsRow({ item, index }: NewsRowProps) {
             {item.title}
           </p>
           <span
-            className={`shrink-0 border rounded-full px-3 py-1 text-sm font-bold tracking-wider ${color}`}
+            className={`shrink-0 border rounded-full px-3 py-1 text-base font-bold tracking-wider ${color}`}
           >
             {item.sourceLabel}
           </span>
         </div>
         {item.description && (
           <p
-            className="text-white/45 mt-1 line-clamp-2 leading-snug"
+            className="text-white/50 mt-1 line-clamp-2 leading-snug"
             style={{ fontSize: "clamp(1rem, 1.5vw, 1.5rem)" }}
           >
             {item.description}
           </p>
         )}
         {age && (
-          <p className="text-white/25 text-xl mt-1">{age}</p>
+          <p className="text-white/40 text-2xl mt-1">{age}</p>
         )}
       </div>
     </div>
@@ -76,44 +76,8 @@ interface NewsSlideProps {
   news: NewsItem[];
 }
 
-const SCROLL_DURATION = 36000;
-
 export default function NewsSlide({ news }: NewsSlideProps) {
-  const listRef = useRef<HTMLDivElement>(null);
-  const animRef = useRef<number | null>(null);
-
-  useEffect(() => {
-    const el = listRef.current;
-    if (!el || news.length <= 4) return;
-
-    el.scrollTop = 0;
-    const maxScroll = el.scrollHeight - el.clientHeight;
-    if (maxScroll <= 0) return;
-
-    let start: number | null = null;
-
-    function step(ts: number) {
-      if (!el) return;
-      if (start === null) start = ts;
-      const elapsed = ts - start;
-      const progress = Math.min(elapsed / SCROLL_DURATION, 1);
-      const eased =
-        progress < 0.5
-          ? 4 * progress * progress * progress
-          : 1 - Math.pow(-2 * progress + 2, 3) / 2;
-      el.scrollTop = eased * maxScroll;
-      if (progress < 1) animRef.current = requestAnimationFrame(step);
-    }
-
-    const delay = setTimeout(() => {
-      animRef.current = requestAnimationFrame(step);
-    }, 800);
-
-    return () => {
-      clearTimeout(delay);
-      if (animRef.current !== null) cancelAnimationFrame(animRef.current);
-    };
-  }, [news.length]);
+  const listRef = useAutoScroll(news.length, 36_000);
 
   return (
     <div className="flex flex-col h-full px-12 py-10 gap-6">
@@ -126,12 +90,12 @@ export default function NewsSlide({ news }: NewsSlideProps) {
           >
             Indiana Business News
           </h2>
-          <p className="text-white/40 text-xl mt-1">
-            Inside Indiana Business · updated hourly
+          <p className="text-white/50 text-2xl mt-1">
+            Inside Indiana Business &middot; updated hourly
           </p>
         </div>
         <div className="text-right">
-          <p className="text-white/25 text-xl">{news.length} stories</p>
+          <p className="text-white/40 text-2xl">{news.length} stories</p>
         </div>
       </div>
 
@@ -149,7 +113,7 @@ export default function NewsSlide({ news }: NewsSlideProps) {
         </div>
       ) : (
         <div className="flex items-center justify-center flex-1">
-          <p className="text-white/30" style={{ fontSize: "clamp(1.5rem, 2.5vw, 2.5rem)" }}>
+          <p className="text-white/40" style={{ fontSize: "clamp(1.5rem, 2.5vw, 2.5rem)" }}>
             Loading news...
           </p>
         </div>

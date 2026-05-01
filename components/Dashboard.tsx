@@ -25,7 +25,7 @@ export default function Dashboard() {
     setIsKiosk(params.get("kiosk") === "true");
   }, []);
 
-  // Refetch JSON data every 10 minutes
+  // Refetch JSON data every 30 minutes
   useEffect(() => {
     const load = () => fetchDashboardData().then(setData);
     load();
