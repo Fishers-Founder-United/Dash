@@ -44,8 +44,19 @@ export interface WeatherData {
   forecast: ForecastDay[];
 }
 
+export interface NewsItem {
+  id: string;
+  title: string;
+  url: string;
+  source: "insideindiana" | "ibj";
+  sourceLabel: string;
+  publishedAt?: string; // ISO date string
+  description?: string;
+}
+
 export interface DashboardData {
   events: Event[];
   spotlights: Spotlight[];
   announcements: Announcement[];
+  news: NewsItem[];
 }

@@ -1,4 +1,4 @@
-import type { DashboardData, Event, Spotlight, Announcement } from "./types";
+import type { DashboardData, Event, Spotlight, Announcement, NewsItem } from "./types";
 import { publicUrl } from "./basepath";
 
 async function fetchJson<T>(url: string, fallback: T[]): Promise<T[]> {
@@ -14,15 +14,13 @@ async function fetchJson<T>(url: string, fallback: T[]): Promise<T[]> {
 export async function fetchDashboardData(): Promise<DashboardData> {
   const ts = Date.now();
 
-  const [externalEvents, localEvents, spotlights, allAnnouncements] =
+  const [externalEvents, localEvents, spotlights, allAnnouncements, news] =
     await Promise.all([
       fetchJson<Event>(publicUrl(`/data/events.json?t=${ts}`), []),
       fetchJson<Event>(publicUrl(`/data/local-events.json?t=${ts}`), []),
       fetchJson<Spotlight>(publicUrl(`/data/spotlights.json?t=${ts}`), []),
-      fetchJson<Announcement>(
-        publicUrl(`/data/announcements.json?t=${ts}`),
-        []
-      ),
+      fetchJson<Announcement>(publicUrl(`/data/announcements.json?t=${ts}`), []),
+      fetchJson<NewsItem>(publicUrl(`/data/news.json?t=${ts}`), []),
     ]);
 
   const today = new Date().toISOString().split("T")[0];
@@ -39,5 +37,5 @@ export async function fetchDashboardData(): Promise<DashboardData> {
     (a) => !a.expires || a.expires >= today
   );
 
-  return { events, spotlights, announcements };
+  return { events, spotlights, announcements, news };
 }

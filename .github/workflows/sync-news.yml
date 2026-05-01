@@ -1,0 +1,37 @@
+name: Sync News Feeds
+
+on:
+  schedule:
+    # Run every hour at :15 past the hour (offset from events sync at :05)
+    - cron: "15 * * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: "npm"
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run news sync
+        run: npx tsx scripts/sync-news.ts
+
+      - name: Commit updated news
+        run: |
+          git config --local user.email "github-actions@github.com"
+          git config --local user.name "GitHub Actions [sync-news]"
+          git add public/data/news.json
+          git diff --staged --quiet || git commit -m "chore: sync news feeds"
+          git push
