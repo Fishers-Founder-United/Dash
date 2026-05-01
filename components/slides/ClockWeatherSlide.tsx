@@ -5,7 +5,7 @@ import { fetchWeather, wmoCategory } from "@/lib/weather";
 import type { WeatherData } from "@/lib/types";
 
 const WEATHER_BG: Record<string, string> = {
-  clear: "from-amber-900/40 to-sky-900/60",
+  clear: "from-cyan-900/40 to-sky-900/60",
   cloudy: "from-slate-800/60 to-slate-900/60",
   fog: "from-slate-700/60 to-slate-800/60",
   rain: "from-blue-900/60 to-slate-900/60",
@@ -14,7 +14,7 @@ const WEATHER_BG: Record<string, string> = {
 };
 
 const WEATHER_LABEL_COLOR: Record<string, string> = {
-  clear: "text-amber-300",
+  clear: "text-cyan-300",
   cloudy: "text-slate-300",
   fog: "text-slate-400",
   rain: "text-blue-300",
@@ -61,7 +61,7 @@ export default function ClockWeatherSlide() {
 
   const category = weather ? wmoCategory(weather.weatherCode) : "clear";
   const bg = WEATHER_BG[category] ?? WEATHER_BG.clear;
-  const labelColor = WEATHER_LABEL_COLOR[category] ?? "text-amber-300";
+  const labelColor = WEATHER_LABEL_COLOR[category] ?? "text-cyan-300";
 
   const timeStr = time.toLocaleTimeString("en-US", {
     hour: "2-digit",
@@ -139,7 +139,7 @@ export default function ClockWeatherSlide() {
           </div>
 
           <p className="text-white/30 text-xl tracking-widest uppercase">
-            Fishers, Indiana
+            Indiana IoT Lab &nbsp;·&nbsp; Fishers, IN
           </p>
         </div>
       ) : (

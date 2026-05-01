@@ -8,16 +8,16 @@ const geist = Geist({
 });
 
 export const metadata: Metadata = {
-  title: "Fishers Founders United — Community Dashboard",
+  title: "Indiana IoT Lab — Community Dashboard",
   description:
-    "Live community dashboard for the Fishers, Indiana startup, maker, and small business community.",
+    "Live community dashboard for Indiana IoT Lab — A Catalyst For Innovation. Fishers, IN.",
   robots: "noindex",
 };
 
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
-  themeColor: "#0a0a1a",
+  themeColor: "#060d1a",
 };
 
 export default function RootLayout({

@@ -35,7 +35,7 @@ export default function SpotlightSlide({
       {/* Header */}
       <div className="mb-8">
         <h2
-          className="text-amber-400 font-black tracking-widest uppercase"
+          className="text-cyan-400 font-black tracking-widest uppercase"
           style={{ fontSize: "clamp(1.5rem, 3vw, 3rem)" }}
         >
           Community Spotlight
@@ -47,7 +47,7 @@ export default function SpotlightSlide({
         )}
       </div>
 
-      <div className="h-px bg-amber-500/20 mb-10" />
+      <div className="h-px bg-cyan-500/20 mb-10" />
 
       {/* Spotlight card */}
       <div className="flex flex-col flex-1 justify-center gap-8 max-w-5xl mx-auto w-full">
@@ -57,7 +57,7 @@ export default function SpotlightSlide({
             {spotlight.tags.map((tag) => (
               <span
                 key={tag}
-                className="bg-amber-500/15 text-amber-400/80 border border-amber-500/20 rounded-full px-4 py-1 text-xl font-medium uppercase tracking-wider"
+                className="bg-cyan-500/15 text-cyan-400/80 border border-cyan-500/20 rounded-full px-4 py-1 text-xl font-medium uppercase tracking-wider"
               >
                 {tag}
               </span>
@@ -74,7 +74,7 @@ export default function SpotlightSlide({
             {spotlight.name}
           </h3>
           <p
-            className="text-amber-300 font-semibold mt-3"
+            className="text-cyan-300 font-semibold mt-3"
             style={{ fontSize: "clamp(1.5rem, 2.5vw, 2.5rem)" }}
           >
             {spotlight.tagline}
@@ -92,9 +92,9 @@ export default function SpotlightSlide({
         {/* Website */}
         {spotlight.website && (
           <div className="flex items-center gap-4 mt-2">
-            <div className="w-12 h-px bg-amber-500/40" />
+            <div className="w-12 h-px bg-cyan-500/40" />
             <p
-              className="text-amber-400/60 font-mono"
+              className="text-cyan-400/60 font-mono"
               style={{ fontSize: "clamp(1rem, 1.8vw, 1.8rem)" }}
             >
               {spotlight.website.replace(/^https?:\/\//, "")}

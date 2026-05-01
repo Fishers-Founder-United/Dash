@@ -40,9 +40,9 @@ export default function Ticker({ events, announcements }: TickerProps) {
   const text = items.join("   \u2022   ");
 
   return (
-    <div className="shrink-0 bg-amber-500/10 border-t border-amber-500/30 overflow-hidden">
+    <div className="shrink-0 bg-cyan-500/10 border-t border-cyan-500/30 overflow-hidden">
       <div
-        className="ticker-track whitespace-nowrap text-amber-300 text-2xl py-3 px-0"
+        className="ticker-track whitespace-nowrap text-cyan-300 text-2xl py-3 px-0"
         aria-live="off"
       >
         <span>{text}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{text}</span>

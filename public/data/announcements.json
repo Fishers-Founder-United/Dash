@@ -1,14 +1,14 @@
 [
   {
     "id": "ann-001",
-    "text": "Welcome to the Fishers Founders Community Dashboard! Submit events and updates via GitHub pull request.",
-    "url": "https://github.com/Fishers-Founder-United/Dash",
+    "text": "Welcome to the Indiana IoT Lab Community Dashboard — A Catalyst For Innovation in Fishers, Indiana.",
+    "url": "https://indianaiot.com",
     "expires": "2027-01-01"
   },
   {
     "id": "ann-002",
-    "text": "Want to be featured in Community Spotlight? Open a PR and add yourself to spotlights.json!",
-    "url": "https://github.com/Fishers-Founder-United/Dash",
+    "text": "Indiana IoT Lab is located at 9059 Technology Lane, Fishers, IN 46038. Visit us to learn about membership and sponsorship opportunities.",
+    "url": "https://indianaiot.com",
     "expires": "2027-01-01"
   }
 ]

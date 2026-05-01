@@ -1,26 +1,18 @@
 [
   {
     "id": "spotlight-001",
-    "name": "Fishers Founders United",
-    "tagline": "Building the startup ecosystem in Hamilton County",
-    "description": "A community of entrepreneurs, makers, and curious minds calling Fishers home. We host monthly meetups, pitch nights, and workshops to help each other grow.",
-    "website": "https://github.com/Fishers-Founder-United",
-    "tags": ["community", "founders", "networking"]
+    "name": "Indiana IoT Lab",
+    "tagline": "A Catalyst For Innovation",
+    "description": "Connecting Indiana's best entrepreneurs, startups, and established partners to bring new and exciting Internet of Things solutions to market. A space where forward-thinkers work together to develop the next phase of technology.",
+    "website": "https://indianaiot.com",
+    "tags": ["IoT", "innovation", "startup", "Fishers"]
   },
   {
     "id": "spotlight-002",
-    "name": "Hamilton County Makers",
-    "tagline": "Where ideas become real things",
-    "description": "A collective of hardware hackers, artists, and tinkerers in the Fishers and Noblesville area. Open build nights every other Thursday.",
-    "website": "https://github.com/Fishers-Founder-United",
-    "tags": ["maker", "hardware", "diy"]
-  },
-  {
-    "id": "spotlight-003",
-    "name": "Launch Fishers",
-    "tagline": "Fishers' co-working and startup hub",
-    "description": "A dedicated space for entrepreneurs and remote workers in the heart of Fishers. Hot desks, private offices, meeting rooms, and a community of driven people.",
-    "website": "https://launchfishers.com",
-    "tags": ["coworking", "startup", "office"]
+    "name": "Your Project Here",
+    "tagline": "Members building the future of IoT",
+    "description": "Indiana IoT Lab members are building the next wave of connected solutions. Want your startup or project featured on this display? Reach out to the lab team at indianaiot.com.",
+    "website": "https://indianaiot.com",
+    "tags": ["member", "IoT", "startup"]
   }
 ]

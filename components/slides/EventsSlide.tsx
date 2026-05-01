@@ -10,7 +10,7 @@ const SOURCE_LABEL: Record<string, string> = {
 };
 
 const SOURCE_COLOR: Record<string, string> = {
-  local: "bg-amber-500/20 text-amber-300 border-amber-500/30",
+  local: "bg-amber-500/20 text-cyan-300 border-amber-500/30",
   google: "bg-blue-500/20 text-blue-300 border-blue-500/30",
   eventbrite: "bg-orange-500/20 text-orange-300 border-orange-500/30",
   meetup: "bg-red-500/20 text-red-300 border-red-500/30",
@@ -51,7 +51,7 @@ function EventRow({ event, index }: EventRowProps) {
     >
       {/* Index number */}
       <span
-        className="text-amber-400/60 font-bold shrink-0 mt-1"
+        className="text-cyan-400/60 font-bold shrink-0 mt-1"
         style={{ fontSize: "clamp(1.5rem, 2.5vw, 2.5rem)" }}
       >
         {String(index + 1).padStart(2, "0")}
@@ -73,7 +73,7 @@ function EventRow({ event, index }: EventRowProps) {
           </span>
         </div>
         <p
-          className="text-amber-300/80 font-medium mt-1"
+          className="text-cyan-300/80 font-medium mt-1"
           style={{ fontSize: "clamp(1.1rem, 1.8vw, 1.8rem)" }}
         >
           {formatDate(event.date, event.time)}
@@ -104,19 +104,19 @@ export default function EventsSlide({ events }: EventsSlideProps) {
       <div className="flex items-center justify-between">
         <div>
           <h2
-            className="text-amber-400 font-black tracking-widest uppercase"
+            className="text-cyan-400 font-black tracking-widest uppercase"
             style={{ fontSize: "clamp(1.5rem, 3vw, 3rem)" }}
           >
             Upcoming Events
           </h2>
-          <p className="text-white/40 text-xl mt-1">Fishers, IN Community Calendar</p>
+          <p className="text-white/40 text-xl mt-1">Indiana IoT Lab · Fishers, IN</p>
         </div>
         <div className="text-right">
           <p className="text-white/30 text-xl">
             {upcoming.length} of {events.length} events
           </p>
           <p className="text-white/20 text-lg mt-1">
-            github.com/Fishers-Founder-United/Dash
+            indianaiot.com
           </p>
         </div>
       </div>

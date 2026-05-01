@@ -2,8 +2,8 @@
 
 import type { Announcement } from "@/lib/types";
 
-const REPO_URL = "github.com/Fishers-Founder-United/Dash";
-const CONTRIBUTE_URL = "https://github.com/Fishers-Founder-United/Dash";
+const REPO_URL = "indianaiot.com";
+const CONTRIBUTE_URL = "https://indianaiot.com";
 
 interface AnnouncementsSlideProps {
   announcements: Announcement[];
@@ -17,14 +17,14 @@ export default function AnnouncementsSlide({
       {/* Header */}
       <div className="flex items-center justify-between">
         <h2
-          className="text-amber-400 font-black tracking-widest uppercase"
+          className="text-cyan-400 font-black tracking-widest uppercase"
           style={{ fontSize: "clamp(1.5rem, 3vw, 3rem)" }}
         >
           Community Board
         </h2>
       </div>
 
-      <div className="h-px bg-amber-500/20" />
+      <div className="h-px bg-cyan-500/20" />
 
       <div className="flex flex-1 gap-12 items-start">
         {/* Announcements list */}
@@ -43,7 +43,7 @@ export default function AnnouncementsSlide({
                 </p>
                 {a.url && (
                   <p
-                    className="text-amber-400/60 font-mono mt-3"
+                    className="text-cyan-400/60 font-mono mt-3"
                     style={{ fontSize: "clamp(0.9rem, 1.4vw, 1.4rem)" }}
                   >
                     {a.url.replace(/^https?:\/\//, "")}
@@ -64,7 +64,7 @@ export default function AnnouncementsSlide({
         </div>
 
         {/* Contribute panel */}
-        <div className="shrink-0 w-80 flex flex-col gap-6 items-center bg-amber-500/8 border border-amber-500/20 rounded-2xl p-8">
+        <div className="shrink-0 w-80 flex flex-col gap-6 items-center bg-cyan-500/8 border border-cyan-500/20 rounded-2xl p-8">
           {/* Simple QR placeholder — styled URL block */}
           <div className="w-52 h-52 bg-white rounded-2xl flex items-center justify-center">
             <div className="text-center">
@@ -77,14 +77,14 @@ export default function AnnouncementsSlide({
             </div>
           </div>
           <div className="text-center">
-            <p className="text-amber-400 font-bold text-xl">
-              Add your event!
+            <p className="text-cyan-400 font-bold text-xl">
+              Learn More
             </p>
             <p className="text-white/50 text-lg mt-2 font-mono break-all">
               {REPO_URL}
             </p>
             <p className="text-white/30 text-base mt-3 leading-snug">
-              Open a pull request to add events, spotlights, or announcements.
+              9059 Technology Lane<br />Fishers, IN 46038
             </p>
           </div>
         </div>

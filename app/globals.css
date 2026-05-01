@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 @theme inline {
-  --color-background: #0a0a1a;
+  --color-background: #060d1a;
   --color-foreground: #f0f0f0;
 }
 
@@ -9,7 +9,7 @@ html,
 body {
   height: 100%;
   overflow: hidden;
-  background: #0a0a1a;
+  background: #060d1a;
   color: #f0f0f0;
   font-family: var(--font-geist-sans), system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
