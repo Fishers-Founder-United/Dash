@@ -5,7 +5,8 @@ import { fetchDashboardData } from "@/lib/events";
 import SlideShow from "./SlideShow";
 import type { DashboardData } from "@/lib/types";
 
-const REFRESH_INTERVAL = 10 * 60 * 1000; // 10 minutes
+const DATA_REFRESH_INTERVAL = 10 * 60 * 1000;  // refetch JSON every 10 min
+const PAGE_RELOAD_INTERVAL  = 60 * 60 * 1000;  // hard reload every hour (picks up new deploys)
 
 export default function Dashboard() {
   const [data, setData] = useState<DashboardData>({
@@ -24,12 +25,18 @@ export default function Dashboard() {
     setIsKiosk(params.get("kiosk") === "true");
   }, []);
 
-  // Load dashboard data
+  // Refetch JSON data every 10 minutes
   useEffect(() => {
     const load = () => fetchDashboardData().then(setData);
     load();
-    const interval = setInterval(load, REFRESH_INTERVAL);
+    const interval = setInterval(load, DATA_REFRESH_INTERVAL);
     return () => clearInterval(interval);
+  }, []);
+
+  // Hard-reload the page every hour so new deployments are picked up automatically
+  useEffect(() => {
+    const reload = setTimeout(() => window.location.reload(), PAGE_RELOAD_INTERVAL);
+    return () => clearTimeout(reload);
   }, []);
 
   // Rotate spotlight index whenever spotlights data loads
