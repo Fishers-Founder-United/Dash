@@ -5,7 +5,9 @@
     "tagline": "A Catalyst For Innovation",
     "description": "Connecting Indiana's best entrepreneurs, startups, and established partners to bring new and exciting Internet of Things solutions to market. A space where forward-thinkers work together to develop the next phase of technology.",
     "website": "https://indianaiot.com",
-    "tags": ["IoT", "innovation", "startup", "Fishers"]
+    "tags": ["IoT", "innovation", "startup", "Fishers"],
+    "logo": "/images/logos/indiana-iot-lab.svg",
+    "category": "Innovation Hub"
   },
   {
     "id": "spotlight-002",
@@ -13,6 +15,96 @@
     "tagline": "Cool Things. Cool Journey. Cool Planet.",
     "description": "ArcticRx is reimagining cold chain logistics with aerospace-engineered reusable thermal pods that keep vaccines, medications, and biologics at precise temperatures — from 2-8°C to -80°C — for 22+ days without batteries or electricity. Built-in NFC tracking. Styrofoam-free. For every pod leased, one is donated to support life-saving medication distribution globally.",
     "website": "https://arcticrx.com",
-    "tags": ["cold chain", "IoT", "healthcare", "startup", "sustainability"]
+    "tags": ["cold chain", "IoT", "healthcare", "startup", "sustainability"],
+    "logo": "/images/logos/arcticrx.svg",
+    "category": "Healthcare & Logistics"
+  },
+  {
+    "id": "spotlight-003",
+    "name": "Qumulex",
+    "tagline": "Cloud-Powered Physical Security",
+    "description": "Qumulex applies today's cloud and IoT technology to video surveillance and access control for the commercial segment. Their platform, QxControl, offers a modern browser-based interface that centralizes security management across devices — allowing businesses to monitor and control their security systems from anywhere.",
+    "website": "https://www.qumulex.com",
+    "tags": ["security", "cloud", "IoT", "video surveillance", "access control"],
+    "logo": "/images/logos/qumulex.svg",
+    "category": "Security & Surveillance",
+    "newMember": true
+  },
+  {
+    "id": "spotlight-004",
+    "name": "Levisonics",
+    "tagline": "Revolutionizing Blood Coagulation Analysis",
+    "description": "Levisonics has developed an innovative platform that uses acoustic levitation to analyze the coagulation properties of blood droplets — requiring 60 times less blood than competing solutions. Their acoustic tweezing rheometry technology enables safe, fast, and comprehensive assessment of bleeding and thrombotic risks in neonatal, pediatric, and adult patients.",
+    "website": "https://www.levisonics.com",
+    "tags": ["medtech", "IoT", "acoustics", "healthcare", "startup"],
+    "logo": "/images/logos/levisonics.svg",
+    "category": "Healthcare & Life Sciences",
+    "newMember": true
+  },
+  {
+    "id": "spotlight-005",
+    "name": "The Audio of Things (TAOT)",
+    "tagline": "Engineered Voice & Audio Solutions",
+    "description": "TAOT designs, develops, and sells components, subsystems, and products featuring patented technologies that optimize the performance of voice-interactive devices. From microphone arrays and telecom receivers to their flagship WaveLock algorithm suite, TAOT delivers full-service acoustic, mechanical, and software engineering for consumer, professional, commercial, and tactical audio systems.",
+    "website": "https://taot.co",
+    "tags": ["audio", "IoT", "voice technology", "hardware", "acoustics"],
+    "logo": "/images/logos/taot.svg",
+    "category": "Audio & Voice Tech",
+    "newMember": true
+  },
+  {
+    "id": "spotlight-006",
+    "name": "Outside Source",
+    "tagline": "Apps & Experiences for the Connected World",
+    "description": "Outside Source leverages a team of seasoned software developers and UX designers to deliver the apps, integrations, and strategy that power connected user experiences. Specializing in web and mobile applications for Internet of Things products, they operate from the Indiana IoT Lab — the state's first IoT incubator.",
+    "website": "https://www.outsidesource.com",
+    "tags": ["software", "UX", "IoT", "app development", "design"],
+    "logo": "/images/logos/outside-source.svg",
+    "category": "Software & Design",
+    "newMember": true
+  },
+  {
+    "id": "spotlight-007",
+    "name": "Pierce Aerospace",
+    "tagline": "Identity & Tracking for Unmanned Aircraft",
+    "description": "Pierce Aerospace develops Remote ID beacons, sensors, and services for the unmanned aircraft ecosystem. Their Flight Portal ID system provides network-based identity and tracking for UAS, serving OEMs, counter-UAS providers, and UTM platforms. Selected by NASA and awarded a $10M DHS contract, Pierce Aerospace is shaping the future of low-level airspace management.",
+    "website": "https://www.pierceaerospace.net",
+    "tags": ["aerospace", "drones", "IoT", "Remote ID", "defense"],
+    "logo": "/images/logos/pierce-aerospace.svg",
+    "category": "Aerospace & Defense",
+    "newMember": true
+  },
+  {
+    "id": "spotlight-008",
+    "name": "1st Maker Space",
+    "tagline": "Hands-On Learning For All",
+    "description": "1st Maker Space designs, builds, and sustains makerspaces, STEM labs, and innovation spaces to bring hands-on learning to everyone. They build in-school and library makerspaces and produce after-school and inter-session STEAM enrichment programs — empowering students through spaces, tools, and opportunities that spark curiosity, creativity, and problem-solving skills.",
+    "website": "https://1stmakerspace.com",
+    "tags": ["education", "STEM", "makerspace", "community", "youth"],
+    "logo": "/images/logos/1st-maker-space.svg",
+    "category": "Education & Community",
+    "newMember": true
+  },
+  {
+    "id": "spotlight-009",
+    "name": "Brotherhood Designs",
+    "tagline": "Old Glory, Reimagined",
+    "description": "Founded by Fishers firefighter EMTs Rob Demlow and Scott Carr, Brotherhood Designs is a 501(c)(3) nonprofit that crafts American flags from retired fire hose — repurposing 15,000+ lbs of material annually that would otherwise end up in landfills. What they can't use for flags, they donate to zoos and animal sanctuaries for habitat enrichment.",
+    "website": "https://brotherhooddesigns.org",
+    "tags": ["nonprofit", "first responders", "sustainability", "art", "community"],
+    "logo": "/images/logos/brotherhood-designs.svg",
+    "category": "Community & Impact",
+    "newMember": true
+  },
+  {
+    "id": "spotlight-010",
+    "name": "Raineman Solutions",
+    "tagline": "Unlock Your Achievements",
+    "description": "Raineman Solutions is an independent research and evaluation firm specializing in interactive data and technology services. With over 20 years of experience, they employ a human and emotion-centered approach to integrate AI technologies into workflows — delivering virtual reality experiences, business intelligence applications, and custom education and health science technologies.",
+    "website": "https://rainemansolutions.com",
+    "tags": ["AI", "edtech", "health science", "IoT", "data analytics"],
+    "logo": "/images/logos/raineman-solutions.svg",
+    "category": "Research & AI",
+    "newMember": true
   }
 ]

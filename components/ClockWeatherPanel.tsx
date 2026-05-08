@@ -1,8 +1,8 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useMemo } from "react";
 import { fetchWeather, wmoCategory, wmoIcon } from "@/lib/weather";
-import type { WeatherData } from "@/lib/types";
+import type { WeatherData, Event } from "@/lib/types";
 
 const WEATHER_BG: Record<string, string> = {
   clear: "from-cyan-950/80 via-sky-950/60 to-slate-950",
@@ -50,7 +50,47 @@ function ForecastDay({
   );
 }
 
-export default function ClockWeatherPanel() {
+function getGreeting(hour: number): string {
+  if (hour >= 5 && hour < 12) return "Good Morning";
+  if (hour >= 12 && hour < 17) return "Good Afternoon";
+  if (hour >= 17 && hour < 21) return "Good Evening";
+  return "Good Night";
+}
+
+function getCountdown(now: Date, events: Event[]): { title: string; label: string } | null {
+  for (const event of events) {
+    const eventTime = event.time
+      ? new Date(`${event.date}T${event.time}:00`)
+      : new Date(`${event.date}T00:00:00`);
+    const diff = eventTime.getTime() - now.getTime();
+    if (diff <= 0) continue;
+
+    const hours = Math.floor(diff / (1000 * 60 * 60));
+    const mins = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+
+    let label: string;
+    if (hours >= 24) {
+      const days = Math.floor(hours / 24);
+      label = days === 1 ? "Tomorrow" : `in ${days} days`;
+      if (event.time) {
+        const h = parseInt(event.time.split(":")[0]);
+        const m = event.time.split(":")[1];
+        const ampm = h >= 12 ? "PM" : "AM";
+        const h12 = h % 12 || 12;
+        label += ` at ${h12}:${m} ${ampm}`;
+      }
+    } else if (hours > 0) {
+      label = `in ${hours}h ${mins}m`;
+    } else {
+      label = `in ${mins}m`;
+    }
+
+    return { title: event.title, label };
+  }
+  return null;
+}
+
+export default function ClockWeatherPanel({ events = [] }: { events?: Event[] }) {
   const [time, setTime] = useState(new Date());
   const [weather, setWeather] = useState<WeatherData | null>(null);
   const [weatherError, setWeatherError] = useState(false);
@@ -94,6 +134,13 @@ export default function ClockWeatherPanel() {
   });
   const yearStr = time.getFullYear();
 
+  const greeting = getGreeting(hours);
+  const nextEvent = useMemo(() => getCountdown(time, events), [
+    // recalc every minute (not every second)
+    Math.floor(time.getTime() / 60000),
+    events,
+  ]);
+
   return (
     <div
       className={`flex flex-col h-full bg-gradient-to-b ${bg} transition-all duration-3000 border-r border-white/5 overflow-hidden`}
@@ -101,6 +148,13 @@ export default function ClockWeatherPanel() {
       {/* Clock + UTC — flex section that can shrink */}
       <div className="flex flex-col items-center justify-center flex-[3] min-h-0 px-8 gap-2">
         <div className="flex flex-col items-center">
+          {/* Greeting */}
+          <p
+            className="text-white/40 font-light tracking-widest mb-2"
+            style={{ fontSize: "clamp(1.1rem, 1.8vw, 1.8rem)" }}
+          >
+            {greeting}
+          </p>
           {/* Local time */}
           <div className="flex items-start leading-none">
             <span
@@ -145,6 +199,30 @@ export default function ClockWeatherPanel() {
 
       {/* Divider */}
       <div className="shrink-0 mx-8 h-px bg-white/10" />
+
+      {/* Next event countdown */}
+      {nextEvent && (
+        <div className="shrink-0 flex flex-col items-center gap-1 px-8 py-4 bg-cyan-500/5 border-b border-white/5">
+          <p
+            className="text-cyan-400/70 font-semibold tracking-wider uppercase"
+            style={{ fontSize: "clamp(0.8rem, 1.2vw, 1.1rem)" }}
+          >
+            Next Up
+          </p>
+          <p
+            className="text-white/80 font-semibold text-center leading-snug line-clamp-1"
+            style={{ fontSize: "clamp(1rem, 1.5vw, 1.4rem)" }}
+          >
+            {nextEvent.title}
+          </p>
+          <p
+            className="text-cyan-300/60 font-mono"
+            style={{ fontSize: "clamp(0.9rem, 1.3vw, 1.2rem)" }}
+          >
+            {nextEvent.label}
+          </p>
+        </div>
+      )}
 
       {/* Weather current conditions — flex section that can shrink */}
       <div className="flex flex-col items-center justify-center flex-[3] min-h-0 px-8 gap-2">

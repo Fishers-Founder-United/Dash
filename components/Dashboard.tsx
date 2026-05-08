@@ -14,6 +14,8 @@ export default function Dashboard() {
     spotlights: [],
     announcements: [],
     news: [],
+    stats: null,
+    photos: [],
   });
   const [isKiosk, setIsKiosk] = useState(false);
   const [spotlightIndex, setSpotlightIndex] = useState(0);

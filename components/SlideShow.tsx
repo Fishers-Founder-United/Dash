@@ -11,16 +11,20 @@ import AnnouncementsSlide from "./slides/AnnouncementsSlide";
 import WeatherRadarSlide from "./slides/WeatherRadarSlide";
 import NewsSlide from "./slides/NewsSlide";
 import FunFactSlide from "./slides/FunFactSlide";
+import CommunityStatsSlide from "./slides/CommunityStatsSlide";
+import PhotoSlide from "./slides/PhotoSlide";
 import type { DashboardData } from "@/lib/types";
 
 // Right panel slides only (clock/weather lives permanently on the left)
-const SLIDES = ["events", "news", "radar", "spotlight", "funfact", "announcements"] as const;
+const SLIDES = ["events", "news", "radar", "spotlight", "stats", "photos", "funfact", "announcements"] as const;
 type SlideId = (typeof SLIDES)[number];
 const DURATIONS: Record<SlideId, number> = {
   events: 40,
   news: 40,
   radar: 25,
   spotlight: 15,
+  stats: 15,
+  photos: 20,
   funfact: 12,
   announcements: 15,
 };
@@ -57,6 +61,10 @@ function RightPanel({
       );
     case "news":
       return <NewsSlide news={data.news} />;
+    case "stats":
+      return data.stats ? <CommunityStatsSlide stats={data.stats} /> : null;
+    case "photos":
+      return <PhotoSlide photos={data.photos} />;
     case "announcements":
       return <AnnouncementsSlide announcements={data.announcements} />;
     case "funfact":
@@ -83,12 +91,16 @@ export default function SlideShow({
           return data.announcements.length > 0;
         case "news":
           return data.news.length > 0;
+        case "stats":
+          return data.stats !== null;
+        case "photos":
+          return data.photos.length > 0;
         case "radar":
         case "funfact":
           return true; // always show
       }
     });
-  }, [data.events.length, data.spotlights.length, data.announcements.length, data.news.length]);
+  }, [data.events.length, data.spotlights.length, data.announcements.length, data.news.length, data.stats, data.photos.length]);
 
   const safeIdx = activeSlides.length > 0 ? slideIdx % activeSlides.length : 0;
   const currentSlide = activeSlides[safeIdx] ?? "radar";
@@ -146,7 +158,7 @@ export default function SlideShow({
       <div className="flex flex-1 overflow-hidden">
         {/* Left: persistent clock + weather (38% width) */}
         <div className="w-[38%] shrink-0">
-          <ClockWeatherPanel />
+          <ClockWeatherPanel events={data.events} />
         </div>
 
         {/* Right: rotating content (62% width) */}

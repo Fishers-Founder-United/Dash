@@ -1,0 +1,17 @@
+[
+  {
+    "id": "photo-001",
+    "src": "/images/photos/placeholder-1.svg",
+    "caption": "The Indiana IoT Lab — where innovation meets collaboration"
+  },
+  {
+    "id": "photo-002",
+    "src": "/images/photos/placeholder-2.svg",
+    "caption": "Member companies working side by side"
+  },
+  {
+    "id": "photo-003",
+    "src": "/images/photos/placeholder-3.svg",
+    "caption": "Community events bring founders together"
+  }
+]

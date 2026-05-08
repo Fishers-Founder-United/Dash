@@ -18,6 +18,23 @@ export interface Spotlight {
   description: string;
   website?: string;
   tags?: string[];
+  logo?: string;
+  category?: string;
+  newMember?: boolean;
+}
+
+export interface StatsData {
+  members: number;
+  squareFeet: number;
+  companiesLaunched: number;
+  jobsCreated: number;
+  yearFounded: number;
+}
+
+export interface Photo {
+  id: string;
+  src: string;
+  caption: string;
 }
 
 export interface Announcement {
@@ -59,4 +76,6 @@ export interface DashboardData {
   spotlights: Spotlight[];
   announcements: Announcement[];
   news: NewsItem[];
+  stats: StatsData | null;
+  photos: Photo[];
 }
