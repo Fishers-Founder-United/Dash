@@ -40,5 +40,5 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
-# local maintainer docs (not for GitHub)
+# local maintainer docs
 MAINTAINER.md
