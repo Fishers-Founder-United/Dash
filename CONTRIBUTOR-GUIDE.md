@@ -6,6 +6,42 @@ Welcome! This file has everything you need to get set up, understand the codebas
 
 ---
 
+## How to Use This Guide With Claude Code
+
+Once you have the repo cloned (see Step 1 and 2 below), open a terminal in the `Dash` folder and run:
+
+```bash
+claude
+```
+
+Then tell Claude Code to read this file:
+
+```
+read CONTRIBUTOR-GUIDE.md
+```
+
+From there, just talk to it in plain English. Examples:
+
+```
+Add a new company called "Acme Robotics" to the spotlights
+```
+```
+Replace the placeholder logo for Qumulex with this image I put in the logos folder
+```
+```
+Add 3 new photos to the photo carousel
+```
+```
+Change the stats numbers to 50 members and 200 jobs created
+```
+```
+Push my changes to GitHub
+```
+
+Claude Code will read the guide, understand the project structure, make the changes, and can commit and push for you. You don't need to know the code — just describe what you want.
+
+---
+
 ## Step 1: Get GitHub Access
 
 The repo is at: **https://github.com/Fishers-Founder-United/Dash**
