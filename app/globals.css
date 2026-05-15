@@ -23,22 +23,10 @@ body {
 }
 
 /*
- * Anti-burn-in pixel shift — slowly drifts the entire layout by a few pixels
- * on a 4-minute cycle. Imperceptible to viewers, prevents static element
- * burn-in on OLED/plasma displays running 24/7 in kiosk mode.
+ * Anti-burn-in pixel shift — JS applies a small random translate once per
+ * minute via the .burn-in-guard class. No continuous CSS animation or
+ * will-change needed, dramatically reducing GPU compositing overhead.
  */
-@keyframes pixel-shift {
-  0%   { transform: translate(0px, 0px); }
-  25%  { transform: translate(3px, 2px); }
-  50%  { transform: translate(-2px, 3px); }
-  75%  { transform: translate(-3px, -2px); }
-  100% { transform: translate(0px, 0px); }
-}
-
-.burn-in-guard {
-  animation: pixel-shift 240s ease-in-out infinite;
-  will-change: transform;
-}
 
 /* Ticker scroll animation — 90s for smooth, readable scroll on large TVs without motion blur */
 @keyframes ticker-scroll {

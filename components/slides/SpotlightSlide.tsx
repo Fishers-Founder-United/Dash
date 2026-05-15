@@ -87,7 +87,7 @@ export default function SpotlightSlide({
                   {spotlight.name}
                 </h3>
                 {spotlight.newMember && (
-                  <span className="shrink-0 bg-cyan-500 text-white font-black text-lg tracking-widest uppercase px-4 py-1.5 rounded-full animate-pulse">
+                  <span className="shrink-0 bg-cyan-500 text-white font-black text-lg tracking-widest uppercase px-4 py-1.5 rounded-full shadow-[0_0_12px_rgba(6,182,212,0.5)]">
                     NEW
                   </span>
                 )}

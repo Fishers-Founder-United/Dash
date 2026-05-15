@@ -95,10 +95,19 @@ export default function ClockWeatherPanel({ events = [] }: { events?: Event[] })
   const [weather, setWeather] = useState<WeatherData | null>(null);
   const [weatherError, setWeatherError] = useState(false);
 
+  // Only re-render when the displayed minute changes (not every second).
+  // Checks once per second but skips setState when the minute hasn't rolled over.
   useEffect(() => {
-    const tick = setInterval(() => setTime(new Date()), 1000);
+    let lastMinute = time.getMinutes();
+    const tick = setInterval(() => {
+      const now = new Date();
+      if (now.getMinutes() !== lastMinute) {
+        lastMinute = now.getMinutes();
+        setTime(now);
+      }
+    }, 1000);
     return () => clearInterval(tick);
-  }, []);
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   useEffect(() => {
     const load = () =>

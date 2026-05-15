@@ -146,7 +146,7 @@ export default function WeatherRadarMap() {
         {/* Updated timestamp */}
         {lastUpdate && (
           <div className="absolute top-4 right-4 z-[1000] flex items-center gap-2 bg-black/70 backdrop-blur-sm rounded-xl px-4 py-2 border border-white/10">
-            <div className="w-2.5 h-2.5 rounded-full bg-cyan-400 animate-pulse" />
+            <div className="w-2.5 h-2.5 rounded-full bg-cyan-400 shadow-[0_0_8px_rgba(34,211,238,0.5)]" />
             <span className="text-white font-mono text-2xl">{lastUpdate}</span>
             <span className="text-white/50 text-xl">RADAR</span>
           </div>

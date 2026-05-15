@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState, useCallback, useMemo } from "react";
+import { useEffect, useState, useCallback, useMemo, useRef } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import NavDots from "./NavDots";
 import Ticker from "./Ticker";
@@ -79,6 +79,26 @@ export default function SlideShow({
 }: SlideShowProps) {
   const [slideIdx, setSlideIdx] = useState(0);
 
+  // Anti-burn-in: apply a small random pixel shift once per minute instead of
+  // a continuous CSS animation with will-change (which forces GPU compositing
+  // of the entire page every frame).
+  const rootRef = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    const OFFSETS = [
+      [0, 0], [3, 2], [-2, 3], [-3, -2], [2, -1], [1, 3], [-1, -3],
+    ];
+    let i = 0;
+    const shift = () => {
+      if (!rootRef.current) return;
+      const [x, y] = OFFSETS[i % OFFSETS.length];
+      rootRef.current.style.transform = `translate(${x}px, ${y}px)`;
+      i++;
+    };
+    shift();
+    const id = setInterval(shift, 60_000); // once per minute
+    return () => clearInterval(id);
+  }, []);
+
   // Filter out slides that have no data to show
   const activeSlides = useMemo(() => {
     return SLIDES.filter((id) => {
@@ -120,11 +140,11 @@ export default function SlideShow({
   }, [safeIdx, advance, currentSlide]);
 
   return (
-    <div className="flex flex-col h-screen bg-[#060d1a] overflow-hidden select-none burn-in-guard">
+    <div ref={rootRef} className="flex flex-col h-screen bg-[#060d1a] overflow-hidden select-none">
       {/* Branding bar */}
       <div className="shrink-0 flex items-center justify-between px-14 py-6 border-b border-white/5 bg-black/20">
         <div className="flex items-center gap-6">
-          <div className="w-5 h-5 rounded-full bg-cyan-400 shadow-[0_0_16px_rgba(34,211,238,0.6)] animate-pulse" />
+          <div className="w-5 h-5 rounded-full bg-cyan-400 shadow-[0_0_16px_rgba(34,211,238,0.6)]" />
           <span
             className="text-white font-bold tracking-widest uppercase"
             style={{ fontSize: "clamp(1.6rem, 2.2vw, 2.4rem)" }}
@@ -167,9 +187,9 @@ export default function SlideShow({
           <div className="absolute top-0 left-0 right-0 z-10 h-[4px] bg-white/5">
             <motion.div
               key={`progress-${safeIdx}`}
-              className="h-full bg-cyan-400/60"
-              initial={{ width: "0%" }}
-              animate={{ width: "100%" }}
+              className="h-full bg-cyan-400/60 origin-left"
+              initial={{ scaleX: 0 }}
+              animate={{ scaleX: 1 }}
               transition={{
                 duration: DURATIONS[currentSlide],
                 ease: "linear",
