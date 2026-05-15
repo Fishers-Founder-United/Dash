@@ -118,7 +118,7 @@ It's a community dashboard for the Indiana IoT Lab in Fishers, IN. It runs 24/7 
 app/
   layout.tsx            Root layout (Geist font, dark theme, metadata)
   page.tsx              Single entry point — renders <Dashboard />
-  globals.css           Theme colors, burn-in animation, glass effect, ticker keyframes
+  globals.css           Theme colors, glass effect, ticker keyframes
 
 components/
   Dashboard.tsx         Top-level: fetches data every 30min, manages spotlight rotation, kiosk detection
@@ -190,7 +190,7 @@ Currently has 10 companies. Each entry looks like:
 | `tags` | No | Short keyword tags (rendered as cyan pill badges) |
 | `logo` | No | Path to logo image in `public/images/logos/` |
 | `category` | No | Category label shown above the name (e.g. "Aerospace & Defense") |
-| `newMember` | No | Set `true` to show a pulsing cyan NEW badge. Remove when no longer new. |
+| `newMember` | No | Set `true` to show a glowing cyan NEW badge. Remove when no longer new. |
 
 ### `stats.json` — Community Numbers
 
@@ -364,7 +364,7 @@ The dashboard uses a dark theme optimized for 4K TV display. Key patterns:
   - Body text: `clamp(1.25rem, 2vw, 2rem)`
   - Small labels: `clamp(0.9rem, 1.4vw, 1.4rem)`
 - **Slide transitions**: Framer Motion (fade + slide)
-- **Burn-in protection**: A 240s pixel-shift animation runs on the main container to protect OLED/plasma screens
+- **Burn-in protection**: A JS-based pixel shift applies a small random translate to the main container once per minute to protect OLED/plasma screens (no continuous CSS animation — keeps GPU usage low)
 
 ---
 
