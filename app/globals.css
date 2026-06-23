@@ -2,16 +2,16 @@
 @import "leaflet/dist/leaflet.css";
 
 @theme inline {
-  --color-background: #060d1a;
-  --color-foreground: #f0f0f0;
+  --color-background: #f0f3f6;
+  --color-foreground: #1e293b;
 }
 
 html,
 body {
   height: 100%;
   overflow: hidden;
-  background: #060d1a;
-  color: #f0f0f0;
+  background: #f0f3f6;
+  color: #1e293b;
   font-family: var(--font-geist-sans), system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
 }
@@ -19,7 +19,7 @@ body {
 /* Glassmorphism utility */
 .glass {
   backdrop-filter: blur(12px);
-  background: rgba(255, 255, 255, 0.03);
+  background: rgba(255, 255, 255, 0.7);
 }
 
 /*
@@ -53,9 +53,9 @@ body {
   -webkit-tap-highlight-color: transparent;
 }
 
-/* Leaflet overrides for dark dashboard */
+/* Leaflet overrides for light dashboard */
 .leaflet-container {
-  background: #0d1117;
+  background: #e2e8f0;
   font-family: var(--font-geist-sans), system-ui, sans-serif;
 }
 
@@ -65,11 +65,11 @@ body {
 
 /* Radar tooltip label */
 .radar-label {
-  background: rgba(6, 182, 212, 0.15) !important;
-  border: 1px solid rgba(6, 182, 212, 0.4) !important;
+  background: rgba(13, 148, 136, 0.12) !important;
+  border: 2px solid rgba(13, 148, 136, 0.4) !important;
   border-radius: 8px !important;
-  color: #67e8f9 !important;
-  font-size: 1.2rem !important;
+  color: #0f766e !important;
+  font-size: 1.6rem !important;
   font-weight: 600 !important;
   padding: 4px 10px !important;
   white-space: nowrap !important;
@@ -77,5 +77,5 @@ body {
 }
 
 .radar-label::before {
-  border-right-color: rgba(6, 182, 212, 0.4) !important;
+  border-right-color: rgba(13, 148, 136, 0.4) !important;
 }

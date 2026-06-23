@@ -47,9 +47,9 @@ export default function Ticker({ events, announcements }: TickerProps) {
   const text = items.join(sep);
 
   return (
-    <div className="shrink-0 bg-gradient-to-r from-cyan-950/60 via-cyan-900/30 to-cyan-950/60 border-t-2 border-cyan-400/20 overflow-hidden backdrop-blur-sm">
+    <div className="shrink-0 bg-gradient-to-r from-teal-100 via-teal-50 to-teal-100 border-t-2 border-teal-200 overflow-hidden backdrop-blur-sm">
       <div
-        className="ticker-track whitespace-nowrap text-cyan-300 py-5 px-0"
+        className="ticker-track whitespace-nowrap text-teal-700 py-5 px-0"
         style={{ fontSize: "clamp(1.6rem, 2.8vw, 2.8rem)" }}
         aria-live="off"
       >

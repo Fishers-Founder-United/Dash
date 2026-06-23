@@ -16,12 +16,12 @@ export default function SpotlightSlide({
     return (
       <div className="flex flex-col h-full items-center justify-center gap-6 px-16">
         <p
-          className="text-white/40 text-center"
+          className="text-slate-400 text-center"
           style={{ fontSize: "clamp(1.5rem, 2.5vw, 2.5rem)" }}
         >
           No spotlights yet
         </p>
-        <p className="text-white/25 text-2xl text-center max-w-xl">
+        <p className="text-slate-300 text-2xl text-center max-w-xl">
           Know a maker or startup worth featuring? Open a PR and add them to
           spotlights.json!
         </p>
@@ -36,19 +36,19 @@ export default function SpotlightSlide({
       {/* Header */}
       <div className="mb-6 shrink-0">
         <h2
-          className="text-cyan-400 font-black tracking-widest uppercase"
+          className="text-teal-600 font-black tracking-widest uppercase"
           style={{ fontSize: "clamp(1.5rem, 3vw, 3rem)" }}
         >
           Community Spotlight
         </h2>
         {spotlights.length > 1 && (
-          <p className="text-white/45 text-2xl mt-1">
+          <p className="text-slate-400 text-2xl mt-1">
             {(index % spotlights.length) + 1} of {spotlights.length}
           </p>
         )}
       </div>
 
-      <div className="h-px bg-cyan-500/20 mb-8 shrink-0" />
+      <div className="h-[2px] bg-teal-200 mb-8 shrink-0" />
 
       {/* Main content: info left, QR right */}
       <div className="flex flex-1 gap-10 min-h-0">
@@ -58,7 +58,7 @@ export default function SpotlightSlide({
           <div className="flex items-center gap-8">
             {/* Logo */}
             {spotlight.logo && (
-              <div className="shrink-0 w-28 h-28 rounded-2xl overflow-hidden bg-white/5 border border-white/10 flex items-center justify-center">
+              <div className="shrink-0 w-36 h-36 rounded-2xl overflow-hidden bg-slate-100 border-2 border-slate-200 flex items-center justify-center">
                 <img
                   src={spotlight.logo}
                   alt={`${spotlight.name} logo`}
@@ -71,8 +71,8 @@ export default function SpotlightSlide({
               {/* Category */}
               {spotlight.category && (
                 <p
-                  className="text-cyan-400/60 font-semibold tracking-widest uppercase mb-2"
-                  style={{ fontSize: "clamp(0.9rem, 1.4vw, 1.4rem)" }}
+                  className="text-teal-500 font-semibold tracking-widest uppercase mb-2"
+                  style={{ fontSize: "clamp(1.2rem, 1.6vw, 1.6rem)" }}
                 >
                   {spotlight.category}
                 </p>
@@ -81,13 +81,13 @@ export default function SpotlightSlide({
               {/* Name + NEW badge */}
               <div className="flex items-center gap-5">
                 <h3
-                  className="text-white font-black leading-tight"
+                  className="text-slate-800 font-black leading-tight"
                   style={{ fontSize: "clamp(2.2rem, 5vw, 5rem)" }}
                 >
                   {spotlight.name}
                 </h3>
                 {spotlight.newMember && (
-                  <span className="shrink-0 bg-cyan-500 text-white font-black text-lg tracking-widest uppercase px-4 py-1.5 rounded-full shadow-[0_0_12px_rgba(6,182,212,0.5)]">
+                  <span className="shrink-0 bg-teal-500 text-white font-black text-lg tracking-widest uppercase px-4 py-1.5 rounded-full shadow-[0_0_12px_rgba(20,184,166,0.4)]">
                     NEW
                   </span>
                 )}
@@ -97,7 +97,7 @@ export default function SpotlightSlide({
 
           {/* Tagline */}
           <p
-            className="text-cyan-300 font-semibold"
+            className="text-teal-600 font-semibold"
             style={{ fontSize: "clamp(1.3rem, 2.2vw, 2.2rem)" }}
           >
             {spotlight.tagline}
@@ -109,7 +109,8 @@ export default function SpotlightSlide({
               {spotlight.tags.map((tag) => (
                 <span
                   key={tag}
-                  className="bg-cyan-500/15 text-cyan-400/80 border border-cyan-500/20 rounded-full px-4 py-1 text-lg font-medium uppercase tracking-wider"
+                  className="bg-teal-50 text-teal-600 border-2 border-teal-200 rounded-full px-4 py-1 font-medium uppercase tracking-wider"
+                  style={{ fontSize: "clamp(1.2rem, 1.6vw, 1.6rem)" }}
                 >
                   {tag}
                 </span>
@@ -119,7 +120,7 @@ export default function SpotlightSlide({
 
           {/* Description */}
           <p
-            className="text-white/70 leading-relaxed"
+            className="text-slate-600 leading-relaxed"
             style={{ fontSize: "clamp(1.15rem, 1.8vw, 1.8rem)" }}
           >
             {spotlight.description}
@@ -128,10 +129,10 @@ export default function SpotlightSlide({
           {/* Website */}
           {spotlight.website && (
             <div className="flex items-center gap-4 mt-1">
-              <div className="w-12 h-px bg-cyan-500/40" />
+              <div className="w-12 h-px bg-teal-300" />
               <p
-                className="text-cyan-400/60 font-mono"
-                style={{ fontSize: "clamp(1rem, 1.6vw, 1.6rem)" }}
+                className="text-teal-500 font-mono"
+                style={{ fontSize: "clamp(1.3rem, 1.6vw, 1.6rem)" }}
               >
                 {spotlight.website.replace(/^https?:\/\//, "")}
               </p>
@@ -141,19 +142,19 @@ export default function SpotlightSlide({
 
         {/* Right: QR code panel */}
         {spotlight.website && (
-          <div className="shrink-0 flex flex-col items-center justify-center gap-5 w-72 bg-cyan-500/8 border border-cyan-500/20 rounded-2xl p-8">
+          <div className="shrink-0 flex flex-col items-center justify-center gap-5 w-80 bg-teal-50 border-2 border-teal-200 rounded-2xl p-8">
             <div className="p-3 bg-white rounded-2xl">
               <QRCodeSVG
                 value={spotlight.website}
-                size={180}
+                size={240}
                 bgColor="#ffffff"
                 fgColor="#000000"
                 level="M"
               />
             </div>
             <p
-              className="text-cyan-400 font-bold text-center"
-              style={{ fontSize: "clamp(1rem, 1.4vw, 1.4rem)" }}
+              className="text-teal-600 font-bold text-center"
+              style={{ fontSize: "clamp(1.3rem, 1.6vw, 1.6rem)" }}
             >
               Visit {spotlight.name}
             </p>

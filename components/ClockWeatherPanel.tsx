@@ -5,21 +5,21 @@ import { fetchWeather, wmoCategory, wmoIcon } from "@/lib/weather";
 import type { WeatherData, Event } from "@/lib/types";
 
 const WEATHER_BG: Record<string, string> = {
-  clear: "from-cyan-950/80 via-sky-950/60 to-slate-950",
-  cloudy: "from-slate-800/80 via-slate-900/60 to-slate-950",
-  fog: "from-slate-700/80 via-slate-800/60 to-slate-950",
-  rain: "from-blue-950/80 via-blue-900/60 to-slate-950",
-  snow: "from-sky-900/80 via-sky-950/60 to-slate-950",
-  storm: "from-purple-950/80 via-slate-900/60 to-slate-950",
+  clear: "from-sky-100/80 via-cyan-50/60 to-slate-100",
+  cloudy: "from-slate-200/80 via-slate-100/60 to-slate-50",
+  fog: "from-slate-200/80 via-slate-150/60 to-slate-50",
+  rain: "from-blue-100/80 via-slate-100/60 to-slate-50",
+  snow: "from-sky-100/80 via-blue-50/60 to-slate-50",
+  storm: "from-purple-100/80 via-slate-100/60 to-slate-50",
 };
 
 const WEATHER_COLOR: Record<string, string> = {
-  clear: "text-cyan-300",
-  cloudy: "text-slate-300",
-  fog: "text-slate-400",
-  rain: "text-blue-300",
-  snow: "text-sky-200",
-  storm: "text-purple-300",
+  clear: "text-cyan-700",
+  cloudy: "text-slate-600",
+  fog: "text-slate-500",
+  rain: "text-blue-600",
+  snow: "text-sky-600",
+  storm: "text-purple-600",
 };
 
 function ForecastDay({
@@ -28,9 +28,9 @@ function ForecastDay({
   label: string; high: number; low: number; weatherCode: number; active?: boolean;
 }) {
   return (
-    <div className={`flex flex-col items-center gap-1 py-3 px-4 rounded-xl transition-all ${active ? "bg-white/10 ring-1 ring-white/20" : ""}`}>
+    <div className={`flex flex-col items-center gap-1 py-3 px-4 rounded-xl transition-all ${active ? "bg-white/50 ring-2 ring-slate-300" : ""}`}>
       <span
-        className="text-white/60 font-medium"
+        className="text-slate-500 font-medium"
         style={{ fontSize: "clamp(1.1rem, 1.8vw, 1.6rem)" }}
       >
         {label}
@@ -39,12 +39,12 @@ function ForecastDay({
         {wmoIcon(weatherCode)}
       </span>
       <div className="flex items-baseline gap-1">
-        <span className="text-white/50 font-medium" style={{ fontSize: "clamp(0.9rem, 1.2vw, 1.2rem)" }}>H</span>
-        <span className="text-white font-bold" style={{ fontSize: "clamp(1.2rem, 1.8vw, 2rem)" }}>{high}&deg;</span>
+        <span className="text-slate-400 font-medium" style={{ fontSize: "clamp(1.1rem, 1.4vw, 1.4rem)" }}>H</span>
+        <span className="text-slate-800 font-bold" style={{ fontSize: "clamp(1.2rem, 1.8vw, 2rem)" }}>{high}&deg;</span>
       </div>
       <div className="flex items-baseline gap-1">
-        <span className="text-white/40 font-medium" style={{ fontSize: "clamp(0.9rem, 1.2vw, 1.2rem)" }}>L</span>
-        <span className="text-white/50" style={{ fontSize: "clamp(1rem, 1.5vw, 1.6rem)" }}>{low}&deg;</span>
+        <span className="text-slate-400 font-medium" style={{ fontSize: "clamp(1.1rem, 1.4vw, 1.4rem)" }}>L</span>
+        <span className="text-slate-500" style={{ fontSize: "clamp(1rem, 1.5vw, 1.6rem)" }}>{low}&deg;</span>
       </div>
     </div>
   );
@@ -152,14 +152,14 @@ export default function ClockWeatherPanel({ events = [] }: { events?: Event[] })
 
   return (
     <div
-      className={`flex flex-col h-full bg-gradient-to-b ${bg} transition-all duration-3000 border-r border-white/5 overflow-hidden`}
+      className={`flex flex-col h-full bg-gradient-to-b ${bg} transition-all duration-3000 border-r-2 border-slate-200 overflow-hidden`}
     >
       {/* Clock + UTC — flex section that can shrink */}
       <div className="flex flex-col items-center justify-center flex-[3] min-h-0 px-8 gap-2">
         <div className="flex flex-col items-center">
           {/* Greeting */}
           <p
-            className="text-white/40 font-light tracking-widest mb-2"
+            className="text-slate-400 font-light tracking-widest mb-2"
             style={{ fontSize: "clamp(1.1rem, 1.8vw, 1.8rem)" }}
           >
             {greeting}
@@ -167,13 +167,13 @@ export default function ClockWeatherPanel({ events = [] }: { events?: Event[] })
           {/* Local time */}
           <div className="flex items-start leading-none">
             <span
-              className="text-white font-black tabular-nums"
+              className="text-slate-800 font-black tabular-nums"
               style={{ fontSize: "clamp(5rem, 9vw, 9rem)" }}
             >
               {h12}:{mins}
             </span>
             <span
-              className="text-white/50 font-light ml-3 mt-3"
+              className="text-slate-400 font-light ml-3 mt-3"
               style={{ fontSize: "clamp(1.8rem, 2.5vw, 3rem)" }}
             >
               {ampm}
@@ -183,7 +183,7 @@ export default function ClockWeatherPanel({ events = [] }: { events?: Event[] })
           {/* UTC time */}
           <div className="flex items-center gap-3 mt-2">
             <span
-              className="text-cyan-400/50 font-mono tracking-wider"
+              className="text-teal-500 font-mono tracking-wider"
               style={{ fontSize: "clamp(1.2rem, 2vw, 2rem)" }}
             >
               UTC {utcH}:{utcM}
@@ -192,14 +192,14 @@ export default function ClockWeatherPanel({ events = [] }: { events?: Event[] })
 
           {/* Date */}
           <p
-            className="text-white/60 font-light tracking-widest text-center mt-3"
+            className="text-slate-500 font-light tracking-widest text-center mt-3"
             style={{ fontSize: "clamp(1.1rem, 1.8vw, 1.8rem)" }}
           >
             {dateStr}
           </p>
           <p
-            className="text-white/40 tracking-widest"
-            style={{ fontSize: "clamp(0.9rem, 1.4vw, 1.4rem)" }}
+            className="text-slate-400 tracking-widest"
+            style={{ fontSize: "clamp(1.2rem, 1.6vw, 1.6rem)" }}
           >
             {yearStr}
           </p>
@@ -207,26 +207,26 @@ export default function ClockWeatherPanel({ events = [] }: { events?: Event[] })
       </div>
 
       {/* Divider */}
-      <div className="shrink-0 mx-8 h-px bg-white/10" />
+      <div className="shrink-0 mx-8 h-[2px] bg-slate-200" />
 
       {/* Next event countdown */}
       {nextEvent && (
-        <div className="shrink-0 flex flex-col items-center gap-1 px-8 py-4 bg-cyan-500/5 border-b border-white/5">
+        <div className="shrink-0 flex flex-col items-center gap-1 px-8 py-4 bg-teal-50 border-b-2 border-slate-200">
           <p
-            className="text-cyan-400/70 font-semibold tracking-wider uppercase"
-            style={{ fontSize: "clamp(0.8rem, 1.2vw, 1.1rem)" }}
+            className="text-teal-600 font-semibold tracking-wider uppercase"
+            style={{ fontSize: "clamp(1.1rem, 1.4vw, 1.4rem)" }}
           >
             Next Up
           </p>
           <p
-            className="text-white/80 font-semibold text-center leading-snug line-clamp-1"
-            style={{ fontSize: "clamp(1rem, 1.5vw, 1.4rem)" }}
+            className="text-slate-700 font-semibold text-center leading-snug line-clamp-1"
+            style={{ fontSize: "clamp(1.3rem, 1.8vw, 1.8rem)" }}
           >
             {nextEvent.title}
           </p>
           <p
-            className="text-cyan-300/60 font-mono"
-            style={{ fontSize: "clamp(0.9rem, 1.3vw, 1.2rem)" }}
+            className="text-teal-500 font-mono"
+            style={{ fontSize: "clamp(1.1rem, 1.5vw, 1.5rem)" }}
           >
             {nextEvent.label}
           </p>
@@ -244,12 +244,12 @@ export default function ClockWeatherPanel({ events = [] }: { events?: Event[] })
               {wmoIcon(weather.weatherCode)}
             </span>
             <span
-              className="text-white font-black leading-none"
+              className="text-slate-800 font-black leading-none"
               style={{ fontSize: "clamp(3.5rem, 6vw, 7rem)" }}
             >
               {weather.temp}&deg;
               <span
-                className="text-white/40 font-light"
+                className="text-slate-400 font-light"
                 style={{ fontSize: "clamp(1.8rem, 2.5vw, 3rem)" }}
               >
                 F
@@ -262,14 +262,14 @@ export default function ClockWeatherPanel({ events = [] }: { events?: Event[] })
               {weather.description}
             </span>
             <span
-              className="text-white/50 mt-1"
-              style={{ fontSize: "clamp(0.9rem, 1.4vw, 1.4rem)" }}
+              className="text-slate-400 mt-1"
+              style={{ fontSize: "clamp(1.2rem, 1.6vw, 1.6rem)" }}
             >
               Feels {weather.feelsLike}&deg; &nbsp;&middot;&nbsp; H:{weather.high}&deg; L:{weather.low}&deg;
             </span>
           </div>
         ) : (
-          <p className="text-white/40 text-2xl">
+          <p className="text-slate-400 text-2xl">
             {weatherError ? "Weather unavailable" : "Loading weather..."}
           </p>
         )}
@@ -277,7 +277,7 @@ export default function ClockWeatherPanel({ events = [] }: { events?: Event[] })
 
       {/* 5-day forecast — shrink-0 so it is NEVER clipped */}
       {weather && (
-        <div className="shrink-0 flex justify-center gap-2 px-6 py-4 border-t border-white/10 backdrop-blur-sm bg-white/[0.02]">
+        <div className="shrink-0 flex justify-center gap-2 px-6 py-4 border-t-2 border-slate-200 backdrop-blur-sm bg-white/60">
           {weather.forecast.map((day, i) => (
             <ForecastDay
               key={day.label}

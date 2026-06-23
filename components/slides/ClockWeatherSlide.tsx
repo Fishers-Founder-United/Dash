@@ -5,21 +5,21 @@ import { fetchWeather, wmoCategory } from "@/lib/weather";
 import type { WeatherData } from "@/lib/types";
 
 const WEATHER_BG: Record<string, string> = {
-  clear: "from-cyan-900/40 to-sky-900/60",
-  cloudy: "from-slate-800/60 to-slate-900/60",
-  fog: "from-slate-700/60 to-slate-800/60",
-  rain: "from-blue-900/60 to-slate-900/60",
-  snow: "from-sky-800/50 to-slate-900/60",
-  storm: "from-purple-900/60 to-slate-900/80",
+  clear: "from-sky-100/60 to-cyan-50/60",
+  cloudy: "from-slate-200/60 to-slate-100/60",
+  fog: "from-slate-200/60 to-slate-100/60",
+  rain: "from-blue-100/60 to-slate-100/60",
+  snow: "from-sky-100/50 to-slate-100/60",
+  storm: "from-purple-100/60 to-slate-100/80",
 };
 
 const WEATHER_LABEL_COLOR: Record<string, string> = {
-  clear: "text-cyan-300",
-  cloudy: "text-slate-300",
-  fog: "text-slate-400",
-  rain: "text-blue-300",
-  snow: "text-sky-200",
-  storm: "text-purple-300",
+  clear: "text-cyan-700",
+  cloudy: "text-slate-600",
+  fog: "text-slate-500",
+  rain: "text-blue-600",
+  snow: "text-sky-600",
+  storm: "text-purple-600",
 };
 
 function WeatherBar({
@@ -35,11 +35,11 @@ function WeatherBar({
 }) {
   return (
     <div
-      className={`flex flex-col items-center gap-1 px-5 py-3 rounded-xl ${current ? "bg-white/10" : ""}`}
+      className={`flex flex-col items-center gap-1 px-5 py-3 rounded-xl ${current ? "bg-white/50" : ""}`}
     >
-      <span className="text-white/60 text-xl font-medium">{label}</span>
-      <span className="text-white text-3xl font-bold">{high}&deg;</span>
-      <span className="text-white/50 text-2xl">{low}&deg;</span>
+      <span className="text-slate-500 text-xl font-medium">{label}</span>
+      <span className="text-slate-800 text-3xl font-bold">{high}&deg;</span>
+      <span className="text-slate-400 text-2xl">{low}&deg;</span>
     </div>
   );
 }
@@ -84,16 +84,16 @@ export default function ClockWeatherSlide() {
       {/* Top half: Clock */}
       <div className="flex flex-col items-center justify-center flex-1 gap-4">
         <div className="flex items-end gap-6">
-          <span className="text-white font-bold leading-none"
+          <span className="text-slate-800 font-bold leading-none"
             style={{ fontSize: "clamp(5rem, 18vw, 16rem)" }}>
             {timePart}
           </span>
-          <span className="text-white/60 font-light mb-6"
+          <span className="text-slate-400 font-light mb-6"
             style={{ fontSize: "clamp(2rem, 5vw, 5rem)" }}>
             {ampm}
           </span>
         </div>
-        <p className="text-white/70 font-light tracking-widest uppercase"
+        <p className="text-slate-500 font-light tracking-widest uppercase"
           style={{ fontSize: "clamp(1.25rem, 2.5vw, 2.5rem)" }}>
           {dateStr}
         </p>
@@ -106,7 +106,7 @@ export default function ClockWeatherSlide() {
             {/* Current temp */}
             <div className="flex flex-col items-center">
               <span
-                className="text-white font-bold leading-none"
+                className="text-slate-800 font-bold leading-none"
                 style={{ fontSize: "clamp(4rem, 12vw, 11rem)" }}
               >
                 {weather.temp}&deg;F
@@ -115,14 +115,14 @@ export default function ClockWeatherSlide() {
                 style={{ fontSize: "clamp(1.25rem, 2.5vw, 2.5rem)" }}>
                 {weather.description}
               </span>
-              <span className="text-white/50 mt-1"
+              <span className="text-slate-400 mt-1"
                 style={{ fontSize: "clamp(1rem, 1.8vw, 1.8rem)" }}>
                 Feels like {weather.feelsLike}&deg; &nbsp;|&nbsp; H:{weather.high}&deg; L:{weather.low}&deg;
               </span>
             </div>
 
             {/* Divider */}
-            <div className="w-px h-40 bg-white/20" />
+            <div className="w-px h-40 bg-slate-200" />
 
             {/* Forecast */}
             <div className="flex gap-3">
@@ -138,13 +138,13 @@ export default function ClockWeatherSlide() {
             </div>
           </div>
 
-          <p className="text-white/30 text-xl tracking-widest uppercase">
+          <p className="text-slate-300 text-xl tracking-widest uppercase">
             Indiana IoT Lab &nbsp;·&nbsp; Fishers, IN
           </p>
         </div>
       ) : (
         <div className="flex items-center justify-center pb-12">
-          <span className="text-white/30 text-3xl">Loading weather...</span>
+          <span className="text-slate-300 text-3xl">Loading weather...</span>
         </div>
       )}
     </div>

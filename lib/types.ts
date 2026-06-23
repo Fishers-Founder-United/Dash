@@ -71,6 +71,20 @@ export interface NewsItem {
   description?: string;
 }
 
+export interface FeaturedEvent {
+  id: string;
+  title: string;
+  subtitle?: string;
+  date: string;       // YYYY-MM-DD
+  time?: string;      // HH:MM 24h
+  location?: string;
+  description?: string;
+  image?: string;     // path relative to public/
+  poster?: boolean;   // true = image contains all info, show full-bleed with no text overlay
+  url?: string;
+  expires?: string;   // YYYY-MM-DD — auto-hide after this date
+}
+
 export interface DashboardData {
   events: Event[];
   spotlights: Spotlight[];
@@ -78,4 +92,5 @@ export interface DashboardData {
   news: NewsItem[];
   stats: StatsData | null;
   photos: Photo[];
+  featuredEvents: FeaturedEvent[];
 }

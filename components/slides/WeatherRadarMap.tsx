@@ -15,11 +15,11 @@ const IEM_RADAR_URL =
 
 function ForecastStrip({ forecast }: { forecast: ForecastDay[] }) {
   return (
-    <div className="flex justify-around items-center px-6 py-4 bg-black/40 border-t border-white/5">
+    <div className="flex justify-around items-center px-6 py-4 bg-white/80 backdrop-blur-sm border-t-2 border-slate-200">
       {forecast.map((day, i) => (
         <div key={day.label} className="flex flex-col items-center gap-1">
           <span
-            className={`font-semibold ${i === 0 ? "text-cyan-300" : "text-white/50"}`}
+            className={`font-semibold ${i === 0 ? "text-teal-600" : "text-slate-500"}`}
             style={{ fontSize: "clamp(0.9rem, 1.5vw, 1.5rem)" }}
           >
             {day.label}
@@ -28,14 +28,14 @@ function ForecastStrip({ forecast }: { forecast: ForecastDay[] }) {
             {wmoIcon(day.weatherCode)}
           </span>
           <div className="flex gap-2 items-baseline">
-            <span className="text-white font-bold" style={{ fontSize: "clamp(1.2rem, 2vw, 2rem)" }}>
+            <span className="text-slate-800 font-bold" style={{ fontSize: "clamp(1.2rem, 2vw, 2rem)" }}>
               {day.high}&deg;
             </span>
-            <span className="text-white/35" style={{ fontSize: "clamp(1rem, 1.5vw, 1.5rem)" }}>
+            <span className="text-slate-400" style={{ fontSize: "clamp(1rem, 1.5vw, 1.5rem)" }}>
               {day.low}&deg;
             </span>
           </div>
-          <span className="text-white/40 text-center leading-tight" style={{ fontSize: "clamp(0.7rem, 1vw, 1rem)" }}>
+          <span className="text-slate-400 text-center leading-tight" style={{ fontSize: "clamp(1.1rem, 1.4vw, 1.4rem)" }}>
             {wmoDescription(day.weatherCode)}
           </span>
         </div>
@@ -75,8 +75,8 @@ export default function WeatherRadarMap() {
       });
       mapRef.current = map;
 
-      // Dark base map
-      L.tileLayer("https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png").addTo(map);
+      // Light base map
+      L.tileLayer("https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png").addTo(map);
 
       // IEM NEXRAD radar overlay
       const radar = L.tileLayer(IEM_RADAR_URL, { opacity: 0.8, zIndex: 10 });
@@ -86,7 +86,7 @@ export default function WeatherRadarMap() {
       // IoT Lab marker
       L.circleMarker([LAT, LON], {
         radius: 10,
-        fillColor: "#06b6d4",
+        fillColor: "#0d9488",
         color: "#ffffff",
         weight: 2.5,
         fillOpacity: 1,
@@ -102,9 +102,9 @@ export default function WeatherRadarMap() {
       // 20-mile radius ring
       L.circle([LAT, LON], {
         radius: 32186,
-        color: "#06b6d4",
+        color: "#0d9488",
         fillColor: "transparent",
-        weight: 1,
+        weight: 2,
         opacity: 0.3,
         dashArray: "6 4",
       }).addTo(map);
@@ -145,14 +145,14 @@ export default function WeatherRadarMap() {
 
         {/* Updated timestamp */}
         {lastUpdate && (
-          <div className="absolute top-4 right-4 z-[1000] flex items-center gap-2 bg-black/70 backdrop-blur-sm rounded-xl px-4 py-2 border border-white/10">
-            <div className="w-2.5 h-2.5 rounded-full bg-cyan-400 shadow-[0_0_8px_rgba(34,211,238,0.5)]" />
-            <span className="text-white font-mono text-2xl">{lastUpdate}</span>
-            <span className="text-white/50 text-xl">RADAR</span>
+          <div className="absolute top-4 right-4 z-[1000] flex items-center gap-2 bg-white/90 backdrop-blur-sm rounded-xl px-4 py-2 border-2 border-slate-200 shadow-sm">
+            <div className="w-4 h-4 rounded-full bg-teal-500 shadow-[0_0_8px_rgba(20,184,166,0.4)]" />
+            <span className="text-slate-800 font-mono text-2xl">{lastUpdate}</span>
+            <span className="text-slate-400 text-xl">RADAR</span>
           </div>
         )}
 
-        <div className="absolute bottom-4 left-4 z-[1000] text-white/30 text-xl bg-black/50 rounded-lg px-3 py-1">
+        <div className="absolute bottom-4 left-4 z-[1000] text-slate-400 bg-white/70 rounded-lg px-3 py-1 border-2 border-slate-200" style={{ fontSize: "clamp(1.3rem, 1.6vw, 1.6rem)" }}>
           ~50 mi view · NEXRAD
         </div>
       </div>

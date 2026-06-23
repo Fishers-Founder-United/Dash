@@ -27,7 +27,7 @@ export default function PhotoSlide({ photos }: PhotoSlideProps) {
   if (photos.length === 0) {
     return (
       <div className="flex flex-col h-full items-center justify-center">
-        <p className="text-white/40 text-2xl">No photos yet</p>
+        <p className="text-slate-400 text-2xl">No photos yet</p>
       </div>
     );
   }
@@ -62,10 +62,10 @@ export default function PhotoSlide({ photos }: PhotoSlideProps) {
             {photos.map((_, i) => (
               <div
                 key={i}
-                className={`w-3 h-3 rounded-full transition-all ${
+                className={`w-5 h-5 rounded-full transition-all ${
                   i === photoIdx % photos.length
-                    ? "bg-cyan-400 scale-125"
-                    : "bg-white/30"
+                    ? "bg-teal-500 scale-125"
+                    : "bg-white/50"
                 }`}
               />
             ))}
@@ -76,8 +76,8 @@ export default function PhotoSlide({ photos }: PhotoSlideProps) {
       {/* Header overlay */}
       <div className="absolute top-0 inset-x-0 px-12 py-8 bg-gradient-to-b from-black/60 to-transparent">
         <h2
-          className="text-cyan-400 font-black tracking-widest uppercase"
-          style={{ fontSize: "clamp(1.2rem, 2vw, 2rem)" }}
+          className="text-teal-400 font-black tracking-widest uppercase"
+          style={{ fontSize: "clamp(1.8rem, 2.5vw, 2.5rem)" }}
         >
           Life at the Lab
         </h2>

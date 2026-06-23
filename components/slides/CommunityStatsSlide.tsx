@@ -40,15 +40,15 @@ function AnimatedNumber({ value, suffix = "" }: { value: number; suffix?: string
 
 function StatCard({ label, value, suffix = "" }: { label: string; value: number; suffix?: string }) {
   return (
-    <div className="flex flex-col items-center gap-3 bg-white/[0.04] border border-white/8 rounded-2xl px-10 py-8 flex-1">
+    <div className="flex flex-col items-center gap-3 bg-white border-2 border-slate-200 rounded-2xl px-10 py-8 flex-1 shadow-sm">
       <span
-        className="text-cyan-400 font-black tabular-nums"
+        className="text-teal-600 font-black tabular-nums"
         style={{ fontSize: "clamp(3rem, 6vw, 6rem)" }}
       >
         <AnimatedNumber value={value} suffix={suffix} />
       </span>
       <span
-        className="text-white/60 font-semibold tracking-widest uppercase text-center"
+        className="text-slate-500 font-semibold tracking-widest uppercase text-center"
         style={{ fontSize: "clamp(1rem, 1.6vw, 1.6rem)" }}
       >
         {label}
@@ -65,20 +65,20 @@ export default function CommunityStatsSlide({ stats }: CommunityStatsSlideProps)
       {/* Header */}
       <div className="shrink-0">
         <h2
-          className="text-cyan-400 font-black tracking-widest uppercase"
+          className="text-teal-600 font-black tracking-widest uppercase"
           style={{ fontSize: "clamp(1.5rem, 3vw, 3rem)" }}
         >
           By The Numbers
         </h2>
         <p
-          className="text-white/45 mt-1"
+          className="text-slate-400 mt-1"
           style={{ fontSize: "clamp(1rem, 1.6vw, 1.6rem)" }}
         >
           Indiana IoT Lab &middot; est. {stats.yearFounded}
         </p>
       </div>
 
-      <div className="h-px bg-cyan-500/20 shrink-0" />
+      <div className="h-[2px] bg-teal-200 shrink-0" />
 
       {/* Stats grid */}
       <div className="flex-1 flex flex-col justify-center gap-8">

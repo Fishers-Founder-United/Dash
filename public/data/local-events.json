@@ -88,6 +88,17 @@
     "tags": ["showcase", "collaboration", "networking", "IoT", "Wednesday"]
   },
   {
+    "id": "local-cookout-2026",
+    "title": "Indiana IoT Lab Member Cookout — Featuring Pierce Aerospace",
+    "date": "2026-06-25",
+    "time": "12:00",
+    "location": "Indiana IoT Lab, 9059 Technology Lane, Fishers IN",
+    "description": "Fire up the grill and the rotors. Join us for the IoT Lab Member Cookout featuring Pierce Aerospace. Food, drones, and good company — Wednesday at noon.",
+    "url": "https://indianaiot.com",
+    "source": "local",
+    "tags": ["cookout", "members", "Pierce Aerospace", "drones", "social"]
+  },
+  {
     "id": "demo-011",
     "title": "Random.pitch() — Startup Improv Night",
     "date": "2026-06-24",
@@ -97,6 +108,17 @@
     "url": "https://indianaiot.com",
     "source": "demo",
     "tags": ["improv", "pitch", "startup", "fun", "IoT", "Wednesday"]
+  },
+  {
+    "id": "local-laser-2026",
+    "title": "Laser Maintenance w/ Keith Russell",
+    "date": "2026-06-30",
+    "time": "14:00",
+    "location": "Indiana IoT Lab, 9059 Technology Lane, Fishers IN",
+    "description": "Hands-on laser maintenance session with Keith Russell. Keep the laser happy. Or else.",
+    "url": "https://indianaiot.com",
+    "source": "local",
+    "tags": ["maker", "laser", "maintenance", "workshop"]
   },
   {
     "id": "mutiny19-001",

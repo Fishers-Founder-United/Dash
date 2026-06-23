@@ -1,0 +1,28 @@
+[
+  {
+    "id": "featured-cookout-2026",
+    "title": "Indiana IoT Lab Member Cookout",
+    "subtitle": "Featuring Pierce Aerospace",
+    "date": "2026-06-25",
+    "time": "12:00",
+    "location": "Indiana IoT Lab, 9059 Technology Lane, Fishers IN",
+    "description": "Fire up the grill and the rotors. Join us for burgers, drones, and good company with Pierce Aerospace.",
+    "image": "/images/featured/cookout-2026.png",
+    "poster": true,
+    "url": "https://indianaiot.com",
+    "expires": "2026-06-26"
+  },
+  {
+    "id": "featured-laser-2026",
+    "title": "Laser Maintenance w/ Keith Russell",
+    "subtitle": "Keep the laser happy. Or else.",
+    "date": "2026-06-30",
+    "time": "14:00",
+    "location": "Indiana IoT Lab, 9059 Technology Lane, Fishers IN",
+    "description": "Hands-on laser maintenance session with Keith Russell. Learn to keep the lab's laser cutter in peak condition.",
+    "image": "/images/featured/laser-maintenance-2026.png",
+    "poster": true,
+    "url": "https://indianaiot.com",
+    "expires": "2026-07-01"
+  }
+]

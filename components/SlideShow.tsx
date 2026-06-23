@@ -13,12 +13,14 @@ import NewsSlide from "./slides/NewsSlide";
 import FunFactSlide from "./slides/FunFactSlide";
 import CommunityStatsSlide from "./slides/CommunityStatsSlide";
 import PhotoSlide from "./slides/PhotoSlide";
+import FeaturedEventSlide from "./slides/FeaturedEventSlide";
 import type { DashboardData } from "@/lib/types";
 
 // Right panel slides only (clock/weather lives permanently on the left)
-const SLIDES = ["events", "news", "radar", "spotlight", "stats", "photos", "funfact", "announcements"] as const;
+const SLIDES = ["featured", "events", "news", "radar", "spotlight", "stats", "photos", "funfact", "announcements"] as const;
 type SlideId = (typeof SLIDES)[number];
 const DURATIONS: Record<SlideId, number> = {
+  featured: 20,
   events: 40,
   news: 40,
   radar: 25,
@@ -45,12 +47,18 @@ function RightPanel({
   slide,
   data,
   spotlightIndex,
+  featuredIndex,
 }: {
   slide: SlideId;
   data: DashboardData;
   spotlightIndex: number;
+  featuredIndex: number;
 }) {
   switch (slide) {
+    case "featured":
+      return data.featuredEvents.length > 0
+        ? <FeaturedEventSlide event={data.featuredEvents[featuredIndex % data.featuredEvents.length]} />
+        : null;
     case "events":
       return <EventsSlide events={data.events} />;
     case "radar":
@@ -78,6 +86,7 @@ export default function SlideShow({
   spotlightIndex,
 }: SlideShowProps) {
   const [slideIdx, setSlideIdx] = useState(0);
+  const [featuredIndex, setFeaturedIndex] = useState(0);
 
   // Anti-burn-in: apply a small random pixel shift once per minute instead of
   // a continuous CSS animation with will-change (which forces GPU compositing
@@ -103,6 +112,8 @@ export default function SlideShow({
   const activeSlides = useMemo(() => {
     return SLIDES.filter((id) => {
       switch (id) {
+        case "featured":
+          return data.featuredEvents.length > 0;
         case "events":
           return data.events.length > 0;
         case "spotlight":
@@ -120,14 +131,18 @@ export default function SlideShow({
           return true; // always show
       }
     });
-  }, [data.events.length, data.spotlights.length, data.announcements.length, data.news.length, data.stats, data.photos.length]);
+  }, [data.featuredEvents.length, data.events.length, data.spotlights.length, data.announcements.length, data.news.length, data.stats, data.photos.length]);
 
   const safeIdx = activeSlides.length > 0 ? slideIdx % activeSlides.length : 0;
   const currentSlide = activeSlides[safeIdx] ?? "radar";
 
   const advance = useCallback(() => {
+    // Cycle to next featured event each time the featured slide rotates out
+    if (currentSlide === "featured" && data.featuredEvents.length > 1) {
+      setFeaturedIndex((i) => (i + 1) % data.featuredEvents.length);
+    }
     setSlideIdx((i) => (activeSlides.length > 0 ? (i + 1) % activeSlides.length : 0));
-  }, [activeSlides.length]);
+  }, [activeSlides.length, currentSlide, data.featuredEvents.length]);
 
   // Reset index when active slides change
   useEffect(() => {
@@ -140,20 +155,18 @@ export default function SlideShow({
   }, [safeIdx, advance, currentSlide]);
 
   return (
-    <div ref={rootRef} className="flex flex-col h-screen bg-[#060d1a] overflow-hidden select-none">
+    <div ref={rootRef} className="flex flex-col h-screen bg-[#f0f3f6] overflow-hidden select-none">
       {/* Branding bar */}
-      <div className="shrink-0 flex items-center justify-between px-14 py-6 border-b border-white/5 bg-black/20">
+      <div className="shrink-0 flex items-center justify-between px-14 py-6 border-b-2 border-slate-200 bg-white/80 backdrop-blur-sm">
         <div className="flex items-center gap-6">
-          <div className="w-5 h-5 rounded-full bg-cyan-400 shadow-[0_0_16px_rgba(34,211,238,0.6)]" />
+          <img
+            src={`${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/images/logos/indiana-iot-lab.png`}
+            alt="Indiana IoT Lab — Fishers"
+            className="h-20 shrink-0"
+          />
           <span
-            className="text-white font-bold tracking-widest uppercase"
-            style={{ fontSize: "clamp(1.6rem, 2.2vw, 2.4rem)" }}
-          >
-            Indiana IoT Lab
-          </span>
-          <span
-            className="text-cyan-400/40 tracking-wider italic"
-            style={{ fontSize: "clamp(1.2rem, 1.6vw, 1.8rem)" }}
+            className="text-teal-500/60 tracking-wider italic"
+            style={{ fontSize: "clamp(1.6rem, 2vw, 2.4rem)" }}
           >
             A Catalyst For Innovation
           </span>
@@ -166,8 +179,8 @@ export default function SlideShow({
             hidden={isKiosk}
           />
           <span
-            className="text-white/40 tracking-widest uppercase"
-            style={{ fontSize: "clamp(1.1rem, 1.5vw, 1.6rem)" }}
+            className="text-slate-400 tracking-widest uppercase"
+            style={{ fontSize: "clamp(1.4rem, 1.8vw, 2rem)" }}
           >
             Fishers, IN
           </span>
@@ -184,10 +197,10 @@ export default function SlideShow({
         {/* Right: rotating content (62% width) */}
         <div className="flex-1 relative overflow-hidden">
           {/* Slide progress bar */}
-          <div className="absolute top-0 left-0 right-0 z-10 h-[4px] bg-white/5">
+          <div className="absolute top-0 left-0 right-0 z-10 h-[8px] bg-slate-200">
             <motion.div
               key={`progress-${safeIdx}`}
-              className="h-full bg-cyan-400/60 origin-left"
+              className="h-full bg-teal-400/60 origin-left"
               initial={{ scaleX: 0 }}
               animate={{ scaleX: 1 }}
               transition={{
@@ -211,6 +224,7 @@ export default function SlideShow({
                 slide={currentSlide}
                 data={data}
                 spotlightIndex={spotlightIndex}
+                featuredIndex={featuredIndex}
               />
             </motion.div>
           </AnimatePresence>
