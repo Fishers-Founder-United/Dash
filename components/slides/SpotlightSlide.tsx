@@ -17,11 +17,11 @@ export default function SpotlightSlide({
       <div className="flex flex-col h-full items-center justify-center gap-6 px-16">
         <p
           className="text-slate-400 text-center"
-          style={{ fontSize: "clamp(1.5rem, 2.5vw, 2.5rem)" }}
+          style={{ fontSize: "clamp(2rem, 3vw, 4rem)" }}
         >
           No spotlights yet
         </p>
-        <p className="text-slate-300 text-2xl text-center max-w-xl">
+        <p className="text-slate-300 text-center max-w-xl" style={{ fontSize: "clamp(1.8rem, 2.2vw, 2.5rem)" }}>
           Know a maker or startup worth featuring? Open a PR and add them to
           spotlights.json!
         </p>
@@ -37,12 +37,12 @@ export default function SpotlightSlide({
       <div className="mb-6 shrink-0">
         <h2
           className="text-teal-600 font-black tracking-widest uppercase"
-          style={{ fontSize: "clamp(1.5rem, 3vw, 3rem)" }}
+          style={{ fontSize: "clamp(3rem, 4vw, 5rem)" }}
         >
           Community Spotlight
         </h2>
         {spotlights.length > 1 && (
-          <p className="text-slate-400 text-2xl mt-1">
+          <p className="text-slate-400 mt-1" style={{ fontSize: "clamp(1.8rem, 2.2vw, 2.5rem)" }}>
             {(index % spotlights.length) + 1} of {spotlights.length}
           </p>
         )}
@@ -58,7 +58,7 @@ export default function SpotlightSlide({
           <div className="flex items-center gap-8">
             {/* Logo */}
             {spotlight.logo && (
-              <div className="shrink-0 w-36 h-36 rounded-2xl overflow-hidden bg-slate-100 border-2 border-slate-200 flex items-center justify-center">
+              <div className="shrink-0 w-40 h-40 rounded-2xl overflow-hidden bg-slate-100 border-2 border-slate-200 flex items-center justify-center">
                 <img
                   src={spotlight.logo}
                   alt={`${spotlight.name} logo`}
@@ -72,7 +72,7 @@ export default function SpotlightSlide({
               {spotlight.category && (
                 <p
                   className="text-teal-500 font-semibold tracking-widest uppercase mb-2"
-                  style={{ fontSize: "clamp(1.2rem, 1.6vw, 1.6rem)" }}
+                  style={{ fontSize: "clamp(1.8rem, 2vw, 2.5rem)" }}
                 >
                   {spotlight.category}
                 </p>
@@ -82,7 +82,7 @@ export default function SpotlightSlide({
               <div className="flex items-center gap-5">
                 <h3
                   className="text-slate-800 font-black leading-tight"
-                  style={{ fontSize: "clamp(2.2rem, 5vw, 5rem)" }}
+                  style={{ fontSize: "clamp(3rem, 5vw, 6rem)" }}
                 >
                   {spotlight.name}
                 </h3>
@@ -98,7 +98,7 @@ export default function SpotlightSlide({
           {/* Tagline */}
           <p
             className="text-teal-600 font-semibold"
-            style={{ fontSize: "clamp(1.3rem, 2.2vw, 2.2rem)" }}
+            style={{ fontSize: "clamp(2rem, 2.5vw, 3rem)" }}
           >
             {spotlight.tagline}
           </p>
@@ -110,7 +110,7 @@ export default function SpotlightSlide({
                 <span
                   key={tag}
                   className="bg-teal-50 text-teal-600 border-2 border-teal-200 rounded-full px-4 py-1 font-medium uppercase tracking-wider"
-                  style={{ fontSize: "clamp(1.2rem, 1.6vw, 1.6rem)" }}
+                  style={{ fontSize: "clamp(1.5rem, 1.8vw, 2rem)" }}
                 >
                   {tag}
                 </span>
@@ -121,7 +121,7 @@ export default function SpotlightSlide({
           {/* Description */}
           <p
             className="text-slate-600 leading-relaxed"
-            style={{ fontSize: "clamp(1.15rem, 1.8vw, 1.8rem)" }}
+            style={{ fontSize: "clamp(1.8rem, 2.2vw, 2.5rem)" }}
           >
             {spotlight.description}
           </p>
@@ -132,7 +132,7 @@ export default function SpotlightSlide({
               <div className="w-12 h-px bg-teal-300" />
               <p
                 className="text-teal-500 font-mono"
-                style={{ fontSize: "clamp(1.3rem, 1.6vw, 1.6rem)" }}
+                style={{ fontSize: "clamp(1.8rem, 2vw, 2.5rem)" }}
               >
                 {spotlight.website.replace(/^https?:\/\//, "")}
               </p>
@@ -142,11 +142,11 @@ export default function SpotlightSlide({
 
         {/* Right: QR code panel */}
         {spotlight.website && (
-          <div className="shrink-0 flex flex-col items-center justify-center gap-5 w-80 bg-teal-50 border-2 border-teal-200 rounded-2xl p-8">
+          <div className="shrink-0 flex flex-col items-center justify-center gap-5 w-96 bg-teal-50 border-2 border-teal-200 rounded-2xl p-8">
             <div className="p-3 bg-white rounded-2xl">
               <QRCodeSVG
                 value={spotlight.website}
-                size={240}
+                size={280}
                 bgColor="#ffffff"
                 fgColor="#000000"
                 level="M"
@@ -154,7 +154,7 @@ export default function SpotlightSlide({
             </div>
             <p
               className="text-teal-600 font-bold text-center"
-              style={{ fontSize: "clamp(1.3rem, 1.6vw, 1.6rem)" }}
+              style={{ fontSize: "clamp(1.8rem, 2vw, 2.5rem)" }}
             >
               Visit {spotlight.name}
             </p>

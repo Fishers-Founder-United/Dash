@@ -43,13 +43,13 @@ function StatCard({ label, value, suffix = "" }: { label: string; value: number;
     <div className="flex flex-col items-center gap-3 bg-white border-2 border-slate-200 rounded-2xl px-10 py-8 flex-1 shadow-sm">
       <span
         className="text-teal-600 font-black tabular-nums"
-        style={{ fontSize: "clamp(3rem, 6vw, 6rem)" }}
+        style={{ fontSize: "clamp(4rem, 7vw, 8rem)" }}
       >
         <AnimatedNumber value={value} suffix={suffix} />
       </span>
       <span
         className="text-slate-500 font-semibold tracking-widest uppercase text-center"
-        style={{ fontSize: "clamp(1rem, 1.6vw, 1.6rem)" }}
+        style={{ fontSize: "clamp(1.5rem, 1.8vw, 2rem)" }}
       >
         {label}
       </span>
@@ -66,13 +66,13 @@ export default function CommunityStatsSlide({ stats }: CommunityStatsSlideProps)
       <div className="shrink-0">
         <h2
           className="text-teal-600 font-black tracking-widest uppercase"
-          style={{ fontSize: "clamp(1.5rem, 3vw, 3rem)" }}
+          style={{ fontSize: "clamp(3rem, 4vw, 5rem)" }}
         >
           By The Numbers
         </h2>
         <p
           className="text-slate-400 mt-1"
-          style={{ fontSize: "clamp(1rem, 1.6vw, 1.6rem)" }}
+          style={{ fontSize: "clamp(1.8rem, 2vw, 2.5rem)" }}
         >
           Indiana IoT Lab &middot; est. {stats.yearFounded}
         </p>

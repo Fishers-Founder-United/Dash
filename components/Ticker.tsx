@@ -49,8 +49,8 @@ export default function Ticker({ events, announcements }: TickerProps) {
   return (
     <div className="shrink-0 bg-gradient-to-r from-teal-100 via-teal-50 to-teal-100 border-t-2 border-teal-200 overflow-hidden backdrop-blur-sm">
       <div
-        className="ticker-track whitespace-nowrap text-teal-700 py-5 px-0"
-        style={{ fontSize: "clamp(1.6rem, 2.8vw, 2.8rem)" }}
+        className="ticker-track whitespace-nowrap text-teal-700 py-6 px-0"
+        style={{ fontSize: "clamp(1.6rem, 2.8vw, 3.5rem)" }}
         aria-live="off"
       >
         <span>{text}{sep}</span>

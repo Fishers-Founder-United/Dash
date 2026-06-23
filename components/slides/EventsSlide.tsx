@@ -59,7 +59,7 @@ function EventRow({ event, index }: EventRowProps) {
       {/* Index number */}
       <span
         className="text-teal-500 font-bold shrink-0 mt-1 tabular-nums"
-        style={{ fontSize: "clamp(1.2rem, 2vw, 2rem)" }}
+        style={{ fontSize: "clamp(1.8rem, 2.5vw, 3rem)" }}
       >
         {String(index + 1).padStart(2, "0")}
       </span>
@@ -69,27 +69,27 @@ function EventRow({ event, index }: EventRowProps) {
         <div className="flex items-start justify-between gap-4">
           <h3
             className="text-slate-800 font-semibold leading-tight"
-            style={{ fontSize: "clamp(1.3rem, 2.2vw, 2.2rem)" }}
+            style={{ fontSize: "clamp(2rem, 2.8vw, 3.5rem)" }}
           >
             {event.title}
           </h3>
           <span
             className={`shrink-0 border-2 rounded-full px-3 py-1 font-bold tracking-wide whitespace-nowrap ${sourceColor}`}
-            style={{ fontSize: "clamp(1rem, 1.4vw, 1.4rem)" }}
+            style={{ fontSize: "clamp(1.2rem, 1.6vw, 1.8rem)" }}
           >
             {sourceLabel}
           </span>
         </div>
         <p
           className="text-teal-600 font-medium mt-1"
-          style={{ fontSize: "clamp(1.1rem, 1.8vw, 1.8rem)" }}
+          style={{ fontSize: "clamp(1.8rem, 2.2vw, 2.5rem)" }}
         >
           {event.recurrence ?? formatDate(event.date, event.time)}
         </p>
         {event.location && (
           <p
             className="text-slate-400 mt-1 truncate"
-            style={{ fontSize: "clamp(1rem, 1.5vw, 1.5rem)" }}
+            style={{ fontSize: "clamp(1.6rem, 1.9vw, 2.2rem)" }}
           >
             {event.location}
           </p>
@@ -105,7 +105,7 @@ interface EventsSlideProps {
 
 export default function EventsSlide({ events }: EventsSlideProps) {
   const upcoming = events.slice(0, 12);
-  const listRef = useAutoScroll(upcoming.length, 36_000);
+  const listRef = useAutoScroll(upcoming.length, 36_000, 3);
 
   return (
     <div className="flex flex-col h-full px-12 py-10 gap-6">
@@ -114,19 +114,19 @@ export default function EventsSlide({ events }: EventsSlideProps) {
         <div>
           <h2
             className="text-teal-600 font-black tracking-widest uppercase"
-            style={{ fontSize: "clamp(1.5rem, 3vw, 3rem)" }}
+            style={{ fontSize: "clamp(3rem, 4vw, 5rem)" }}
           >
             Upcoming Events
           </h2>
-          <p className="text-slate-400 text-2xl mt-1">
+          <p className="text-slate-400 mt-1" style={{ fontSize: "clamp(1.8rem, 2.2vw, 2.5rem)" }}>
             Indiana IoT Lab &middot; Fishers, IN
           </p>
         </div>
         <div className="text-right">
-          <p className="text-slate-400 text-2xl">
+          <p className="text-slate-400" style={{ fontSize: "clamp(1.8rem, 2.2vw, 2.5rem)" }}>
             Next {upcoming.length} events
           </p>
-          <p className="text-slate-300 text-xl mt-1">indianaiot.com</p>
+          <p className="text-slate-300 mt-1" style={{ fontSize: "clamp(1.5rem, 1.8vw, 2rem)" }}>indianaiot.com</p>
         </div>
       </div>
 
@@ -148,11 +148,11 @@ export default function EventsSlide({ events }: EventsSlideProps) {
         <div className="flex flex-col items-center justify-center flex-1 gap-4">
           <p
             className="text-slate-400"
-            style={{ fontSize: "clamp(1.5rem, 2.5vw, 2.5rem)" }}
+            style={{ fontSize: "clamp(2rem, 3vw, 4rem)" }}
           >
             No upcoming events
           </p>
-          <p className="text-slate-300 text-2xl text-center max-w-xl">
+          <p className="text-slate-300 text-center max-w-xl" style={{ fontSize: "clamp(1.8rem, 2.2vw, 2.5rem)" }}>
             Submit an event via GitHub pull request to appear here.
           </p>
         </div>

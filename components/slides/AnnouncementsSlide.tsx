@@ -19,7 +19,7 @@ export default function AnnouncementsSlide({
       <div className="flex items-center justify-between">
         <h2
           className="text-teal-600 font-black tracking-widest uppercase"
-          style={{ fontSize: "clamp(1.5rem, 3vw, 3rem)" }}
+          style={{ fontSize: "clamp(3rem, 4vw, 5rem)" }}
         >
           Community Board
         </h2>
@@ -38,14 +38,14 @@ export default function AnnouncementsSlide({
               >
                 <p
                   className="text-slate-700 leading-relaxed"
-                  style={{ fontSize: "clamp(1.25rem, 2vw, 2rem)" }}
+                  style={{ fontSize: "clamp(2rem, 2.5vw, 3rem)" }}
                 >
                   {a.text}
                 </p>
                 {a.url && (
                   <p
                     className="text-teal-500 font-mono mt-3"
-                    style={{ fontSize: "clamp(1.2rem, 1.6vw, 1.6rem)" }}
+                    style={{ fontSize: "clamp(1.8rem, 2vw, 2.5rem)" }}
                   >
                     {a.url.replace(/^https?:\/\//, "")}
                   </p>
@@ -56,7 +56,7 @@ export default function AnnouncementsSlide({
             <div className="flex items-center justify-center flex-1">
               <p
                 className="text-slate-400"
-                style={{ fontSize: "clamp(1.5rem, 2.5vw, 2.5rem)" }}
+                style={{ fontSize: "clamp(2rem, 3vw, 4rem)" }}
               >
                 No announcements
               </p>
@@ -65,25 +65,25 @@ export default function AnnouncementsSlide({
         </div>
 
         {/* Contribute panel — enlarged for TV readability */}
-        <div className="shrink-0 w-96 flex flex-col gap-6 items-center bg-teal-50 border-2 border-teal-200 rounded-2xl p-10">
+        <div className="shrink-0 w-[28rem] flex flex-col gap-6 items-center bg-teal-50 border-2 border-teal-200 rounded-2xl p-10">
           {/* QR code linking to indianaiot.com */}
           <div className="p-4 bg-white rounded-2xl">
             <QRCodeSVG
               value={CONTRIBUTE_URL}
-              size={280}
+              size={320}
               bgColor="#ffffff"
               fgColor="#000000"
               level="M"
             />
           </div>
           <div className="text-center">
-            <p className="text-teal-600 font-bold" style={{ fontSize: "clamp(1.5rem, 2vw, 2rem)" }}>
+            <p className="text-teal-600 font-bold" style={{ fontSize: "clamp(1.8rem, 2.2vw, 2.5rem)" }}>
               Scan to Learn More
             </p>
-            <p className="text-slate-500 mt-2 font-mono break-all" style={{ fontSize: "clamp(1.3rem, 1.6vw, 1.6rem)" }}>
+            <p className="text-slate-500 mt-2 font-mono break-all" style={{ fontSize: "clamp(1.5rem, 1.8vw, 2rem)" }}>
               {REPO_URL}
             </p>
-            <p className="text-slate-400 mt-3 leading-snug" style={{ fontSize: "clamp(1.3rem, 1.6vw, 1.6rem)" }}>
+            <p className="text-slate-400 mt-3 leading-snug" style={{ fontSize: "clamp(1.5rem, 1.8vw, 2rem)" }}>
               9059 Technology Lane<br />Fishers, IN 46038
             </p>
           </div>

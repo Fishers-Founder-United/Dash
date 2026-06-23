@@ -162,11 +162,11 @@ export default function SlideShow({
           <img
             src={`${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/images/logos/indiana-iot-lab.png`}
             alt="Indiana IoT Lab — Fishers"
-            className="h-20 shrink-0"
+            className="h-24 shrink-0"
           />
           <span
             className="text-teal-500/60 tracking-wider italic"
-            style={{ fontSize: "clamp(1.6rem, 2vw, 2.4rem)" }}
+            style={{ fontSize: "clamp(1.6rem, 2vw, 3rem)" }}
           >
             A Catalyst For Innovation
           </span>
@@ -180,7 +180,7 @@ export default function SlideShow({
           />
           <span
             className="text-slate-400 tracking-widest uppercase"
-            style={{ fontSize: "clamp(1.4rem, 1.8vw, 2rem)" }}
+            style={{ fontSize: "clamp(1.4rem, 1.8vw, 2.5rem)" }}
           >
             Fishers, IN
           </span>
@@ -197,7 +197,7 @@ export default function SlideShow({
         {/* Right: rotating content (62% width) */}
         <div className="flex-1 relative overflow-hidden">
           {/* Slide progress bar */}
-          <div className="absolute top-0 left-0 right-0 z-10 h-[8px] bg-slate-200">
+          <div className="absolute top-0 left-0 right-0 z-10 h-[10px] bg-slate-200">
             <motion.div
               key={`progress-${safeIdx}`}
               className="h-full bg-teal-400/60 origin-left"

@@ -36,7 +36,7 @@ function NewsRow({ item, index }: NewsRowProps) {
       {/* Index */}
       <span
         className="text-teal-400 font-bold shrink-0 mt-1 tabular-nums"
-        style={{ fontSize: "clamp(1.2rem, 2vw, 2rem)" }}
+        style={{ fontSize: "clamp(1.8rem, 2.5vw, 3rem)" }}
       >
         {String(index + 1).padStart(2, "0")}
       </span>
@@ -46,13 +46,13 @@ function NewsRow({ item, index }: NewsRowProps) {
         <div className="flex items-start justify-between gap-4">
           <p
             className="text-slate-800 font-semibold leading-snug"
-            style={{ fontSize: "clamp(1.3rem, 2.2vw, 2.2rem)" }}
+            style={{ fontSize: "clamp(2rem, 2.8vw, 3rem)" }}
           >
             {item.title}
           </p>
           <span
             className={`shrink-0 border-2 rounded-full px-3 py-1 font-bold tracking-wider ${color}`}
-            style={{ fontSize: "clamp(1rem, 1.4vw, 1.4rem)" }}
+            style={{ fontSize: "clamp(1.2rem, 1.6vw, 1.8rem)" }}
           >
             {item.sourceLabel}
           </span>
@@ -60,13 +60,13 @@ function NewsRow({ item, index }: NewsRowProps) {
         {item.description && (
           <p
             className="text-slate-400 mt-1 line-clamp-2 leading-snug"
-            style={{ fontSize: "clamp(1rem, 1.5vw, 1.5rem)" }}
+            style={{ fontSize: "clamp(1.8rem, 2vw, 2.2rem)" }}
           >
             {item.description}
           </p>
         )}
         {age && (
-          <p className="text-slate-400 mt-1" style={{ fontSize: "clamp(1.3rem, 1.8vw, 1.8rem)" }}>{age}</p>
+          <p className="text-slate-400 mt-1" style={{ fontSize: "clamp(1.8rem, 2vw, 2.2rem)" }}>{age}</p>
         )}
       </div>
     </div>
@@ -78,7 +78,7 @@ interface NewsSlideProps {
 }
 
 export default function NewsSlide({ news }: NewsSlideProps) {
-  const listRef = useAutoScroll(news.length, 36_000);
+  const listRef = useAutoScroll(news.length, 36_000, 3);
 
   return (
     <div className="flex flex-col h-full px-12 py-10 gap-6">
@@ -87,16 +87,16 @@ export default function NewsSlide({ news }: NewsSlideProps) {
         <div>
           <h2
             className="text-teal-600 font-black tracking-widest uppercase"
-            style={{ fontSize: "clamp(1.5rem, 3vw, 3rem)" }}
+            style={{ fontSize: "clamp(3rem, 4vw, 5rem)" }}
           >
             Indiana Business News
           </h2>
-          <p className="text-slate-400 text-2xl mt-1">
+          <p className="text-slate-400 mt-1" style={{ fontSize: "clamp(1.8rem, 2.2vw, 2.5rem)" }}>
             Inside Indiana Business &middot; updated hourly
           </p>
         </div>
         <div className="text-right">
-          <p className="text-slate-400 text-2xl">{news.length} stories</p>
+          <p className="text-slate-400" style={{ fontSize: "clamp(1.8rem, 2.2vw, 2.5rem)" }}>{news.length} stories</p>
         </div>
       </div>
 
@@ -114,7 +114,7 @@ export default function NewsSlide({ news }: NewsSlideProps) {
         </div>
       ) : (
         <div className="flex items-center justify-center flex-1">
-          <p className="text-slate-400" style={{ fontSize: "clamp(1.5rem, 2.5vw, 2.5rem)" }}>
+          <p className="text-slate-400" style={{ fontSize: "clamp(2rem, 3vw, 4rem)" }}>
             Loading news...
           </p>
         </div>

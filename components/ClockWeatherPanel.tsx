@@ -31,7 +31,7 @@ function ForecastDay({
     <div className={`flex flex-col items-center gap-1 py-3 px-4 rounded-xl transition-all ${active ? "bg-white/50 ring-2 ring-slate-300" : ""}`}>
       <span
         className="text-slate-500 font-medium"
-        style={{ fontSize: "clamp(1.1rem, 1.8vw, 1.6rem)" }}
+        style={{ fontSize: "clamp(1.1rem, 1.8vw, 2rem)" }}
       >
         {label}
       </span>
@@ -39,12 +39,12 @@ function ForecastDay({
         {wmoIcon(weatherCode)}
       </span>
       <div className="flex items-baseline gap-1">
-        <span className="text-slate-400 font-medium" style={{ fontSize: "clamp(1.1rem, 1.4vw, 1.4rem)" }}>H</span>
-        <span className="text-slate-800 font-bold" style={{ fontSize: "clamp(1.2rem, 1.8vw, 2rem)" }}>{high}&deg;</span>
+        <span className="text-slate-400 font-medium" style={{ fontSize: "clamp(1.1rem, 1.4vw, 1.6rem)" }}>H</span>
+        <span className="text-slate-800 font-bold" style={{ fontSize: "clamp(1.2rem, 1.8vw, 2.5rem)" }}>{high}&deg;</span>
       </div>
       <div className="flex items-baseline gap-1">
-        <span className="text-slate-400 font-medium" style={{ fontSize: "clamp(1.1rem, 1.4vw, 1.4rem)" }}>L</span>
-        <span className="text-slate-500" style={{ fontSize: "clamp(1rem, 1.5vw, 1.6rem)" }}>{low}&deg;</span>
+        <span className="text-slate-400 font-medium" style={{ fontSize: "clamp(1.1rem, 1.4vw, 1.6rem)" }}>L</span>
+        <span className="text-slate-500" style={{ fontSize: "clamp(1rem, 1.5vw, 2rem)" }}>{low}&deg;</span>
       </div>
     </div>
   );
@@ -160,7 +160,7 @@ export default function ClockWeatherPanel({ events = [] }: { events?: Event[] })
           {/* Greeting */}
           <p
             className="text-slate-400 font-light tracking-widest mb-2"
-            style={{ fontSize: "clamp(1.1rem, 1.8vw, 1.8rem)" }}
+            style={{ fontSize: "clamp(1.1rem, 1.8vw, 2.5rem)" }}
           >
             {greeting}
           </p>
@@ -174,7 +174,7 @@ export default function ClockWeatherPanel({ events = [] }: { events?: Event[] })
             </span>
             <span
               className="text-slate-400 font-light ml-3 mt-3"
-              style={{ fontSize: "clamp(1.8rem, 2.5vw, 3rem)" }}
+              style={{ fontSize: "clamp(1.8rem, 2.5vw, 3.5rem)" }}
             >
               {ampm}
             </span>
@@ -184,7 +184,7 @@ export default function ClockWeatherPanel({ events = [] }: { events?: Event[] })
           <div className="flex items-center gap-3 mt-2">
             <span
               className="text-teal-500 font-mono tracking-wider"
-              style={{ fontSize: "clamp(1.2rem, 2vw, 2rem)" }}
+              style={{ fontSize: "clamp(1.2rem, 2vw, 2.5rem)" }}
             >
               UTC {utcH}:{utcM}
             </span>
@@ -193,13 +193,13 @@ export default function ClockWeatherPanel({ events = [] }: { events?: Event[] })
           {/* Date */}
           <p
             className="text-slate-500 font-light tracking-widest text-center mt-3"
-            style={{ fontSize: "clamp(1.1rem, 1.8vw, 1.8rem)" }}
+            style={{ fontSize: "clamp(1.1rem, 1.8vw, 2.5rem)" }}
           >
             {dateStr}
           </p>
           <p
             className="text-slate-400 tracking-widest"
-            style={{ fontSize: "clamp(1.2rem, 1.6vw, 1.6rem)" }}
+            style={{ fontSize: "clamp(1.2rem, 1.6vw, 2rem)" }}
           >
             {yearStr}
           </p>
@@ -214,19 +214,19 @@ export default function ClockWeatherPanel({ events = [] }: { events?: Event[] })
         <div className="shrink-0 flex flex-col items-center gap-1 px-8 py-4 bg-teal-50 border-b-2 border-slate-200">
           <p
             className="text-teal-600 font-semibold tracking-wider uppercase"
-            style={{ fontSize: "clamp(1.1rem, 1.4vw, 1.4rem)" }}
+            style={{ fontSize: "clamp(1.1rem, 1.4vw, 1.8rem)" }}
           >
             Next Up
           </p>
           <p
             className="text-slate-700 font-semibold text-center leading-snug line-clamp-1"
-            style={{ fontSize: "clamp(1.3rem, 1.8vw, 1.8rem)" }}
+            style={{ fontSize: "clamp(1.3rem, 1.8vw, 2.2rem)" }}
           >
             {nextEvent.title}
           </p>
           <p
             className="text-teal-500 font-mono"
-            style={{ fontSize: "clamp(1.1rem, 1.5vw, 1.5rem)" }}
+            style={{ fontSize: "clamp(1.1rem, 1.5vw, 2rem)" }}
           >
             {nextEvent.label}
           </p>
@@ -257,13 +257,13 @@ export default function ClockWeatherPanel({ events = [] }: { events?: Event[] })
             </span>
             <span
               className={`font-semibold tracking-wide ${labelColor}`}
-              style={{ fontSize: "clamp(1.2rem, 1.8vw, 2rem)" }}
+              style={{ fontSize: "clamp(1.2rem, 1.8vw, 2.5rem)" }}
             >
               {weather.description}
             </span>
             <span
               className="text-slate-400 mt-1"
-              style={{ fontSize: "clamp(1.2rem, 1.6vw, 1.6rem)" }}
+              style={{ fontSize: "clamp(1.2rem, 1.6vw, 2rem)" }}
             >
               Feels {weather.feelsLike}&deg; &nbsp;&middot;&nbsp; H:{weather.high}&deg; L:{weather.low}&deg;
             </span>

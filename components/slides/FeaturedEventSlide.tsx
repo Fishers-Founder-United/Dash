@@ -28,14 +28,14 @@ function formatEventDate(date: string, time?: string): string {
 export default function FeaturedEventSlide({ event }: FeaturedEventSlideProps) {
   const hasImage = !!event.image;
 
-  // Poster mode: image already contains all event info — show full-bleed
+  // Poster mode: image already contains all event info — show full-width, vertically centered
   if (event.poster && hasImage) {
     return (
-      <div className="relative h-full w-full overflow-hidden">
+      <div className="flex items-center justify-center h-full w-full overflow-hidden bg-slate-900">
         <img
           src={publicUrl(event.image!)}
           alt={event.title}
-          className="absolute inset-0 w-full h-full object-cover"
+          className="w-full h-auto max-h-full object-contain"
         />
       </div>
     );
@@ -49,7 +49,7 @@ export default function FeaturedEventSlide({ event }: FeaturedEventSlideProps) {
           <img
             src={publicUrl(event.image!)}
             alt=""
-            className="absolute inset-0 w-full h-full object-cover"
+            className="absolute inset-0 w-full h-full object-contain"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-slate-900/90 via-slate-900/50 to-slate-900/30" />
         </>

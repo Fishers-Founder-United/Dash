@@ -16,11 +16,11 @@ export default function FunFactSlide() {
       <div className="shrink-0">
         <h2
           className="text-teal-600 font-black tracking-widest uppercase"
-          style={{ fontSize: "clamp(1.5rem, 2.5vw, 2.5rem)" }}
+          style={{ fontSize: "clamp(3rem, 4vw, 5rem)" }}
         >
           {isFact ? "Did You Know?" : "IoT Humor Protocol"}
         </h2>
-        <p className="text-slate-400 text-2xl mt-1">
+        <p className="text-slate-400 mt-1" style={{ fontSize: "clamp(1.8rem, 2.2vw, 2.5rem)" }}>
           {isFact
             ? "Expanding your knowledge buffer"
             : "Laughter.emit() — no subscription required"}
@@ -39,7 +39,7 @@ export default function FunFactSlide() {
         {/* Text */}
         <p
           className="text-slate-700 text-center leading-relaxed font-medium"
-          style={{ fontSize: "clamp(1.8rem, 3vw, 3.2rem)" }}
+          style={{ fontSize: "clamp(2rem, 3.5vw, 4rem)" }}
         >
           {joke}
         </p>
@@ -47,7 +47,7 @@ export default function FunFactSlide() {
         {/* Cheeky footer */}
         <p
           className="text-teal-400 text-center font-mono"
-          style={{ fontSize: "clamp(1rem, 1.5vw, 1.5rem)" }}
+          style={{ fontSize: "clamp(1.5rem, 1.8vw, 2rem)" }}
         >
           — Indiana IoT Lab &middot; where even the coffee maker has an IP address
         </p>

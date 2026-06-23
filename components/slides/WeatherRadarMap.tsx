@@ -20,22 +20,22 @@ function ForecastStrip({ forecast }: { forecast: ForecastDay[] }) {
         <div key={day.label} className="flex flex-col items-center gap-1">
           <span
             className={`font-semibold ${i === 0 ? "text-teal-600" : "text-slate-500"}`}
-            style={{ fontSize: "clamp(0.9rem, 1.5vw, 1.5rem)" }}
+            style={{ fontSize: "clamp(1.5rem, 1.8vw, 2rem)" }}
           >
             {day.label}
           </span>
-          <span style={{ fontSize: "clamp(1.2rem, 2vw, 2rem)" }} role="img">
+          <span style={{ fontSize: "clamp(1.8rem, 2.5vw, 2.5rem)" }} role="img">
             {wmoIcon(day.weatherCode)}
           </span>
           <div className="flex gap-2 items-baseline">
-            <span className="text-slate-800 font-bold" style={{ fontSize: "clamp(1.2rem, 2vw, 2rem)" }}>
+            <span className="text-slate-800 font-bold" style={{ fontSize: "clamp(2rem, 2.5vw, 2.5rem)" }}>
               {day.high}&deg;
             </span>
-            <span className="text-slate-400" style={{ fontSize: "clamp(1rem, 1.5vw, 1.5rem)" }}>
+            <span className="text-slate-400" style={{ fontSize: "clamp(1.5rem, 1.8vw, 2rem)" }}>
               {day.low}&deg;
             </span>
           </div>
-          <span className="text-slate-400 text-center leading-tight" style={{ fontSize: "clamp(1.1rem, 1.4vw, 1.4rem)" }}>
+          <span className="text-slate-400 text-center leading-tight" style={{ fontSize: "clamp(1.5rem, 1.6vw, 1.8rem)" }}>
             {wmoDescription(day.weatherCode)}
           </span>
         </div>
@@ -147,12 +147,12 @@ export default function WeatherRadarMap() {
         {lastUpdate && (
           <div className="absolute top-4 right-4 z-[1000] flex items-center gap-2 bg-white/90 backdrop-blur-sm rounded-xl px-4 py-2 border-2 border-slate-200 shadow-sm">
             <div className="w-4 h-4 rounded-full bg-teal-500 shadow-[0_0_8px_rgba(20,184,166,0.4)]" />
-            <span className="text-slate-800 font-mono text-2xl">{lastUpdate}</span>
-            <span className="text-slate-400 text-xl">RADAR</span>
+            <span className="text-slate-800 font-mono" style={{ fontSize: "clamp(1.8rem, 2.2vw, 2.8rem)" }}>{lastUpdate}</span>
+            <span className="text-slate-400" style={{ fontSize: "clamp(1.5rem, 1.8vw, 2rem)" }}>RADAR</span>
           </div>
         )}
 
-        <div className="absolute bottom-4 left-4 z-[1000] text-slate-400 bg-white/70 rounded-lg px-3 py-1 border-2 border-slate-200" style={{ fontSize: "clamp(1.3rem, 1.6vw, 1.6rem)" }}>
+        <div className="absolute bottom-4 left-4 z-[1000] text-slate-400 bg-white/70 rounded-lg px-3 py-1 border-2 border-slate-200" style={{ fontSize: "clamp(1.5rem, 1.8vw, 2rem)" }}>
           ~50 mi view · NEXRAD
         </div>
       </div>

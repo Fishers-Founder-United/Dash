@@ -52,7 +52,7 @@ export default function PhotoSlide({ photos }: PhotoSlideProps) {
         <div className="flex-1">
           <p
             className="text-white font-semibold leading-snug"
-            style={{ fontSize: "clamp(1.4rem, 2.2vw, 2.4rem)" }}
+            style={{ fontSize: "clamp(2rem, 2.5vw, 3rem)" }}
           >
             {photo.caption}
           </p>
@@ -62,7 +62,7 @@ export default function PhotoSlide({ photos }: PhotoSlideProps) {
             {photos.map((_, i) => (
               <div
                 key={i}
-                className={`w-5 h-5 rounded-full transition-all ${
+                className={`w-6 h-6 rounded-full transition-all ${
                   i === photoIdx % photos.length
                     ? "bg-teal-500 scale-125"
                     : "bg-white/50"
@@ -77,7 +77,7 @@ export default function PhotoSlide({ photos }: PhotoSlideProps) {
       <div className="absolute top-0 inset-x-0 px-12 py-8 bg-gradient-to-b from-black/60 to-transparent">
         <h2
           className="text-teal-400 font-black tracking-widest uppercase"
-          style={{ fontSize: "clamp(1.8rem, 2.5vw, 2.5rem)" }}
+          style={{ fontSize: "clamp(2rem, 2.8vw, 3rem)" }}
         >
           Life at the Lab
         </h2>

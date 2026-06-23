@@ -37,9 +37,9 @@ function WeatherBar({
     <div
       className={`flex flex-col items-center gap-1 px-5 py-3 rounded-xl ${current ? "bg-white/50" : ""}`}
     >
-      <span className="text-slate-500 text-xl font-medium">{label}</span>
-      <span className="text-slate-800 text-3xl font-bold">{high}&deg;</span>
-      <span className="text-slate-400 text-2xl">{low}&deg;</span>
+      <span className="text-slate-500 font-medium" style={{ fontSize: "clamp(1.5rem, 1.8vw, 2rem)" }}>{label}</span>
+      <span className="text-slate-800 font-bold" style={{ fontSize: "clamp(2rem, 2.5vw, 3rem)" }}>{high}&deg;</span>
+      <span className="text-slate-400" style={{ fontSize: "clamp(1.5rem, 1.8vw, 2rem)" }}>{low}&deg;</span>
     </div>
   );
 }
@@ -94,7 +94,7 @@ export default function ClockWeatherSlide() {
           </span>
         </div>
         <p className="text-slate-500 font-light tracking-widest uppercase"
-          style={{ fontSize: "clamp(1.25rem, 2.5vw, 2.5rem)" }}>
+          style={{ fontSize: "clamp(2rem, 2.5vw, 3rem)" }}>
           {dateStr}
         </p>
       </div>
@@ -112,11 +112,11 @@ export default function ClockWeatherSlide() {
                 {weather.temp}&deg;F
               </span>
               <span className={`font-semibold tracking-wide ${labelColor}`}
-                style={{ fontSize: "clamp(1.25rem, 2.5vw, 2.5rem)" }}>
+                style={{ fontSize: "clamp(2rem, 2.5vw, 3rem)" }}>
                 {weather.description}
               </span>
               <span className="text-slate-400 mt-1"
-                style={{ fontSize: "clamp(1rem, 1.8vw, 1.8rem)" }}>
+                style={{ fontSize: "clamp(1.8rem, 2vw, 2.5rem)" }}>
                 Feels like {weather.feelsLike}&deg; &nbsp;|&nbsp; H:{weather.high}&deg; L:{weather.low}&deg;
               </span>
             </div>
@@ -138,7 +138,7 @@ export default function ClockWeatherSlide() {
             </div>
           </div>
 
-          <p className="text-slate-300 text-xl tracking-widest uppercase">
+          <p className="text-slate-300 tracking-widest uppercase" style={{ fontSize: "clamp(1.5rem, 1.8vw, 2rem)" }}>
             Indiana IoT Lab &nbsp;·&nbsp; Fishers, IN
           </p>
         </div>

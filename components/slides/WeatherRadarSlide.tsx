@@ -19,16 +19,16 @@ export default function WeatherRadarSlide() {
         <div className="flex items-center gap-4">
           <h2
             className="text-teal-600 font-black tracking-widest uppercase"
-            style={{ fontSize: "clamp(1.5rem, 2.5vw, 2.5rem)" }}
+            style={{ fontSize: "clamp(3rem, 4vw, 5rem)" }}
           >
             Weather Radar
           </h2>
           <div className="flex items-center gap-2 bg-teal-50 border-2 border-teal-200 rounded-full px-3 py-1">
-            <div className="w-3.5 h-3.5 rounded-full bg-teal-500 shadow-[0_0_6px_rgba(20,184,166,0.4)]" />
-            <span className="text-teal-600 font-medium" style={{ fontSize: "clamp(1.2rem, 1.6vw, 1.6rem)" }}>NEXRAD</span>
+            <div className="w-4 h-4 rounded-full bg-teal-500 shadow-[0_0_6px_rgba(20,184,166,0.4)]" />
+            <span className="text-teal-600 font-medium" style={{ fontSize: "clamp(1.8rem, 2vw, 2rem)" }}>NEXRAD</span>
           </div>
         </div>
-        <span className="text-slate-300 tracking-wide" style={{ fontSize: "clamp(1.4rem, 1.8vw, 1.8rem)" }}>
+        <span className="text-slate-300 tracking-wide" style={{ fontSize: "clamp(1.8rem, 2vw, 2.5rem)" }}>
           Fishers, IN &nbsp;·&nbsp; ~50 mi view
         </span>
       </div>

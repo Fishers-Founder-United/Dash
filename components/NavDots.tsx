@@ -20,7 +20,7 @@ export default function NavDots({
         <button
           key={i}
           onClick={() => onSelect(i)}
-          className={`w-8 h-8 rounded-full transition-all duration-300 ${
+          className={`w-10 h-10 rounded-full transition-all duration-300 ${
             i === current
               ? "bg-amber-400 scale-125"
               : "bg-slate-300 hover:bg-slate-400"
