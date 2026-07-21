@@ -3,6 +3,11 @@ name: Deploy to GitHub Pages
 on:
   push:
     branches: [main]
+  # Data-sync workflows push with GITHUB_TOKEN, which does NOT trigger `push`
+  # events. Rebuild after each sync so the static export reflects fresh data.
+  workflow_run:
+    workflows: ["Sync Events Data", "Sync News Feeds"]
+    types: [completed]
   workflow_dispatch:
 
 permissions:
