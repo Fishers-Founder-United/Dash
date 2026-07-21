@@ -28,25 +28,8 @@ body {
  * will-change needed, dramatically reducing GPU compositing overhead.
  */
 
-/* Ticker scroll animation — 90s for smooth, readable scroll on large TVs without motion blur */
-@keyframes ticker-scroll {
-  0% {
-    transform: translateX(0);
-  }
-  100% {
-    transform: translateX(-50%);
-  }
-}
-
-.ticker-track {
-  display: inline-block;
-  animation: ticker-scroll 90s linear infinite;
-  will-change: transform;
-}
-
-.ticker-track:hover {
-  animation-play-state: paused;
-}
+/* Ticker scrolling is driven by requestAnimationFrame in Ticker.tsx (rather
+ * than a CSS animation) so it can't stall after the kiosk display sleeps. */
 
 /* Remove tap highlight on touch screens */
 * {
