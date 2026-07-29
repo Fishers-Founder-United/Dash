@@ -1,6 +1,24 @@
 [
   {
     "id": "insideindiana-0-aHR0cHM6Ly93",
+    "title": "Q&#038;A with AWS Head of Energy &#038; Water for the Americas Brandon Oyer",
+    "url": "https://www.insideindianabusiness.com/articles/qa-with-aws-head-of-energy-water-for-the-americas-brandon-oyer",
+    "source": "insideindiana",
+    "sourceLabel": "Inside Indiana Business",
+    "publishedAt": "2026-07-29T14:40:51.000Z",
+    "description": "When Amazon Web Services announced its first New Carlisle data center project in 2024, it promised an $11 billion investment and thousands of jobs, a milestone the company has already surpassed. Two years later, that com"
+  },
+  {
+    "id": "insideindiana-1-aHR0cHM6Ly93",
+    "title": "New trade association seeks to grow, advocate for Indiana&#8217;s creative economy",
+    "url": "https://www.insideindianabusiness.com/articles/new-trade-association-seeks-to-grow-advocate-for-indianas-creative-economy",
+    "source": "insideindiana",
+    "sourceLabel": "Inside Indiana Business",
+    "publishedAt": "2026-07-29T10:00:00.000Z",
+    "description": "Polina Osherov, who is also executive director of Indianapolis-based nonprofit Pattern Inc., said on Inside INdiana Business with Gerry Dick that the state's creative economy has about a $10.2 billion economic impact.\nTh"
+  },
+  {
+    "id": "insideindiana-2-aHR0cHM6Ly93",
     "title": "Forest River to close Bristol plant, lay off 105 workers",
     "url": "https://www.insideindianabusiness.com/articles/forest-river-to-close-bristol-plant-lay-off-105-workers",
     "source": "insideindiana",
@@ -9,7 +27,7 @@
     "description": "In a notice to the state, the recreational vehicle manufacturer said it plans to close its Plant 63 facility in Bristol, a move that will impact 105 employees.\nThe post Forest River to close Bristol plant, lay off 105 wo"
   },
   {
-    "id": "insideindiana-1-aHR0cHM6Ly93",
+    "id": "insideindiana-3-aHR0cHM6Ly93",
     "title": "Perry Township to build $30M center at UIndy for entrepreneurship program",
     "url": "https://www.insideindianabusiness.com/articles/perry-township-to-build-30m-center-at-uindy-for-entrepreneurship-program",
     "source": "insideindiana",
@@ -18,7 +36,7 @@
     "description": "Officials from Perry Township and UIndy announced Tuesday that construction will begin this fall on a 52,150-square-foot building at the corner of State Street and East Hanna Avenue that will house the Innovation and Ent"
   },
   {
-    "id": "insideindiana-2-aHR0cHM6Ly93",
+    "id": "insideindiana-4-aHR0cHM6Ly93",
     "title": "Hancock Health expands &#8216;Food is Medicine&#8217; program",
     "url": "https://www.insideindianabusiness.com/articles/hancock-health-expands-food-is-medicine-program",
     "source": "insideindiana",
@@ -27,7 +45,7 @@
     "description": "Hancock Health has installed a hydroponic garden at its Greenfield wellness center, marking the next step in the health system’s Food is Medicine campaign.\nThe post Hancock Health expands 'Food is Medicine' program appea"
   },
   {
-    "id": "insideindiana-3-aHR0cHM6Ly93",
+    "id": "insideindiana-5-aHR0cHM6Ly93",
     "title": "Lake City Bank touts record second quarter profit",
     "url": "https://www.insideindianabusiness.com/articles/lake-city-bank-touts-record-second-quarter-profit",
     "source": "insideindiana",
@@ -36,7 +54,7 @@
     "description": "The parent of Lake City Bank said the results were driven by a 7% increase in total revenue to $70.9 million and average loan growth of 6%.\nThe post Lake City Bank touts record second quarter profit appeared first on Ins"
   },
   {
-    "id": "insideindiana-4-aHR0cHM6Ly93",
+    "id": "insideindiana-6-aHR0cHM6Ly93",
     "title": "IndyCar unveils new 2028 chassis; testing scheduled to begin this weekend",
     "url": "https://www.insideindianabusiness.com/articles/indycar-unveils-new-2028-chassis-testing-scheduled-to-begin-this-weekend",
     "source": "insideindiana",
@@ -45,7 +63,7 @@
     "description": "Series officials believe the new, sleeker, lighter cars that debut in 2028 will produce faster speeds and better racing while also keeping drivers safer in the cockpit.\nThe post IndyCar unveils new 2028 chassis; testing "
   },
   {
-    "id": "insideindiana-5-aHR0cHM6Ly93",
+    "id": "insideindiana-7-aHR0cHM6Ly93",
     "title": "Voter subpoenas denied in recount of narrow Indiana Senate Republican primary",
     "url": "https://www.insideindianabusiness.com/articles/voter-subpoenas-denied-in-recount-of-narrow-indiana-senate-republican-primary",
     "source": "insideindiana",
@@ -54,7 +72,7 @@
     "description": "The Indiana Recount Commission rejected a request to question voters under oath about how they cast their ballots in what is now a three-vote margin from May’s Republican primary for a state Senate seat.\nThe post Voter s"
   },
   {
-    "id": "insideindiana-6-aHR0cHM6Ly93",
+    "id": "insideindiana-8-aHR0cHM6Ly93",
     "title": "Planning begins on $14M Whitewater Canal restoration project in Metamora",
     "url": "https://www.insideindianabusiness.com/articles/planning-begins-on-14m-whitewater-canal-restoration-project-in-metamora",
     "source": "insideindiana",
@@ -63,30 +81,12 @@
     "description": "After years of fundraising and advocacy, officials have secured the full $14.4 million needed to restore the Whitewater Canal State Historic Site, allowing planning to begin on one of Indiana's largest historic preservat"
   },
   {
-    "id": "insideindiana-7-aHR0cHM6Ly93",
+    "id": "insideindiana-9-aHR0cHM6Ly93",
     "title": "Kratos marks early completion of $50M facility in Odon",
     "url": "https://www.insideindianabusiness.com/articles/kratos-marks-early-completion-of-50m-facility-in-odon",
     "source": "insideindiana",
     "sourceLabel": "Inside Indiana Business",
     "publishedAt": "2026-07-28T16:21:08.000Z",
     "description": "The facility, located near Naval Surface Warfare Center, Crane Division, is designed to provide advanced manufacturing, integration and testing of experimental hypersonic payloads.\nThe post Kratos marks early completion "
-  },
-  {
-    "id": "insideindiana-8-aHR0cHM6Ly93",
-    "title": "Northern Indiana health care employers report 1,000 vacancies in workforce survey",
-    "url": "https://www.insideindianabusiness.com/articles/northern-indiana-health-care-employers-report-1000-vacancies-in-workforce-survey",
-    "source": "insideindiana",
-    "sourceLabel": "Inside Indiana Business",
-    "publishedAt": "2026-07-28T15:42:03.000Z",
-    "description": "Healthcare employers across northern Indiana have about 1,000 open positions and expect to hire more than 1,600 additional workers over the next one to two years, according to the first workforce survey by the Health Tal"
-  },
-  {
-    "id": "insideindiana-9-aHR0cHM6Ly93",
-    "title": "Braun launches State of Owner Readiness Survey",
-    "url": "https://www.insideindianabusiness.com/articles/braun-launches-state-of-owner-readiness-survey",
-    "source": "insideindiana",
-    "sourceLabel": "Inside Indiana Business",
-    "publishedAt": "2026-07-28T15:38:38.000Z",
-    "description": "The Braun administration has launched a statewide survey of business owners to assess how prepared they are for an ownership transition, the latest move in a state initiative to curtail closures of what the governor call"
   }
 ]
