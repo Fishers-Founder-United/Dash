@@ -1,6 +1,42 @@
 [
   {
     "id": "insideindiana-0-aHR0cHM6Ly93",
+    "title": "Notre Dame breaks ground on $130 million Colfax Corner in downtown South Bend",
+    "url": "https://www.insideindianabusiness.com/articles/notre-dame-breaks-ground-on-130-million-colfax-corner-in-downtown-south-bend",
+    "source": "insideindiana",
+    "sourceLabel": "Inside Indiana Business",
+    "publishedAt": "2026-08-14T16:40:00.000Z",
+    "description": "The University of Notre Dame and its partners have broken ground on Colfax Corner, a roughly $130 million to $135 million development expected to bring more than 400 high-skilled jobs and generate more than $750 million "
+  },
+  {
+    "id": "insideindiana-1-aHR0cHM6Ly93",
+    "title": "Arts United in Fort Wayne names next CEO",
+    "url": "https://www.insideindianabusiness.com/articles/arts-united-in-fort-wayne-names-next-ceo",
+    "source": "insideindiana",
+    "sourceLabel": "Inside Indiana Business",
+    "publishedAt": "2026-08-14T16:33:35.000Z",
+    "description": "Julie Hill will succeed Dan Ross, who in April announced plans to retire this fall after 17 years with the organization, including the last three as CEO.\nThe post Arts United in Fort Wayne names next CEO appeared first o"
+  },
+  {
+    "id": "insideindiana-2-aHR0cHM6Ly93",
+    "title": "Legan Livestock &#038; Grain owner receives Indiana&#8217;s top agriculture award",
+    "url": "https://www.insideindianabusiness.com/articles/legan-livestock-grain-owner-receives-indianas-top-agriculture-award",
+    "source": "insideindiana",
+    "sourceLabel": "Inside Indiana Business",
+    "publishedAt": "2026-08-14T16:15:16.000Z",
+    "description": "Lt. Gov. Micah Beckwith on Thursday presented Mark Legan, owner of Legan Livestock &#038; Grain, with the AgriVision Award, the state’s highest agricultural honor.\nThe post Legan Livestock & Grain owner receives Indiana'"
+  },
+  {
+    "id": "insideindiana-3-aHR0cHM6Ly93",
+    "title": "Sen. Young touts agriculture funding, deregulation along Trump admin",
+    "url": "https://www.insideindianabusiness.com/articles/sen-young-touts-agriculture-funding-deregulation-along-trump-admin",
+    "source": "insideindiana",
+    "sourceLabel": "Inside Indiana Business",
+    "publishedAt": "2026-08-14T15:34:43.000Z",
+    "description": "Indiana Sen. Todd Young on Thursday highlighted efforts by the Trump administration and Congress to both loosen regulations on agriculture and bring more funding to the sector.\nThe post Sen. Young touts agriculture fundi"
+  },
+  {
+    "id": "insideindiana-4-aHR0cHM6Ly93",
     "title": "Wabash partners with Oregon company to serve West Coast customers",
     "url": "https://www.insideindianabusiness.com/articles/wabash-partners-with-oregon-company-to-serve-west-coast-customers",
     "source": "insideindiana",
@@ -9,7 +45,7 @@
     "description": "Lafayette-based trailer and truck body manufacturer Wabash has announced a partnership with an Oregon-based dealership to service fleet customers in the western United States.\nThe post Wabash partners with Oregon company"
   },
   {
-    "id": "insideindiana-1-aHR0cHM6Ly93",
+    "id": "insideindiana-5-aHR0cHM6Ly93",
     "title": "Federal grants to Indiana fell last year by more than $700M",
     "url": "https://www.insideindianabusiness.com/articles/federal-grants-to-indiana-fell-last-year-by-more-than-700m",
     "source": "insideindiana",
@@ -18,7 +54,7 @@
     "description": "The state of Indiana took in $733 million less from the federal government last year compared to the previous year, according to an analysis by award indexer Granted.\nThe post Federal grants to Indiana fell last year by "
   },
   {
-    "id": "insideindiana-2-aHR0cHM6Ly93",
+    "id": "insideindiana-6-aHR0cHM6Ly93",
     "title": "US retail sales unexpectedly post largest drop in more than a year",
     "url": "https://www.insideindianabusiness.com/articles/us-retail-sales-unexpectedly-post-largest-drop-in-more-than-a-year",
     "source": "insideindiana",
@@ -27,7 +63,7 @@
     "description": "Retail sales fell 0.6% last month, marking the biggest decrease since May 2025, compared with a revised gain of 0.2% in June, according to the Commerce Department data released Friday.\nThe post US retail sales unexpected"
   },
   {
-    "id": "insideindiana-3-aHR0cHM6Ly93",
+    "id": "insideindiana-7-aHR0cHM6Ly93",
     "title": "$140M Project Gateway now complete at Fort Wayne International Airport",
     "url": "https://www.insideindianabusiness.com/articles/140m-project-gateway-now-complete-at-fort-wayne-international-airport",
     "source": "insideindiana",
@@ -36,7 +72,7 @@
     "description": "The $140 million Project Gateway included expanding the airport's terminal by 75,000 square feet and adding several areas, including two gates and a new baggage handling system. \nThe post $140M Project Gateway now comple"
   },
   {
-    "id": "insideindiana-4-aHR0cHM6Ly93",
+    "id": "insideindiana-8-aHR0cHM6Ly93",
     "title": "USA Archery to hold 2027 championships, first rounds of 2028 Olympic trials at Grand Park",
     "url": "https://www.insideindianabusiness.com/articles/usa-archery-to-hold-2027-championships-first-rounds-of-2028-olympic-trials-at-grand-park",
     "source": "insideindiana",
@@ -45,48 +81,12 @@
     "description": "USA Archery will hold its national championships and the first two rounds of its U.S. Olympic trials in Westfield next year, marking the first time Hamilton County has been chosen to host an Olympic qualifier.\nThe post U"
   },
   {
-    "id": "insideindiana-5-aHR0cHM6Ly93",
+    "id": "insideindiana-9-aHR0cHM6Ly93",
     "title": "Hopebridge names new CEO, adds 3 executives to team",
     "url": "https://www.insideindianabusiness.com/articles/hopebridge-names-new-ceo-adds-3-executives-to-team",
     "source": "insideindiana",
     "sourceLabel": "Inside Indiana Business",
     "publishedAt": "2026-08-13T21:26:43.000Z",
     "description": "LeAnne Hester became CEO in March, and Hopebridge announced Thursday that she will be joined by Denise Bohnert as chief compliance officer, Stacey Jensen as chief clinical operations officer and Doug Folsom as chief info"
-  },
-  {
-    "id": "insideindiana-6-aHR0cHM6Ly93",
-    "title": "Franciscan Alliance details partnership with Florida physician group",
-    "url": "https://www.insideindianabusiness.com/articles/franciscan-alliance-details-partnership-with-florida-physician-group",
-    "source": "insideindiana",
-    "sourceLabel": "Inside Indiana Business",
-    "publishedAt": "2026-08-13T20:56:34.000Z",
-    "description": "Franciscan’s physicians will remain part of the Franciscan Alliance physician network but gain access to enhanced operational support, advanced analytics, care coordination resources and technology designed to reduce adm"
-  },
-  {
-    "id": "insideindiana-7-aHR0cHM6Ly93",
-    "title": "Kokomo retailer takes on U.S. Department of Agriculture over SNAP suspension",
-    "url": "https://www.insideindianabusiness.com/articles/kokomo-retailer-takes-on-u-s-department-of-agriculture-over-snap-suspension",
-    "source": "insideindiana",
-    "sourceLabel": "Inside Indiana Business",
-    "publishedAt": "2026-08-13T20:52:40.000Z",
-    "description": "A Kokomo business is suing the federal government for reinstatement into the Supplemental Nutrition Assistance Program, claiming it was temporarily disqualified without due process.\nThe post Kokomo retailer takes on U.S."
-  },
-  {
-    "id": "insideindiana-8-aHR0cHM6Ly93",
-    "title": "Preservation grants to support 15 historic African American sites",
-    "url": "https://www.insideindianabusiness.com/articles/preservation-grants-to-support-15-historic-african-american-sites",
-    "source": "insideindiana",
-    "sourceLabel": "Inside Indiana Business",
-    "publishedAt": "2026-08-13T20:51:12.000Z",
-    "description": "Indiana Landmarks has announced $205,000 in grants that will be sued to support the restoration and rehabilitation of 15 sites the organization said are significant to Indiana's African American history.\nThe post Preserv"
-  },
-  {
-    "id": "insideindiana-9-aHR0cHM6Ly93",
-    "title": "Bears confirm second potential stadium site, reaffirm commitment to Hammond",
-    "url": "https://www.insideindianabusiness.com/articles/bears-confirm-second-potential-stadium-site-reaffirm-commitment-to-hammond",
-    "source": "insideindiana",
-    "sourceLabel": "Inside Indiana Business",
-    "publishedAt": "2026-08-13T17:40:08.000Z",
-    "description": "Speaking to reporters from Halas Hall in Chicago, Bears CEO Kevin Warren reiterated that the team is solely focused on building a stadium in Hammond.\nThe post Bears confirm second potential stadium site, reaffirm commitm"
   }
 ]
