@@ -1,6 +1,7 @@
 "use client";
 
 import { useAutoScroll } from "@/lib/useAutoScroll";
+import SlideHeader from "./SlideHeader";
 import type { Event } from "@/lib/types";
 
 const SOURCE_LABEL: Record<string, string> = {
@@ -52,13 +53,13 @@ function EventRow({ event, index }: EventRowProps) {
 
   return (
     <div
-      className={`flex items-start gap-6 px-6 py-5 rounded-2xl border-2 border-slate-200 shrink-0 ${
-        index % 2 === 0 ? "bg-white" : "bg-transparent"
+      className={`flex items-start gap-6 px-6 py-5 rounded-[10px] border-2 border-l-[6px] border-[var(--line)] border-l-[var(--accent)] shrink-0 ${
+        index % 2 === 0 ? "bg-white" : "bg-white/45"
       }`}
     >
       {/* Index number */}
       <span
-        className="text-teal-500 font-bold shrink-0 mt-1 tabular-nums"
+        className="mono text-[var(--accent)] font-bold shrink-0 mt-1 tabular-nums"
         style={{ fontSize: "clamp(1.8rem, 2.5vw, 3rem)" }}
       >
         {String(index + 1).padStart(2, "0")}
@@ -68,27 +69,27 @@ function EventRow({ event, index }: EventRowProps) {
       <div className="flex-1 min-w-0">
         <div className="flex items-start justify-between gap-4">
           <h3
-            className="text-slate-800 font-semibold leading-tight"
+            className="text-[var(--ink)] font-semibold leading-tight"
             style={{ fontSize: "clamp(2rem, 2.8vw, 3.5rem)" }}
           >
             {event.title}
           </h3>
           <span
-            className={`shrink-0 border-2 rounded-full px-3 py-1 font-bold tracking-wide whitespace-nowrap ${sourceColor}`}
+            className={`tag shrink-0 px-3 py-1 whitespace-nowrap ${sourceColor}`}
             style={{ fontSize: "clamp(1.2rem, 1.6vw, 1.8rem)" }}
           >
             {sourceLabel}
           </span>
         </div>
         <p
-          className="text-teal-600 font-medium mt-1"
-          style={{ fontSize: "clamp(1.8rem, 2.2vw, 2.5rem)" }}
+          className="mono text-[var(--accent)] font-medium tracking-[0.04em] mt-1.5"
+          style={{ fontSize: "clamp(1.7rem, 2.1vw, 2.4rem)" }}
         >
           {event.recurrence ?? formatDate(event.date, event.time)}
         </p>
         {event.location && (
           <p
-            className="text-slate-400 mt-1 truncate"
+            className="text-[var(--faint)] mt-1 truncate"
             style={{ fontSize: "clamp(1.6rem, 1.9vw, 2.2rem)" }}
           >
             {event.location}
@@ -109,29 +110,11 @@ export default function EventsSlide({ events }: EventsSlideProps) {
 
   return (
     <div className="flex flex-col h-full px-12 py-10 gap-6">
-      {/* Header */}
-      <div className="flex items-center justify-between shrink-0">
-        <div>
-          <h2
-            className="text-teal-600 font-black tracking-widest uppercase"
-            style={{ fontSize: "clamp(3rem, 4vw, 5rem)" }}
-          >
-            Upcoming Events
-          </h2>
-          <p className="text-slate-400 mt-1" style={{ fontSize: "clamp(1.8rem, 2.2vw, 2.5rem)" }}>
-            Indiana IoT Lab &middot; Fishers, IN
-          </p>
-        </div>
-        <div className="text-right">
-          <p className="text-slate-400" style={{ fontSize: "clamp(1.8rem, 2.2vw, 2.5rem)" }}>
-            Next {upcoming.length} events
-          </p>
-          <p className="text-slate-300 mt-1" style={{ fontSize: "clamp(1.5rem, 1.8vw, 2rem)" }}>indianaiot.com</p>
-        </div>
-      </div>
-
-      {/* Divider */}
-      <div className="h-[2px] bg-amber-300 shrink-0" />
+      <SlideHeader
+        channel="Upcoming · Events"
+        title="Upcoming Events"
+        meta={`NEXT ${String(upcoming.length).padStart(2, "0")} · INDIANAIOT.COM`}
+      />
 
       {/* Scrolling events list */}
       {upcoming.length > 0 ? (

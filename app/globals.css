@@ -1,22 +1,166 @@
 @import "tailwindcss";
 @import "leaflet/dist/leaflet.css";
 
+/*
+ * ─────────────────────────────────────────────────────────────────────────
+ * Command Console — light OSINT dashboard system
+ * Light field retained for glare/readability on the 80" TV; the OSINT
+ * language lives in monospace chrome, a graph-paper grid, HUD corner ticks,
+ * telemetry eyebrows, and a two-signal teal/amber palette.
+ * ─────────────────────────────────────────────────────────────────────────
+ */
+
+:root {
+  --font-mono: var(--font-jetbrains-mono), ui-monospace, "SFMono-Regular",
+    Menlo, Consolas, monospace;
+
+  --bg: #eaeef3;
+  --panel: #ffffff;
+  --ink: #16212e; /* primary text */
+  --muted: #5b6b7d; /* secondary text */
+  --faint: #93a2b2; /* tertiary / captions */
+  --line: #d3dce6; /* hairline borders */
+
+  --accent: #0d9488; /* teal-600 — primary signal */
+  --accent-soft: #14b8a6; /* teal-500 */
+  --accent-tint: #e2f3f0; /* teal wash for chips/panels */
+  --amber: #c2700a; /* amber-700 — secondary / alert signal */
+  --amber-tint: #fbf0dd;
+
+  --grid: rgba(13, 148, 136, 0.055);
+}
+
 @theme inline {
-  --color-background: #f0f3f6;
-  --color-foreground: #1e293b;
+  --color-background: var(--bg);
+  --color-foreground: var(--ink);
+  --font-mono: var(--font-jetbrains-mono);
 }
 
 html,
 body {
   height: 100%;
   overflow: hidden;
-  background: #f0f3f6;
-  color: #1e293b;
+  color: var(--ink);
   font-family: var(--font-geist-sans), system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
 }
 
-/* Glassmorphism utility */
+/* Graph-paper field — the technical texture the console sits on. */
+.grid-field {
+  background-color: var(--bg);
+  background-image: linear-gradient(var(--grid) 2px, transparent 2px),
+    linear-gradient(90deg, var(--grid) 2px, transparent 2px);
+  background-size: 68px 68px;
+  background-position: -1px -1px;
+}
+
+/* ── Typography helpers ─────────────────────────────────────────────────── */
+
+.mono {
+  font-family: var(--font-mono);
+  font-feature-settings: "tnum" 1, "ss01" 1;
+}
+
+/* Uppercase monospace micro-label used as a section / context eyebrow. */
+.eyebrow {
+  font-family: var(--font-mono);
+  color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: 0.24em;
+  font-weight: 600;
+  line-height: 1;
+}
+
+.eyebrow-amber {
+  color: var(--amber);
+}
+
+/* Right-aligned monospace metadata (counts, coordinates, ids). */
+.readout {
+  font-family: var(--font-mono);
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-feature-settings: "tnum" 1;
+}
+
+/* ── Structural devices ─────────────────────────────────────────────────── */
+
+/*
+ * Technical divider: a short teal lead segment (like a labeled axis origin)
+ * running into a hairline. 2px minimum so it survives 4K downsampling.
+ */
+.rule {
+  height: 2px;
+  background: linear-gradient(
+    90deg,
+    var(--accent) 0,
+    var(--accent) 9%,
+    var(--line) 9%,
+    var(--line) 100%
+  );
+}
+
+/* HUD corner ticks on two opposing corners — a targeting-reticle cue kept
+ * deliberately asymmetric (only TL + BR) so panels read framed, not boxed. */
+.hud {
+  position: relative;
+}
+.hud::before,
+.hud::after {
+  content: "";
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  pointer-events: none;
+}
+.hud::before {
+  top: -2px;
+  left: -2px;
+  border-top: 3px solid var(--accent);
+  border-left: 3px solid var(--accent);
+}
+.hud::after {
+  bottom: -2px;
+  right: -2px;
+  border-bottom: 3px solid var(--accent);
+  border-right: 3px solid var(--accent);
+}
+.hud-amber::before {
+  border-top-color: var(--amber);
+  border-left-color: var(--amber);
+}
+.hud-amber::after {
+  border-bottom-color: var(--amber);
+  border-right-color: var(--amber);
+}
+
+/* Status indicator dot with a soft signal ring (no animation — burn-in safe). */
+.dot {
+  display: inline-block;
+  width: 0.62em;
+  height: 0.62em;
+  border-radius: 9999px;
+  background: var(--accent);
+  box-shadow: 0 0 0 0.28em rgba(13, 148, 136, 0.16);
+}
+.dot-amber {
+  background: var(--amber);
+  box-shadow: 0 0 0 0.28em rgba(194, 112, 10, 0.16);
+}
+
+/* Squared monospace tag — replaces pill badges for a data-console feel. */
+.tag {
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-weight: 600;
+  border-width: 2px;
+  border-style: solid;
+  border-radius: 6px;
+}
+
+/* Glassmorphism utility (kept for compatibility) */
 .glass {
   backdrop-filter: blur(12px);
   background: rgba(255, 255, 255, 0.7);
@@ -24,12 +168,19 @@ body {
 
 /*
  * Anti-burn-in pixel shift — JS applies a small random translate once per
- * minute via the .burn-in-guard class. No continuous CSS animation or
- * will-change needed, dramatically reducing GPU compositing overhead.
+ * minute via a ref. No continuous CSS animation or will-change needed,
+ * dramatically reducing GPU compositing overhead.
+ *
+ * Ticker scrolling is driven by requestAnimationFrame in Ticker.tsx (rather
+ * than a CSS animation) so it can't stall after the kiosk display sleeps.
  */
 
-/* Ticker scrolling is driven by requestAnimationFrame in Ticker.tsx (rather
- * than a CSS animation) so it can't stall after the kiosk display sleeps. */
+/* Hide scrollbars everywhere — auto-scroll panels are driven by JS. */
+::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+  display: none;
+}
 
 /* Remove tap highlight on touch screens */
 * {
@@ -38,8 +189,8 @@ body {
 
 /* Leaflet overrides for light dashboard */
 .leaflet-container {
-  background: #e2e8f0;
-  font-family: var(--font-geist-sans), system-ui, sans-serif;
+  background: #dbe3ec;
+  font-family: var(--font-mono);
 }
 
 .leaflet-tile-pane {
@@ -52,8 +203,10 @@ body {
   border: 2px solid rgba(13, 148, 136, 0.4) !important;
   border-radius: 8px !important;
   color: #0f766e !important;
-  font-size: 1.6rem !important;
+  font-family: var(--font-mono) !important;
+  font-size: 1.5rem !important;
   font-weight: 600 !important;
+  letter-spacing: 0.08em !important;
   padding: 4px 10px !important;
   white-space: nowrap !important;
   box-shadow: none !important;

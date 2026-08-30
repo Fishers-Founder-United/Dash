@@ -1,6 +1,7 @@
 "use client";
 
 import { useAutoScroll } from "@/lib/useAutoScroll";
+import SlideHeader from "./SlideHeader";
 import type { NewsItem } from "@/lib/types";
 
 const SOURCE_COLOR: Record<string, string> = {
@@ -29,13 +30,13 @@ function NewsRow({ item, index }: NewsRowProps) {
 
   return (
     <div
-      className={`flex items-start gap-6 p-6 rounded-2xl border-2 border-slate-200 shrink-0 ${
-        index % 2 === 0 ? "bg-white" : "bg-transparent"
+      className={`flex items-start gap-6 p-6 rounded-[10px] border-2 border-l-[6px] border-[var(--line)] border-l-[var(--accent)] shrink-0 ${
+        index % 2 === 0 ? "bg-white" : "bg-white/45"
       }`}
     >
       {/* Index */}
       <span
-        className="text-teal-400 font-bold shrink-0 mt-1 tabular-nums"
+        className="mono text-[var(--accent)] font-bold shrink-0 mt-1 tabular-nums"
         style={{ fontSize: "clamp(1.8rem, 2.5vw, 3rem)" }}
       >
         {String(index + 1).padStart(2, "0")}
@@ -45,13 +46,13 @@ function NewsRow({ item, index }: NewsRowProps) {
       <div className="flex-1 min-w-0">
         <div className="flex items-start justify-between gap-4">
           <p
-            className="text-slate-800 font-semibold leading-snug"
+            className="text-[var(--ink)] font-semibold leading-snug"
             style={{ fontSize: "clamp(2rem, 2.8vw, 3rem)" }}
           >
             {item.title}
           </p>
           <span
-            className={`shrink-0 border-2 rounded-full px-3 py-1 font-bold tracking-wider ${color}`}
+            className={`tag shrink-0 px-3 py-1 whitespace-nowrap ${color}`}
             style={{ fontSize: "clamp(1.2rem, 1.6vw, 1.8rem)" }}
           >
             {item.sourceLabel}
@@ -59,14 +60,14 @@ function NewsRow({ item, index }: NewsRowProps) {
         </div>
         {item.description && (
           <p
-            className="text-slate-400 mt-1 line-clamp-2 leading-snug"
+            className="text-[var(--muted)] mt-1.5 line-clamp-2 leading-snug"
             style={{ fontSize: "clamp(1.8rem, 2vw, 2.2rem)" }}
           >
             {item.description}
           </p>
         )}
         {age && (
-          <p className="text-slate-400 mt-1" style={{ fontSize: "clamp(1.8rem, 2vw, 2.2rem)" }}>{age}</p>
+          <p className="mono text-[var(--faint)] tracking-[0.06em] mt-1.5" style={{ fontSize: "clamp(1.6rem, 1.8vw, 2rem)" }}>{age}</p>
         )}
       </div>
     </div>
@@ -82,25 +83,11 @@ export default function NewsSlide({ news }: NewsSlideProps) {
 
   return (
     <div className="flex flex-col h-full px-12 py-10 gap-6">
-      {/* Header */}
-      <div className="flex items-center justify-between shrink-0">
-        <div>
-          <h2
-            className="text-teal-600 font-black tracking-widest uppercase"
-            style={{ fontSize: "clamp(3rem, 4vw, 5rem)" }}
-          >
-            Indiana Business News
-          </h2>
-          <p className="text-slate-400 mt-1" style={{ fontSize: "clamp(1.8rem, 2.2vw, 2.5rem)" }}>
-            Inside Indiana Business &middot; updated hourly
-          </p>
-        </div>
-        <div className="text-right">
-          <p className="text-slate-400" style={{ fontSize: "clamp(1.8rem, 2.2vw, 2.5rem)" }}>{news.length} stories</p>
-        </div>
-      </div>
-
-      <div className="h-[2px] bg-emerald-200 shrink-0" />
+      <SlideHeader
+        channel="Feed · Inside Indiana Business"
+        title="Indiana Business News"
+        meta={`${String(news.length).padStart(2, "0")} STORIES · HOURLY`}
+      />
 
       {news.length > 0 ? (
         <div

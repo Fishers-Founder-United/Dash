@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import SlideHeader from "./SlideHeader";
 import type { StatsData } from "@/lib/types";
 
 interface CommunityStatsSlideProps {
@@ -40,15 +41,15 @@ function AnimatedNumber({ value, suffix = "" }: { value: number; suffix?: string
 
 function StatCard({ label, value, suffix = "" }: { label: string; value: number; suffix?: string }) {
   return (
-    <div className="flex flex-col items-center gap-3 bg-white border-2 border-slate-200 rounded-2xl px-10 py-8 flex-1 shadow-sm">
+    <div className="hud flex flex-col items-center gap-3 bg-white border-2 border-[var(--line)] rounded-[10px] px-10 py-8 flex-1">
       <span
-        className="text-teal-600 font-black tabular-nums"
+        className="mono text-[var(--accent)] font-black tabular-nums"
         style={{ fontSize: "clamp(4rem, 7vw, 8rem)" }}
       >
         <AnimatedNumber value={value} suffix={suffix} />
       </span>
       <span
-        className="text-slate-500 font-semibold tracking-widest uppercase text-center"
+        className="mono text-[var(--muted)] font-semibold tracking-[0.14em] uppercase text-center"
         style={{ fontSize: "clamp(1.5rem, 1.8vw, 2rem)" }}
       >
         {label}
@@ -62,23 +63,11 @@ export default function CommunityStatsSlide({ stats }: CommunityStatsSlideProps)
 
   return (
     <div className="flex flex-col h-full px-12 py-10 gap-6">
-      {/* Header */}
-      <div className="shrink-0">
-        <h2
-          className="text-teal-600 font-black tracking-widest uppercase"
-          style={{ fontSize: "clamp(3rem, 4vw, 5rem)" }}
-        >
-          By The Numbers
-        </h2>
-        <p
-          className="text-slate-400 mt-1"
-          style={{ fontSize: "clamp(1.8rem, 2vw, 2.5rem)" }}
-        >
-          Indiana IoT Lab &middot; est. {stats.yearFounded}
-        </p>
-      </div>
-
-      <div className="h-[2px] bg-teal-200 shrink-0" />
+      <SlideHeader
+        channel="Metrics · Indiana IoT Lab"
+        title="By The Numbers"
+        meta={`EST. ${stats.yearFounded}`}
+      />
 
       {/* Stats grid */}
       <div className="flex-1 flex flex-col justify-center gap-8">

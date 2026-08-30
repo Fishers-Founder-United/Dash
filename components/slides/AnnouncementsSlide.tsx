@@ -1,6 +1,7 @@
 "use client";
 
 import { QRCodeSVG } from "qrcode.react";
+import SlideHeader from "./SlideHeader";
 import type { Announcement } from "@/lib/types";
 
 const REPO_URL = "indianaiot.com";
@@ -15,39 +16,33 @@ export default function AnnouncementsSlide({
 }: AnnouncementsSlideProps) {
   return (
     <div className="flex flex-col h-full px-12 py-10 gap-6">
-      {/* Header */}
-      <div className="flex items-center justify-between">
-        <h2
-          className="text-teal-600 font-black tracking-widest uppercase"
-          style={{ fontSize: "clamp(3rem, 4vw, 5rem)" }}
-        >
-          Community Board
-        </h2>
-      </div>
+      <SlideHeader
+        channel="Community · Board"
+        title="Community Board"
+        meta={`${String(announcements.length).padStart(2, "0")} POSTED`}
+      />
 
-      <div className="h-[2px] bg-teal-200" />
-
-      <div className="flex flex-1 gap-12 items-start">
+      <div className="flex flex-1 gap-12 items-start mt-2">
         {/* Announcements list */}
         <div className="flex flex-col gap-5 flex-1">
           {announcements.length > 0 ? (
             announcements.map((a) => (
               <div
                 key={a.id}
-                className="bg-white border-2 border-slate-200 rounded-2xl p-8 shadow-sm"
+                className="bg-white border-2 border-l-[6px] border-[var(--line)] border-l-[var(--accent)] rounded-[10px] p-8"
               >
                 <p
-                  className="text-slate-700 leading-relaxed"
+                  className="text-[var(--ink)] leading-relaxed"
                   style={{ fontSize: "clamp(2rem, 2.5vw, 3rem)" }}
                 >
                   {a.text}
                 </p>
                 {a.url && (
                   <p
-                    className="text-teal-500 font-mono mt-3"
+                    className="mono text-[var(--accent)] tracking-[0.04em] mt-3"
                     style={{ fontSize: "clamp(1.8rem, 2vw, 2.5rem)" }}
                   >
-                    {a.url.replace(/^https?:\/\//, "")}
+                    &gt; {a.url.replace(/^https?:\/\//, "")}
                   </p>
                 )}
               </div>
@@ -55,7 +50,7 @@ export default function AnnouncementsSlide({
           ) : (
             <div className="flex items-center justify-center flex-1">
               <p
-                className="text-slate-400"
+                className="mono uppercase tracking-[0.15em] text-[var(--faint)]"
                 style={{ fontSize: "clamp(2rem, 3vw, 4rem)" }}
               >
                 No announcements
@@ -65,9 +60,9 @@ export default function AnnouncementsSlide({
         </div>
 
         {/* Contribute panel — enlarged for TV readability */}
-        <div className="shrink-0 w-[28rem] flex flex-col gap-6 items-center bg-teal-50 border-2 border-teal-200 rounded-2xl p-10">
+        <div className="hud shrink-0 w-[28rem] flex flex-col gap-6 items-center bg-[var(--accent-tint)] border-2 border-[var(--line)] rounded-[10px] p-10">
           {/* QR code linking to indianaiot.com */}
-          <div className="p-4 bg-white rounded-2xl">
+          <div className="p-4 bg-white rounded-[8px]">
             <QRCodeSVG
               value={CONTRIBUTE_URL}
               size={320}
@@ -77,13 +72,13 @@ export default function AnnouncementsSlide({
             />
           </div>
           <div className="text-center">
-            <p className="text-teal-600 font-bold" style={{ fontSize: "clamp(1.8rem, 2.2vw, 2.5rem)" }}>
+            <p className="mono uppercase tracking-[0.12em] text-[var(--accent)] font-bold" style={{ fontSize: "clamp(1.7rem, 2.1vw, 2.4rem)" }}>
               Scan to Learn More
             </p>
-            <p className="text-slate-500 mt-2 font-mono break-all" style={{ fontSize: "clamp(1.5rem, 1.8vw, 2rem)" }}>
+            <p className="mono text-[var(--muted)] mt-2 break-all" style={{ fontSize: "clamp(1.5rem, 1.8vw, 2rem)" }}>
               {REPO_URL}
             </p>
-            <p className="text-slate-400 mt-3 leading-snug" style={{ fontSize: "clamp(1.5rem, 1.8vw, 2rem)" }}>
+            <p className="mono text-[var(--faint)] mt-3 leading-snug tracking-[0.05em]" style={{ fontSize: "clamp(1.4rem, 1.7vw, 1.9rem)" }}>
               9059 Technology Lane<br />Fishers, IN 46038
             </p>
           </div>

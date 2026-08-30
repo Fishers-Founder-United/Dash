@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { randomJoke } from "@/lib/iotJokes";
+import SlideHeader from "./SlideHeader";
 
 export default function FunFactSlide() {
   // Pick a new joke each time the slide mounts
@@ -12,22 +13,11 @@ export default function FunFactSlide() {
 
   return (
     <div className="flex flex-col h-full px-16 py-12">
-      {/* Header */}
-      <div className="shrink-0">
-        <h2
-          className="text-teal-600 font-black tracking-widest uppercase"
-          style={{ fontSize: "clamp(3rem, 4vw, 5rem)" }}
-        >
-          {isFact ? "Did You Know?" : "IoT Humor Protocol"}
-        </h2>
-        <p className="text-slate-400 mt-1" style={{ fontSize: "clamp(1.8rem, 2.2vw, 2.5rem)" }}>
-          {isFact
-            ? "Expanding your knowledge buffer"
-            : "Laughter.emit() — no subscription required"}
-        </p>
-      </div>
-
-      <div className="h-[2px] bg-teal-200 mt-6" />
+      <SlideHeader
+        channel={isFact ? "Buffer · Knowledge" : "stdout · Humor Protocol"}
+        title={isFact ? "Did You Know?" : "IoT Humor Protocol"}
+        meta={isFact ? "KNOWLEDGE.READ()" : "LAUGHTER.EMIT()"}
+      />
 
       {/* Joke / fact — centered in remaining space */}
       <div className="flex-1 flex flex-col items-center justify-center gap-8 max-w-5xl mx-auto">
@@ -38,7 +28,7 @@ export default function FunFactSlide() {
 
         {/* Text */}
         <p
-          className="text-slate-700 text-center leading-relaxed font-medium"
+          className="text-[var(--ink)] text-center leading-relaxed font-medium"
           style={{ fontSize: "clamp(2rem, 3.5vw, 4rem)" }}
         >
           {joke}
@@ -46,7 +36,7 @@ export default function FunFactSlide() {
 
         {/* Cheeky footer */}
         <p
-          className="text-teal-400 text-center font-mono"
+          className="mono text-[var(--accent)] text-center tracking-[0.06em]"
           style={{ fontSize: "clamp(1.5rem, 1.8vw, 2rem)" }}
         >
           — Indiana IoT Lab &middot; where even the coffee maker has an IP address

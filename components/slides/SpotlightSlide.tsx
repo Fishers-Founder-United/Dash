@@ -1,6 +1,7 @@
 "use client";
 
 import { QRCodeSVG } from "qrcode.react";
+import SlideHeader from "./SlideHeader";
 import type { Spotlight } from "@/lib/types";
 
 interface SpotlightSlideProps {
@@ -33,25 +34,18 @@ export default function SpotlightSlide({
 
   return (
     <div className="flex flex-col h-full px-12 py-10">
-      {/* Header */}
-      <div className="mb-6 shrink-0">
-        <h2
-          className="text-teal-600 font-black tracking-widest uppercase"
-          style={{ fontSize: "clamp(3rem, 4vw, 5rem)" }}
-        >
-          Community Spotlight
-        </h2>
-        {spotlights.length > 1 && (
-          <p className="text-slate-400 mt-1" style={{ fontSize: "clamp(1.8rem, 2.2vw, 2.5rem)" }}>
-            {(index % spotlights.length) + 1} of {spotlights.length}
-          </p>
-        )}
-      </div>
-
-      <div className="h-[2px] bg-teal-200 mb-8 shrink-0" />
+      <SlideHeader
+        channel="Member · Spotlight"
+        title="Community Spotlight"
+        meta={
+          spotlights.length > 1
+            ? `${String((index % spotlights.length) + 1).padStart(2, "0")} / ${String(spotlights.length).padStart(2, "0")}`
+            : undefined
+        }
+      />
 
       {/* Main content: info left, QR right */}
-      <div className="flex flex-1 gap-10 min-h-0">
+      <div className="flex flex-1 gap-10 min-h-0 mt-8">
         {/* Left: spotlight info */}
         <div className="flex flex-col flex-1 justify-center gap-6 min-h-0">
           {/* Logo + Category + Name row */}
@@ -71,8 +65,8 @@ export default function SpotlightSlide({
               {/* Category */}
               {spotlight.category && (
                 <p
-                  className="text-teal-500 font-semibold tracking-widest uppercase mb-2"
-                  style={{ fontSize: "clamp(1.8rem, 2vw, 2.5rem)" }}
+                  className="eyebrow mb-2.5"
+                  style={{ fontSize: "clamp(1.6rem, 1.9vw, 2.4rem)" }}
                 >
                   {spotlight.category}
                 </p>
@@ -81,13 +75,13 @@ export default function SpotlightSlide({
               {/* Name + NEW badge */}
               <div className="flex items-center gap-5">
                 <h3
-                  className="text-slate-800 font-black leading-tight"
+                  className="text-[var(--ink)] font-black leading-tight"
                   style={{ fontSize: "clamp(3rem, 5vw, 6rem)" }}
                 >
                   {spotlight.name}
                 </h3>
                 {spotlight.newMember && (
-                  <span className="shrink-0 bg-teal-500 text-white font-black text-lg tracking-widest uppercase px-4 py-1.5 rounded-full shadow-[0_0_12px_rgba(20,184,166,0.4)]">
+                  <span className="tag shrink-0 bg-[var(--amber)] text-white border-[var(--amber)] px-4 py-1.5 text-lg">
                     NEW
                   </span>
                 )}
@@ -109,7 +103,7 @@ export default function SpotlightSlide({
               {spotlight.tags.map((tag) => (
                 <span
                   key={tag}
-                  className="bg-teal-50 text-teal-600 border-2 border-teal-200 rounded-full px-4 py-1 font-medium uppercase tracking-wider"
+                  className="tag bg-[var(--accent-tint)] text-[var(--accent)] border-[var(--line)] px-4 py-1"
                   style={{ fontSize: "clamp(1.5rem, 1.8vw, 2rem)" }}
                 >
                   {tag}
@@ -120,7 +114,7 @@ export default function SpotlightSlide({
 
           {/* Description */}
           <p
-            className="text-slate-600 leading-relaxed"
+            className="text-[var(--muted)] leading-relaxed"
             style={{ fontSize: "clamp(1.8rem, 2.2vw, 2.5rem)" }}
           >
             {spotlight.description}
@@ -129,9 +123,9 @@ export default function SpotlightSlide({
           {/* Website */}
           {spotlight.website && (
             <div className="flex items-center gap-4 mt-1">
-              <div className="w-12 h-px bg-teal-300" />
+              <span className="mono text-[var(--faint)]" style={{ fontSize: "clamp(1.8rem, 2vw, 2.5rem)" }}>&gt;</span>
               <p
-                className="text-teal-500 font-mono"
+                className="mono text-[var(--accent)] tracking-[0.04em]"
                 style={{ fontSize: "clamp(1.8rem, 2vw, 2.5rem)" }}
               >
                 {spotlight.website.replace(/^https?:\/\//, "")}
@@ -142,8 +136,8 @@ export default function SpotlightSlide({
 
         {/* Right: QR code panel */}
         {spotlight.website && (
-          <div className="shrink-0 flex flex-col items-center justify-center gap-5 w-96 bg-teal-50 border-2 border-teal-200 rounded-2xl p-8">
-            <div className="p-3 bg-white rounded-2xl">
+          <div className="hud shrink-0 flex flex-col items-center justify-center gap-5 w-96 bg-[var(--accent-tint)] border-2 border-[var(--line)] rounded-[10px] p-8">
+            <div className="p-3 bg-white rounded-[8px]">
               <QRCodeSVG
                 value={spotlight.website}
                 size={280}
@@ -153,10 +147,10 @@ export default function SpotlightSlide({
               />
             </div>
             <p
-              className="text-teal-600 font-bold text-center"
-              style={{ fontSize: "clamp(1.8rem, 2vw, 2.5rem)" }}
+              className="mono uppercase tracking-[0.12em] text-[var(--accent)] font-bold text-center"
+              style={{ fontSize: "clamp(1.6rem, 1.9vw, 2.3rem)" }}
             >
-              Visit {spotlight.name}
+              Scan · Visit {spotlight.name}
             </p>
           </div>
         )}

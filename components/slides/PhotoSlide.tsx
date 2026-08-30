@@ -58,14 +58,14 @@ export default function PhotoSlide({ photos }: PhotoSlideProps) {
           </p>
         </div>
         {photos.length > 1 && (
-          <div className="flex gap-2 ml-8 shrink-0">
+          <div className="flex items-center gap-2 ml-8 shrink-0">
             {photos.map((_, i) => (
               <div
                 key={i}
-                className={`w-6 h-6 rounded-full transition-all ${
+                className={`h-4 rounded-[2px] transition-all ${
                   i === photoIdx % photos.length
-                    ? "bg-teal-500 scale-125"
-                    : "bg-white/50"
+                    ? "w-9 bg-teal-400"
+                    : "w-4 bg-white/45"
                 }`}
               />
             ))}
@@ -75,8 +75,14 @@ export default function PhotoSlide({ photos }: PhotoSlideProps) {
 
       {/* Header overlay */}
       <div className="absolute top-0 inset-x-0 px-12 py-8 bg-gradient-to-b from-black/60 to-transparent">
+        <p
+          className="mono uppercase tracking-[0.24em] text-teal-300/80 flex items-center gap-3"
+          style={{ fontSize: "clamp(1.3rem, 1.6vw, 2rem)" }}
+        >
+          <span className="text-white/40">//</span> Field · Fishers IN
+        </p>
         <h2
-          className="text-teal-400 font-black tracking-widest uppercase"
+          className="text-white font-black tracking-tight mt-2"
           style={{ fontSize: "clamp(2rem, 2.8vw, 3rem)" }}
         >
           Life at the Lab

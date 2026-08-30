@@ -57,15 +57,16 @@ export default function FeaturedEventSlide({ event }: FeaturedEventSlideProps) {
 
       <div className={`relative flex flex-col h-full ${hasImage ? "justify-end" : "justify-center"} px-14 pb-14 pt-10 gap-6`}>
         {/* Badge */}
-        <div className={`shrink-0 ${hasImage ? "mt-auto" : ""}`}>
-          <span className="inline-block bg-amber-400 text-slate-900 font-black text-lg tracking-widest uppercase px-5 py-2 rounded-full shadow-md">
+        <div className={`shrink-0 flex items-center gap-3 ${hasImage ? "mt-auto" : ""}`}>
+          <span className="dot-amber dot shrink-0" />
+          <span className="mono inline-block bg-amber-400 text-slate-900 font-bold text-lg tracking-[0.22em] uppercase px-5 py-2 rounded-[6px] shadow-md">
             Featured Event
           </span>
         </div>
 
         {/* Title */}
         <h2
-          className={`font-black leading-[1.05] tracking-tight ${hasImage ? "text-white" : "text-slate-800"}`}
+          className={`font-black leading-[1.05] tracking-tight ${hasImage ? "text-white" : "text-[var(--ink)]"}`}
           style={{ fontSize: "clamp(3rem, 6vw, 6rem)" }}
         >
           {event.title}
@@ -74,7 +75,7 @@ export default function FeaturedEventSlide({ event }: FeaturedEventSlideProps) {
         {/* Subtitle */}
         {event.subtitle && (
           <p
-            className={`font-semibold tracking-wide ${hasImage ? "text-teal-300" : "text-teal-600"}`}
+            className={`font-semibold tracking-wide ${hasImage ? "text-teal-300" : "text-[var(--accent)]"}`}
             style={{ fontSize: "clamp(1.6rem, 3vw, 3rem)" }}
           >
             {event.subtitle}
@@ -84,7 +85,7 @@ export default function FeaturedEventSlide({ event }: FeaturedEventSlideProps) {
         {/* Date / Time / Location */}
         <div className="flex flex-wrap items-center gap-x-8 gap-y-2">
           <p
-            className={`font-medium tracking-wide ${hasImage ? "text-white/90" : "text-slate-600"}`}
+            className={`mono font-medium tracking-[0.04em] ${hasImage ? "text-white/90" : "text-[var(--muted)]"}`}
             style={{ fontSize: "clamp(1.4rem, 2.4vw, 2.4rem)" }}
           >
             {formatEventDate(event.date, event.time)}

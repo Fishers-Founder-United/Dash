@@ -99,7 +99,7 @@ export default function Ticker({ events, announcements }: TickerProps) {
 
   return (
     <div
-      className="shrink-0 bg-gradient-to-r from-teal-100 via-teal-50 to-teal-100 border-t-2 border-teal-200 overflow-hidden backdrop-blur-sm"
+      className="shrink-0 relative flex items-stretch bg-white/85 border-t-2 border-[var(--line)] overflow-hidden backdrop-blur-sm"
       onMouseEnter={() => {
         pausedRef.current = true;
       }}
@@ -107,14 +107,26 @@ export default function Ticker({ events, announcements }: TickerProps) {
         pausedRef.current = false;
       }}
     >
-      <div
-        ref={trackRef}
-        className="inline-block whitespace-nowrap text-teal-700 py-6 px-0"
-        style={{ fontSize: "clamp(1.6rem, 2.8vw, 3.5rem)", willChange: "transform" }}
-        aria-live="off"
-      >
-        <span ref={copyRef}>{text}{sep}</span>
-        <span>{text}{sep}</span>
+      {/* Fixed feed marker pinned over the scrolling track */}
+      <div className="shrink-0 z-10 flex items-center gap-3 bg-[var(--accent)] px-8">
+        <span className="dot shrink-0" style={{ boxShadow: "0 0 0 0.28em rgba(255,255,255,0.28)", background: "#ffffff" }} />
+        <span
+          className="mono font-bold uppercase tracking-[0.2em] text-white"
+          style={{ fontSize: "clamp(1.3rem, 1.8vw, 2.2rem)" }}
+        >
+          Live&nbsp;Feed
+        </span>
+      </div>
+      <div className="relative flex-1 overflow-hidden">
+        <div
+          ref={trackRef}
+          className="mono inline-block whitespace-nowrap text-[var(--ink)] py-6 pl-8"
+          style={{ fontSize: "clamp(1.5rem, 2.5vw, 3.1rem)", letterSpacing: "0.02em", willChange: "transform" }}
+          aria-live="off"
+        >
+          <span ref={copyRef}>{text}{sep}</span>
+          <span>{text}{sep}</span>
+        </div>
       </div>
     </div>
   );

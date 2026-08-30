@@ -15,15 +15,15 @@ export default function NavDots({
 }: NavDotsProps) {
   if (hidden) return null;
   return (
-    <div className="flex gap-4 justify-center py-5">
+    <div className="flex items-center gap-2.5 justify-center py-5">
       {Array.from({ length: total }, (_, i) => (
         <button
           key={i}
           onClick={() => onSelect(i)}
-          className={`w-10 h-10 rounded-full transition-all duration-300 ${
+          className={`h-4 rounded-[2px] transition-all duration-300 ${
             i === current
-              ? "bg-amber-400 scale-125"
-              : "bg-slate-300 hover:bg-slate-400"
+              ? "w-9 bg-[var(--accent)]"
+              : "w-4 bg-transparent border-2 border-[var(--line)] hover:border-[var(--faint)]"
           }`}
           aria-label={`Go to slide ${i + 1}`}
         />

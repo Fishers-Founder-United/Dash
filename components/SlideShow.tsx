@@ -14,16 +14,18 @@ import FunFactSlide from "./slides/FunFactSlide";
 import CommunityStatsSlide from "./slides/CommunityStatsSlide";
 import PhotoSlide from "./slides/PhotoSlide";
 import FeaturedEventSlide from "./slides/FeaturedEventSlide";
+import MeshSlide from "./slides/MeshSlide";
 import type { DashboardData } from "@/lib/types";
 
 // Right panel slides only (clock/weather lives permanently on the left)
-const SLIDES = ["featured", "events", "news", "radar", "spotlight", "stats", "photos", "funfact", "announcements"] as const;
+const SLIDES = ["featured", "events", "news", "radar", "mesh", "spotlight", "stats", "photos", "funfact", "announcements"] as const;
 type SlideId = (typeof SLIDES)[number];
 const DURATIONS: Record<SlideId, number> = {
   featured: 20,
   events: 40,
   news: 40,
   radar: 25,
+  mesh: 25,
   spotlight: 15,
   stats: 15,
   photos: 20,
@@ -63,6 +65,8 @@ function RightPanel({
       return <EventsSlide events={data.events} />;
     case "radar":
       return <WeatherRadarSlide />;
+    case "mesh":
+      return <MeshSlide />;
     case "spotlight":
       return (
         <SpotlightSlide spotlights={data.spotlights} index={spotlightIndex} />
@@ -127,6 +131,7 @@ export default function SlideShow({
         case "photos":
           return data.photos.length > 0;
         case "radar":
+        case "mesh":
         case "funfact":
           return true; // always show
       }
@@ -155,23 +160,49 @@ export default function SlideShow({
   }, [safeIdx, advance, currentSlide]);
 
   return (
-    <div ref={rootRef} className="flex flex-col h-screen bg-[#f0f3f6] overflow-hidden select-none">
-      {/* Branding bar */}
-      <div className="shrink-0 flex items-center justify-between px-14 py-6 border-b-2 border-slate-200 bg-white/80 backdrop-blur-sm">
-        <div className="flex items-center gap-6">
+    <div ref={rootRef} className="grid-field flex flex-col h-screen overflow-hidden select-none">
+      {/* Station telemetry rail */}
+      <div className="shrink-0 flex items-center justify-between px-14 py-5 border-b-2 border-[var(--line)] bg-white/85 backdrop-blur-sm">
+        <div className="flex items-center gap-7 min-w-0">
           <img
             src={`${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/images/logos/indiana-iot-lab.png`}
             alt="Indiana IoT Lab — Fishers"
-            className="h-24 shrink-0"
+            className="h-20 shrink-0"
           />
-          <span
-            className="text-teal-500/60 tracking-wider italic"
-            style={{ fontSize: "clamp(1.6rem, 2vw, 3rem)" }}
-          >
-            A Catalyst For Innovation
-          </span>
+          <div className="flex flex-col gap-1.5 min-w-0">
+            <div className="flex items-baseline gap-3">
+              <span className="dot shrink-0" />
+              <span
+                className="mono font-bold tracking-[0.22em] text-[var(--ink)]"
+                style={{ fontSize: "clamp(1.5rem, 1.9vw, 2.6rem)" }}
+              >
+                STATION IIL&#8209;FISHERS
+              </span>
+            </div>
+            <span
+              className="eyebrow eyebrow-amber"
+              style={{ fontSize: "clamp(1.1rem, 1.3vw, 1.7rem)" }}
+            >
+              A Catalyst For Innovation
+            </span>
+          </div>
         </div>
-        <div className="flex items-center gap-6">
+        <div className="flex items-center gap-8">
+          <span
+            className="readout hidden xl:inline text-[var(--muted)]"
+            style={{ fontSize: "clamp(1.3rem, 1.5vw, 2rem)" }}
+          >
+            39.96&deg;N&nbsp;&nbsp;086.01&deg;W
+          </span>
+          <div className="flex items-center gap-3">
+            <span className="dot shrink-0" />
+            <span
+              className="readout text-[var(--accent)]"
+              style={{ fontSize: "clamp(1.3rem, 1.5vw, 2rem)" }}
+            >
+              Sync&nbsp;Live
+            </span>
+          </div>
           <NavDots
             total={activeSlides.length}
             current={safeIdx}
@@ -179,10 +210,10 @@ export default function SlideShow({
             hidden={isKiosk}
           />
           <span
-            className="text-slate-400 tracking-widest uppercase"
-            style={{ fontSize: "clamp(1.4rem, 1.8vw, 2.5rem)" }}
+            className="readout text-[var(--muted)]"
+            style={{ fontSize: "clamp(1.3rem, 1.6vw, 2.2rem)" }}
           >
-            Fishers, IN
+            Fishers&nbsp;&middot;&nbsp;IN
           </span>
         </div>
       </div>
@@ -196,11 +227,11 @@ export default function SlideShow({
 
         {/* Right: rotating content (62% width) */}
         <div className="flex-1 relative overflow-hidden">
-          {/* Slide progress bar */}
-          <div className="absolute top-0 left-0 right-0 z-10 h-[10px] bg-slate-200">
+          {/* Slide progress bar + mono channel counter */}
+          <div className="absolute top-0 left-0 right-0 z-10 h-[10px] bg-[var(--line)]">
             <motion.div
               key={`progress-${safeIdx}`}
-              className="h-full bg-teal-400/60 origin-left"
+              className="h-full bg-[var(--accent)] origin-left"
               initial={{ scaleX: 0 }}
               animate={{ scaleX: 1 }}
               transition={{
@@ -209,6 +240,12 @@ export default function SlideShow({
               }}
             />
           </div>
+          <span
+            className="mono absolute top-5 right-8 z-10 tracking-[0.15em] text-[var(--faint)] tabular-nums"
+            style={{ fontSize: "clamp(1.3rem, 1.5vw, 1.9rem)" }}
+          >
+            {String(safeIdx + 1).padStart(2, "0")} / {String(activeSlides.length).padStart(2, "0")}
+          </span>
 
           <AnimatePresence mode="wait">
             <motion.div

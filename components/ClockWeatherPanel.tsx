@@ -28,10 +28,10 @@ function ForecastDay({
   label: string; high: number; low: number; weatherCode: number; active?: boolean;
 }) {
   return (
-    <div className={`flex flex-col items-center gap-1 py-3 px-4 rounded-xl transition-all ${active ? "bg-white/50 ring-2 ring-slate-300" : ""}`}>
+    <div className={`flex flex-col items-center gap-1 py-3 px-4 rounded-[6px] transition-all ${active ? "bg-white/70 border-2 border-[var(--accent)]" : "border-2 border-transparent"}`}>
       <span
-        className="text-slate-500 font-medium"
-        style={{ fontSize: "clamp(1.1rem, 1.8vw, 2rem)" }}
+        className="mono uppercase text-[var(--muted)] font-semibold tracking-[0.12em]"
+        style={{ fontSize: "clamp(1.1rem, 1.6vw, 1.9rem)" }}
       >
         {label}
       </span>
@@ -152,28 +152,28 @@ export default function ClockWeatherPanel({ events = [] }: { events?: Event[] })
 
   return (
     <div
-      className={`flex flex-col h-full bg-gradient-to-b ${bg} transition-all duration-3000 border-r-2 border-slate-200 overflow-hidden`}
+      className={`flex flex-col h-full bg-gradient-to-b ${bg} transition-all duration-3000 border-r-2 border-[var(--line)] overflow-hidden`}
     >
       {/* Clock + UTC — flex section that can shrink */}
       <div className="flex flex-col items-center justify-center flex-[3] min-h-0 px-8 gap-2">
         <div className="flex flex-col items-center">
           {/* Greeting */}
           <p
-            className="text-slate-400 font-light tracking-widest mb-2"
-            style={{ fontSize: "clamp(1.1rem, 1.8vw, 2.5rem)" }}
+            className="eyebrow mb-3"
+            style={{ fontSize: "clamp(1.1rem, 1.6vw, 2.2rem)" }}
           >
             {greeting}
           </p>
           {/* Local time */}
           <div className="flex items-start leading-none">
             <span
-              className="text-slate-800 font-black tabular-nums"
+              className="text-[var(--ink)] font-black tabular-nums"
               style={{ fontSize: "clamp(5rem, 9vw, 9rem)" }}
             >
               {h12}:{mins}
             </span>
             <span
-              className="text-slate-400 font-light ml-3 mt-3"
+              className="mono text-[var(--faint)] font-medium ml-3 mt-3"
               style={{ fontSize: "clamp(1.8rem, 2.5vw, 3.5rem)" }}
             >
               {ampm}
@@ -181,24 +181,25 @@ export default function ClockWeatherPanel({ events = [] }: { events?: Event[] })
           </div>
 
           {/* UTC time */}
-          <div className="flex items-center gap-3 mt-2">
+          <div className="flex items-center gap-3 mt-3">
+            <span className="dot shrink-0" style={{ fontSize: "1rem" }} />
             <span
-              className="text-teal-500 font-mono tracking-wider"
+              className="mono text-[var(--accent)] font-semibold tracking-[0.15em]"
               style={{ fontSize: "clamp(1.2rem, 2vw, 2.5rem)" }}
             >
-              UTC {utcH}:{utcM}
+              UTC {utcH}:{utcM}Z
             </span>
           </div>
 
           {/* Date */}
           <p
-            className="text-slate-500 font-light tracking-widest text-center mt-3"
-            style={{ fontSize: "clamp(1.1rem, 1.8vw, 2.5rem)" }}
+            className="mono uppercase text-[var(--muted)] tracking-[0.18em] text-center mt-4"
+            style={{ fontSize: "clamp(1.1rem, 1.7vw, 2.3rem)" }}
           >
             {dateStr}
           </p>
           <p
-            className="text-slate-400 tracking-widest"
+            className="mono text-[var(--faint)] tracking-[0.3em] mt-1"
             style={{ fontSize: "clamp(1.2rem, 1.6vw, 2rem)" }}
           >
             {yearStr}
@@ -207,25 +208,26 @@ export default function ClockWeatherPanel({ events = [] }: { events?: Event[] })
       </div>
 
       {/* Divider */}
-      <div className="shrink-0 mx-8 h-[2px] bg-slate-200" />
+      <div className="rule shrink-0 mx-8" />
 
       {/* Next event countdown */}
       {nextEvent && (
-        <div className="shrink-0 flex flex-col items-center gap-1 px-8 py-4 bg-teal-50 border-b-2 border-slate-200">
+        <div className="hud shrink-0 mx-8 my-5 flex flex-col items-center gap-2 px-8 py-5 bg-[var(--accent-tint)] border-2 border-[var(--line)]">
           <p
-            className="text-teal-600 font-semibold tracking-wider uppercase"
+            className="eyebrow flex items-center gap-2.5"
             style={{ fontSize: "clamp(1.1rem, 1.4vw, 1.8rem)" }}
           >
+            <span className="dot-amber dot shrink-0" style={{ fontSize: "0.85rem" }} />
             Next Up
           </p>
           <p
-            className="text-slate-700 font-semibold text-center leading-snug line-clamp-1"
+            className="text-[var(--ink)] font-bold text-center leading-snug line-clamp-1"
             style={{ fontSize: "clamp(1.3rem, 1.8vw, 2.2rem)" }}
           >
             {nextEvent.title}
           </p>
           <p
-            className="text-teal-500 font-mono"
+            className="mono text-[var(--accent)] font-semibold tracking-[0.1em]"
             style={{ fontSize: "clamp(1.1rem, 1.5vw, 2rem)" }}
           >
             {nextEvent.label}
@@ -256,16 +258,16 @@ export default function ClockWeatherPanel({ events = [] }: { events?: Event[] })
               </span>
             </span>
             <span
-              className={`font-semibold tracking-wide ${labelColor}`}
+              className={`mono font-semibold uppercase tracking-[0.14em] ${labelColor}`}
               style={{ fontSize: "clamp(1.2rem, 1.8vw, 2.5rem)" }}
             >
               {weather.description}
             </span>
             <span
-              className="text-slate-400 mt-1"
+              className="mono text-[var(--muted)] tracking-[0.08em] mt-1"
               style={{ fontSize: "clamp(1.2rem, 1.6vw, 2rem)" }}
             >
-              Feels {weather.feelsLike}&deg; &nbsp;&middot;&nbsp; H:{weather.high}&deg; L:{weather.low}&deg;
+              FEELS {weather.feelsLike}&deg; &nbsp;&middot;&nbsp; H {weather.high}&deg; &nbsp;L {weather.low}&deg;
             </span>
           </div>
         ) : (

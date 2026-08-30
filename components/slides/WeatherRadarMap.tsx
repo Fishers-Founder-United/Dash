@@ -15,11 +15,11 @@ const IEM_RADAR_URL =
 
 function ForecastStrip({ forecast }: { forecast: ForecastDay[] }) {
   return (
-    <div className="flex justify-around items-center px-6 py-4 bg-white/80 backdrop-blur-sm border-t-2 border-slate-200">
+    <div className="flex justify-around items-center px-6 py-4 bg-white/85 backdrop-blur-sm border-t-2 border-[var(--line)]">
       {forecast.map((day, i) => (
         <div key={day.label} className="flex flex-col items-center gap-1">
           <span
-            className={`font-semibold ${i === 0 ? "text-teal-600" : "text-slate-500"}`}
+            className={`mono uppercase font-semibold tracking-[0.12em] ${i === 0 ? "text-[var(--accent)]" : "text-[var(--muted)]"}`}
             style={{ fontSize: "clamp(1.5rem, 1.8vw, 2rem)" }}
           >
             {day.label}
@@ -27,15 +27,15 @@ function ForecastStrip({ forecast }: { forecast: ForecastDay[] }) {
           <span style={{ fontSize: "clamp(1.8rem, 2.5vw, 2.5rem)" }} role="img">
             {wmoIcon(day.weatherCode)}
           </span>
-          <div className="flex gap-2 items-baseline">
-            <span className="text-slate-800 font-bold" style={{ fontSize: "clamp(2rem, 2.5vw, 2.5rem)" }}>
+          <div className="flex gap-2 items-baseline mono">
+            <span className="text-[var(--ink)] font-bold" style={{ fontSize: "clamp(2rem, 2.5vw, 2.5rem)" }}>
               {day.high}&deg;
             </span>
-            <span className="text-slate-400" style={{ fontSize: "clamp(1.5rem, 1.8vw, 2rem)" }}>
+            <span className="text-[var(--faint)]" style={{ fontSize: "clamp(1.5rem, 1.8vw, 2rem)" }}>
               {day.low}&deg;
             </span>
           </div>
-          <span className="text-slate-400 text-center leading-tight" style={{ fontSize: "clamp(1.5rem, 1.6vw, 1.8rem)" }}>
+          <span className="text-[var(--faint)] text-center leading-tight" style={{ fontSize: "clamp(1.5rem, 1.6vw, 1.8rem)" }}>
             {wmoDescription(day.weatherCode)}
           </span>
         </div>
@@ -145,15 +145,15 @@ export default function WeatherRadarMap() {
 
         {/* Updated timestamp */}
         {lastUpdate && (
-          <div className="absolute top-4 right-4 z-[1000] flex items-center gap-2 bg-white/90 backdrop-blur-sm rounded-xl px-4 py-2 border-2 border-slate-200 shadow-sm">
-            <div className="w-4 h-4 rounded-full bg-teal-500 shadow-[0_0_8px_rgba(20,184,166,0.4)]" />
-            <span className="text-slate-800 font-mono" style={{ fontSize: "clamp(1.8rem, 2.2vw, 2.8rem)" }}>{lastUpdate}</span>
-            <span className="text-slate-400" style={{ fontSize: "clamp(1.5rem, 1.8vw, 2rem)" }}>RADAR</span>
+          <div className="hud absolute top-4 right-4 z-[1000] flex items-center gap-3 bg-white/90 backdrop-blur-sm rounded-[8px] px-4 py-2 border-2 border-[var(--line)]">
+            <span className="dot shrink-0" />
+            <span className="mono text-[var(--ink)] font-semibold tracking-[0.06em]" style={{ fontSize: "clamp(1.8rem, 2.2vw, 2.8rem)" }}>{lastUpdate}</span>
+            <span className="readout text-[var(--faint)]" style={{ fontSize: "clamp(1.4rem, 1.7vw, 1.9rem)" }}>RADAR</span>
           </div>
         )}
 
-        <div className="absolute bottom-4 left-4 z-[1000] text-slate-400 bg-white/70 rounded-lg px-3 py-1 border-2 border-slate-200" style={{ fontSize: "clamp(1.5rem, 1.8vw, 2rem)" }}>
-          ~50 mi view · NEXRAD
+        <div className="mono uppercase tracking-[0.12em] absolute bottom-4 left-4 z-[1000] text-[var(--muted)] bg-white/75 rounded-[6px] px-3 py-1.5 border-2 border-[var(--line)]" style={{ fontSize: "clamp(1.4rem, 1.7vw, 1.9rem)" }}>
+          ~50 MI · NEXRAD
         </div>
       </div>
 
