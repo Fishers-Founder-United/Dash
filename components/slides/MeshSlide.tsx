@@ -15,7 +15,7 @@ import SlideHeader from "./SlideHeader";
  * The Lab runs a node on this mesh: IN.HAM.IndianaIoT.com, at the Fishers site.
  */
 
-const MESH_MAP_URL = "https://map.okimesh.org/live";
+const MESH_MAP_URL = "https://map.okimesh.org/live#/live";
 
 export default function MeshSlide() {
   return (
