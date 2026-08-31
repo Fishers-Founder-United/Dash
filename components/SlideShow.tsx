@@ -25,7 +25,7 @@ const DURATIONS: Record<SlideId, number> = {
   events: 40,
   news: 40,
   radar: 25,
-  mesh: 25,
+  mesh: 50,
   spotlight: 15,
   stats: 15,
   photos: 20,
