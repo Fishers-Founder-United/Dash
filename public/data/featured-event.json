@@ -24,5 +24,17 @@
     "poster": true,
     "url": "https://indianaiot.com",
     "expires": "2026-07-01"
+  },
+  {
+    "id": "featured-auvsi-spotlight-2026",
+    "title": "AUVSI Indiana Spotlight",
+    "subtitle": "Aligning Drone Initiatives from Capitol Hill to Town Hall",
+    "date": "2026-09-14",
+    "time": "09:00",
+    "location": "The Barn at Aberdeen Farms, Bargersville IN",
+    "description": "An AUVSI Indiana Chapter briefing bridging federal defense policy, statewide strategy, and local municipal action. Keynote by U.S. Senator Todd Young, plus an I2D2 panel on Governor Braun's Drone Task Force. Seats are limited.",
+    "image": "/images/featured/auvsi-spotlight-2026.png",
+    "poster": true,
+    "expires": "2026-09-14"
   }
 ]

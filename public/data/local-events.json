@@ -121,6 +121,16 @@
     "tags": ["maker", "laser", "maintenance", "workshop"]
   },
   {
+    "id": "local-auvsi-spotlight-2026",
+    "title": "AUVSI Indiana Spotlight: Aligning Drone Initiatives from Capitol Hill to Town Hall",
+    "date": "2026-09-14",
+    "time": "09:00",
+    "location": "The Barn at Aberdeen Farms, Bargersville IN",
+    "description": "An exclusive AUVSI Indiana Chapter briefing bridging federal defense policy, statewide strategy, and local municipal action. Keynote by U.S. Senator Todd Young, a Town of Bargersville economic development spotlight, and an I2D2 panel on Governor Braun's Drone Task Force. Continental breakfast and networking. Seats are limited.",
+    "source": "local",
+    "tags": ["drones", "AUVSI", "policy", "networking", "defense"]
+  },
+  {
     "id": "mutiny19-001",
     "title": "Something's Coming — Mutiny19",
     "date": "2026-09-19",
