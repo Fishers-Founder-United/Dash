@@ -139,5 +139,16 @@
     "url": "https://mutiny19.github.io/mutiny19/",
     "source": "mutiny19",
     "tags": ["mutiny19", "mystery", "Fishers"]
+  },
+  {
+    "id": "local-cimn-open-house-2026",
+    "title": "CIMN Fall Open House: Mesh Meetup & Nacho Bar",
+    "date": "2026-09-26",
+    "time": "16:00",
+    "location": "Indiana IoT Lab, 9059 Technology Lane, Fishers IN",
+    "description": "Central Indiana Mesh Network's fall open house. Hams, GMRS operators, IoT tinkerers, preppers, makers, and the curious: no talks, no agenda. Nacho bar, live mesh wall, 101 corner, flash bench (bring any LoRa board, leave with a node), radio corner, sensor & IoT table. Talk-in on GMRS Ch 20 / 146.520 / mesh 910.525. Free, free parking, 4 to 8 PM.",
+    "url": "https://www.cimesh.net",
+    "source": "local",
+    "tags": ["mesh", "LoRa", "ham", "GMRS", "IoT", "CIMN", "OKI Mesh", "open house"]
   }
 ]

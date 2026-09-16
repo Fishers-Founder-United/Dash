@@ -15,12 +15,14 @@ import CommunityStatsSlide from "./slides/CommunityStatsSlide";
 import PhotoSlide from "./slides/PhotoSlide";
 import FeaturedEventSlide from "./slides/FeaturedEventSlide";
 import MeshSlide from "./slides/MeshSlide";
+import MeshOpenHouseSlide, { isMeshOpenHouseActive } from "./slides/MeshOpenHouseSlide";
 import type { DashboardData } from "@/lib/types";
 
 // Right panel slides only (clock/weather lives permanently on the left)
-const SLIDES = ["featured", "events", "news", "radar", "mesh", "spotlight", "stats", "photos", "funfact", "announcements"] as const;
+const SLIDES = ["splash", "featured", "events", "news", "radar", "mesh", "spotlight", "stats", "photos", "funfact", "announcements"] as const;
 type SlideId = (typeof SLIDES)[number];
 const DURATIONS: Record<SlideId, number> = {
+  splash: 30,
   featured: 20,
   events: 40,
   news: 40,
@@ -57,6 +59,8 @@ function RightPanel({
   featuredIndex: number;
 }) {
   switch (slide) {
+    case "splash":
+      return <MeshOpenHouseSlide />;
     case "featured":
       return data.featuredEvents.length > 0
         ? <FeaturedEventSlide event={data.featuredEvents[featuredIndex % data.featuredEvents.length]} />
@@ -112,10 +116,15 @@ export default function SlideShow({
     return () => clearInterval(id);
   }, []);
 
-  // Filter out slides that have no data to show
+  // Filter out slides that have no data to show. splashActive is re-read on
+  // every render (each slide advance), so the splash drops out of the deck on
+  // its own once its date passes without waiting for the 2h page reload.
+  const splashActive = isMeshOpenHouseActive();
   const activeSlides = useMemo(() => {
     return SLIDES.filter((id) => {
       switch (id) {
+        case "splash":
+          return splashActive;
         case "featured":
           return data.featuredEvents.length > 0;
         case "events":
@@ -136,7 +145,7 @@ export default function SlideShow({
           return true; // always show
       }
     });
-  }, [data.featuredEvents.length, data.events.length, data.spotlights.length, data.announcements.length, data.news.length, data.stats, data.photos.length]);
+  }, [splashActive, data.featuredEvents.length, data.events.length, data.spotlights.length, data.announcements.length, data.news.length, data.stats, data.photos.length]);
 
   const safeIdx = activeSlides.length > 0 ? slideIdx % activeSlides.length : 0;
   const currentSlide = activeSlides[safeIdx] ?? "radar";
