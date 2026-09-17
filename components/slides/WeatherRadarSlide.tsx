@@ -30,7 +30,7 @@ export default function WeatherRadarSlide() {
           </div>
           <div className="tag flex items-center gap-2.5 bg-[var(--accent-tint)] border-[var(--line)] text-[var(--accent)] px-3 py-1.5 self-end mb-1">
             <span className="dot shrink-0" style={{ fontSize: "0.75rem" }} />
-            <span style={{ fontSize: "clamp(1.6rem, 1.8vw, 1.9rem)" }}>NEXRAD</span>
+            <span style={{ fontSize: "clamp(1.6rem, 1.8vw, 1.9rem)" }}>NWS</span>
           </div>
         </div>
         <span className="readout text-[var(--faint)]" style={{ fontSize: "clamp(1.6rem, 1.9vw, 2.3rem)" }}>

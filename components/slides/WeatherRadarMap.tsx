@@ -1,54 +1,21 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import type { WeatherData, ForecastDay } from "@/lib/types";
-import { fetchWeather, wmoDescription, wmoIcon } from "@/lib/weather";
 
 const LAT = 39.9556;
 const LON = -86.0131;
-const ZOOM = 8; // ~50 mile view — IEM NEXRAD supports zoom 8 reliably
+const ZOOM = 8; // ~50 mile view
 
-// Iowa Environmental Mesonet NEXRAD composite — free, no API key, reliable
-// Tiles update automatically every ~5 min on IEM's servers
-const IEM_RADAR_URL =
-  "https://mesonet.agron.iastate.edu/cache/tile.py/1.0.0/nexrad-n0q-900913/{z}/{x}/{y}.png";
-
-function ForecastStrip({ forecast }: { forecast: ForecastDay[] }) {
-  return (
-    <div className="flex justify-around items-center px-6 py-4 bg-white/85 backdrop-blur-sm border-t-2 border-[var(--line)]">
-      {forecast.map((day, i) => (
-        <div key={day.label} className="flex flex-col items-center gap-1">
-          <span
-            className={`mono uppercase font-semibold tracking-[0.12em] ${i === 0 ? "text-[var(--accent)]" : "text-[var(--muted)]"}`}
-            style={{ fontSize: "clamp(1.5rem, 1.8vw, 2rem)" }}
-          >
-            {day.label}
-          </span>
-          <span style={{ fontSize: "clamp(1.8rem, 2.5vw, 2.5rem)" }} role="img">
-            {wmoIcon(day.weatherCode)}
-          </span>
-          <div className="flex gap-2 items-baseline mono">
-            <span className="text-[var(--ink)] font-bold" style={{ fontSize: "clamp(2rem, 2.5vw, 2.5rem)" }}>
-              {day.high}&deg;
-            </span>
-            <span className="text-[var(--faint)]" style={{ fontSize: "clamp(1.5rem, 1.8vw, 2rem)" }}>
-              {day.low}&deg;
-            </span>
-          </div>
-          <span className="text-[var(--faint)] text-center leading-tight" style={{ fontSize: "clamp(1.5rem, 1.6vw, 1.8rem)" }}>
-            {wmoDescription(day.weatherCode)}
-          </span>
-        </div>
-      ))}
-    </div>
-  );
-}
+// NWS radar via NOAA/NCEP GeoServer WMS — the same layer behind radar.weather.gov.
+// conus_bref_qcd = CONUS base reflectivity, quality-controlled. No API key.
+// Updates every ~2 min on NWS's side.
+const NWS_WMS_URL = "https://opengeo.ncep.noaa.gov/geoserver/conus/conus_bref_qcd/ows";
+const NWS_WMS_LAYER = "conus_bref_qcd";
 
 export default function WeatherRadarMap() {
   const mapDivRef = useRef<HTMLDivElement>(null);
   const mapRef = useRef<import("leaflet").Map | null>(null);
-  const radarLayerRef = useRef<import("leaflet").TileLayer | null>(null);
-  const [weather, setWeather] = useState<WeatherData | null>(null);
+  const radarLayerRef = useRef<import("leaflet").TileLayer.WMS | null>(null);
   const [lastUpdate, setLastUpdate] = useState<string>("");
 
   // Init map once
@@ -78,8 +45,14 @@ export default function WeatherRadarMap() {
       // Light base map
       L.tileLayer("https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png").addTo(map);
 
-      // IEM NEXRAD radar overlay
-      const radar = L.tileLayer(IEM_RADAR_URL, { opacity: 0.8, zIndex: 10 });
+      // NWS radar overlay
+      const radar = L.tileLayer.wms(NWS_WMS_URL, {
+        layers: NWS_WMS_LAYER,
+        format: "image/png",
+        transparent: true,
+        opacity: 0.8,
+        zIndex: 10,
+      });
       radar.addTo(map);
       radarLayerRef.current = radar;
 
@@ -122,19 +95,14 @@ export default function WeatherRadarMap() {
     };
   }, []);
 
-  // Refresh radar tiles every 5 minutes
+  // Refresh radar every 10 minutes. A changing extra param (leaflet passes
+  // unknown keys through to the query string) forces fresh GetMap requests
+  // instead of re-drawing from the browser cache.
   useEffect(() => {
     const interval = setInterval(() => {
-      radarLayerRef.current?.redraw();
+      radarLayerRef.current?.setParams({ layers: NWS_WMS_LAYER, _t: Date.now() } as import("leaflet").WMSParams);
       setLastUpdate(new Date().toLocaleTimeString("en-US", { hour: "numeric", minute: "2-digit" }));
-    }, 10 * 60 * 1000); // IEM updates every ~5 min; we poll every 10 — still fresh, half the requests
-    return () => clearInterval(interval);
-  }, []);
-
-  // Fetch weather for forecast strip
-  useEffect(() => {
-    fetchWeather().then(setWeather);
-    const interval = setInterval(() => fetchWeather().then(setWeather), 30 * 60 * 1000);
+    }, 10 * 60 * 1000);
     return () => clearInterval(interval);
   }, []);
 
@@ -153,11 +121,9 @@ export default function WeatherRadarMap() {
         )}
 
         <div className="mono uppercase tracking-[0.12em] absolute bottom-4 left-4 z-[1000] text-[var(--muted)] bg-white/75 rounded-[6px] px-3 py-1.5 border-2 border-[var(--line)]" style={{ fontSize: "clamp(1.4rem, 1.7vw, 1.9rem)" }}>
-          ~50 MI · NEXRAD
+          ~50 MI · NWS RADAR
         </div>
       </div>
-
-      {weather && <ForecastStrip forecast={weather.forecast} />}
     </div>
   );
 }
