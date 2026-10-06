@@ -1,6 +1,60 @@
 [
   {
     "id": "insideindiana-0-aHR0cHM6Ly93",
+    "title": "Southwest Airlines expands 2027 schedule from Indy to coastal vacation sites",
+    "url": "https://www.insideindianabusiness.com/articles/southwest-airlines-expands-2027-schedule-from-indy-to-coastal-vacation-sites",
+    "source": "insideindiana",
+    "sourceLabel": "Inside Indiana Business",
+    "publishedAt": "2026-10-06T21:02:14.000Z",
+    "description": "For the first time, Southwest will begin offering nonstop daily flights from Indianapolis International Airport to Cancun, Mexico, with flights beginning June 3.\nThe post Southwest Airlines expands 2027 schedule from Ind"
+  },
+  {
+    "id": "insideindiana-1-aHR0cHM6Ly93",
+    "title": "Indiana BMV offices ranked nation’s best in analysis of reviews",
+    "url": "https://www.insideindianabusiness.com/articles/indiana-bmv-offices-ranked-nations-best-in-analysis-of-reviews",
+    "source": "insideindiana",
+    "sourceLabel": "Inside Indiana Business",
+    "publishedAt": "2026-10-06T21:00:45.000Z",
+    "description": "Indiana’s Bureau of Motor Vehicles offices came out on top of a nationwide analysis of more than 1.2 million Google reviews of public vehicle registration and driver’s license offices — despite having no locations in the"
+  },
+  {
+    "id": "insideindiana-2-aHR0cHM6Ly93",
+    "title": "Elanco, Purdue planning research institute at One Health Innovation District",
+    "url": "https://www.insideindianabusiness.com/articles/elanco-purdue-planning-research-institute-at-one-health-innovation-district",
+    "source": "insideindiana",
+    "sourceLabel": "Inside Indiana Business",
+    "publishedAt": "2026-10-06T17:30:54.000Z",
+    "description": "Leaders from Elanco Animal Health, Purdue University, the Indiana Economic Development Corp., the CEOs of Indiana Corporate Partnership and the city of Indianapolis broke ground Tuesday at the site of the future One Heal"
+  },
+  {
+    "id": "insideindiana-3-aHR0cHM6Ly93",
+    "title": "Evansville council approves data center moratorium",
+    "url": "https://www.insideindianabusiness.com/articles/evansville-council-approves-data-center-moratorium",
+    "source": "insideindiana",
+    "sourceLabel": "Inside Indiana Business",
+    "publishedAt": "2026-10-06T17:27:14.000Z",
+    "description": "Our partners at WEHT-TV Channel 25 report the 180-day pause is designed to give councilors time to examine options for future data center development.\nThe post Evansville council approves data center moratorium appeared "
+  },
+  {
+    "id": "insideindiana-4-aHR0cHM6Ly93",
+    "title": "State seeks applicants for Indiana Advanced Nuclear Ready Communities program",
+    "url": "https://www.insideindianabusiness.com/articles/state-seeks-applicants-for-indiana-advanced-nuclear-ready-communities-program",
+    "source": "insideindiana",
+    "sourceLabel": "Inside Indiana Business",
+    "publishedAt": "2026-10-06T16:58:17.000Z",
+    "description": "Gov. Mike Braun announced the launch of the program in July to help ensure that communities seeking designation have the workforce capacity and infrastructure necessary to ensure the success of such projects.\nThe post St"
+  },
+  {
+    "id": "insideindiana-5-aHR0cHM6Ly93",
+    "title": "Polygon Composites Technology names new CEO",
+    "url": "https://www.insideindianabusiness.com/articles/polygon-composites-technology-names-new-ceo",
+    "source": "insideindiana",
+    "sourceLabel": "Inside Indiana Business",
+    "publishedAt": "2026-10-06T16:23:33.000Z",
+    "description": "The chief operating officer of a Chicago-based repair-technology company has been named the next leader of Polygon Composites Technology. Alex Duffy was selected as the new CEO of the Walkerton-based composite components"
+  },
+  {
+    "id": "insideindiana-6-aHR0cHM6Ly93",
     "title": "Fort Wayne&#8217;s Bohl Equipment joins Illinois material handling company",
     "url": "https://www.insideindianabusiness.com/articles/fort-waynes-bohl-equipment-joins-illinois-material-handling-company",
     "source": "insideindiana",
@@ -9,7 +63,7 @@
     "description": "Fort Wayne’s Bohl Equipment, a family-owned forklift dealer since 1924, has joined Peoria, Illinois-based MH Equipment, adding more than 50 service technicians into the company’s regional network.\nThe post Fort Wayne's B"
   },
   {
-    "id": "insideindiana-1-aHR0cHM6Ly93",
+    "id": "insideindiana-7-aHR0cHM6Ly93",
     "title": "Indiana reviews Medicaid waiver assessments amid scrutiny of new tool",
     "url": "https://www.insideindianabusiness.com/articles/indiana-reviews-medicaid-waiver-assessments-amid-scrutiny-of-new-tool",
     "source": "insideindiana",
@@ -18,7 +72,7 @@
     "description": "Case managers started using the interRAI algorithm in January to determine who is eligible for Medicaid waivers for intermediate care, a process known as level-of-care assessments.\nThe post Indiana reviews Medicaid waive"
   },
   {
-    "id": "insideindiana-2-aHR0cHM6Ly93",
+    "id": "insideindiana-8-aHR0cHM6Ly93",
     "title": "IPS seeks power to charge Innovation Network schools more money amid budget crunch",
     "url": "https://www.insideindianabusiness.com/articles/ips-seeks-power-to-charge-innovation-network-schools-more-money-amid-budget-crunch",
     "source": "insideindiana",
@@ -27,66 +81,12 @@
     "description": "Indianapolis Public Schools will seek changes that allow it to charge Innovation Network charter schools more for services like transportation, food service, and facilities support, as the district confronts a budget cru"
   },
   {
-    "id": "insideindiana-3-aHR0cHM6Ly93",
+    "id": "insideindiana-9-aHR0cHM6Ly93",
     "title": "&#8216;A big shot in the arm&#8217;: The Vault on Main opens in downtown Evansville",
     "url": "https://www.insideindianabusiness.com/articles/a-big-shot-in-the-arm-the-vault-on-main-opens-in-downtown-evansville",
     "source": "insideindiana",
     "sourceLabel": "Inside Indiana Business",
     "publishedAt": "2026-10-06T10:00:00.000Z",
     "description": "The Vault on Main is a four-story building that includes 161 residential apartments and more than 4,700 square feet of ground-floor retail or office space, as well as an outdoor entertainment space, coworking areas and a"
-  },
-  {
-    "id": "insideindiana-4-aHR0cHM6Ly93",
-    "title": "Clarksville&#8217;s Origin Park to get up to $20M in funding for restoration",
-    "url": "https://www.insideindianabusiness.com/articles/clarksvilles-origin-park-to-get-up-to-20m-in-funding-for-restoration",
-    "source": "insideindiana",
-    "sourceLabel": "Inside Indiana Business",
-    "publishedAt": "2026-10-05T21:27:57.000Z",
-    "description": "Indianapolis-based Lilly Endowment Inc. has awarded a $15 million grant to River Heritage Conservancy, with another $5 million available through a matching grant opportunity, The funding will support restoration and expa"
-  },
-  {
-    "id": "insideindiana-5-aHR0cHM6Ly93",
-    "title": "Thor expresses concerns over proposed Patrick-LCI merger",
-    "url": "https://www.insideindianabusiness.com/articles/thor-expresses-concerns-over-proposed-patrick-lci-merger",
-    "source": "insideindiana",
-    "sourceLabel": "Inside Indiana Business",
-    "publishedAt": "2026-10-05T21:15:10.000Z",
-    "description": "Thor Industries is raising concerns about the proposed merger of two of the RV industry’s largest suppliers, warning that further consolidation could increase component costs, reduce competition and add to affordability "
-  },
-  {
-    "id": "insideindiana-6-aHR0cHM6Ly93",
-    "title": "Family Express convenience store chain to acquire Leo’s Market &#038; Eatery locations",
-    "url": "https://www.insideindianabusiness.com/articles/family-express-convenience-store-chain-to-acquire-leos-market-eatery-locations",
-    "source": "insideindiana",
-    "sourceLabel": "Inside Indiana Business",
-    "publishedAt": "2026-10-05T21:07:48.000Z",
-    "description": "Leo’s, which debuted in 2019 with a 6,500-square-foot store and fuel station in Greenfield, will continue as a brand after the sale.\nThe post Family Express convenience store chain to acquire Leo’s Market & Eatery locati"
-  },
-  {
-    "id": "insideindiana-7-aHR0cHM6Ly93",
-    "title": "Purdue Fort Wayne marks completion of business school renovations",
-    "url": "https://www.insideindianabusiness.com/articles/purdue-fort-wayne-marks-completion-of-business-school-renovations",
-    "source": "insideindiana",
-    "sourceLabel": "Inside Indiana Business",
-    "publishedAt": "2026-10-05T20:46:56.000Z",
-    "description": "Students, faculty and staff at Purdue University Fort Wayne are enjoying the nearly $2 million in improvements to the Doermer School of Business, a renovation that brings together what had been a department spread across"
-  },
-  {
-    "id": "insideindiana-8-aHR0cHM6Ly93",
-    "title": "Surack Enterprises names VP of aviation",
-    "url": "https://www.insideindianabusiness.com/articles/surack-enterprises-names-vp-of-aviation",
-    "source": "insideindiana",
-    "sourceLabel": "Inside Indiana Business",
-    "publishedAt": "2026-10-05T20:40:50.000Z",
-    "description": "Robert Flansburg will serve as vice president of aviation, coming to the company after holding executive-level positions at L3Harris, Boeing, and Lockheed Martin, Surack announced Monday.\nThe post Surack Enterprises name"
-  },
-  {
-    "id": "insideindiana-9-aHR0cHM6Ly93",
-    "title": "Indiana tallies $13M boost off ‘blackout’ license plate sales, invests in BMV modernization",
-    "url": "https://www.insideindianabusiness.com/articles/indiana-tallies-13m-boost-off-blackout-license-plate-sales-invests-in-bmv-modernization",
-    "source": "insideindiana",
-    "sourceLabel": "Inside Indiana Business",
-    "publishedAt": "2026-10-05T19:55:18.000Z",
-    "description": "Indiana’s Bureau of Motor Vehicles has sold more than 380,000 “blackout” license plates in the year since the minimalist design launched — generating $12.9 million toward a five-year modernization plan for the agency.\nTh"
   }
 ]
